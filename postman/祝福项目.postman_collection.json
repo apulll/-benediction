@@ -1,0 +1,110 @@
+{
+	"id": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+	"name": "祝福项目",
+	"description": "",
+	"order": [
+		"446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1521016431892,
+	"owner": "2987625",
+	"public": false,
+	"requests": [
+		{
+			"id": "446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0",
+			"headers": "",
+			"headerData": [],
+			"url": "",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"data": null,
+			"dataMode": "params",
+			"name": "分类列表",
+			"description": "获取分类列表",
+			"descriptionFormat": "html",
+			"time": 1521016478797,
+			"version": 2,
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 37,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "668",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 14 Mar 2018 08:40:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"29c-3N5fm0uk6RSEqyoVETt9cHH2Czg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"},{\"id\":2,\"catalog_name\":\"闺蜜\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:24.000Z\",\"updated_at\":\"2018-03-14T08:27:24.000Z\"},{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"},{\"id\":4,\"catalog_name\":\"生日\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:34.000Z\",\"updated_at\":\"2018-03-14T08:27:34.000Z\"}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "分类列表-成功",
+					"id": "4f41d41d-3fb4-8408-1fb5-51d42c139d1a",
+					"request": {
+						"url": "{{apiUrl}}/catalog",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				}
+			],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

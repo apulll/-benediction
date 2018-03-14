@@ -2,11 +2,11 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 17:05:13
+* @Last Modified time: 2018-03-14 18:00:27
 */
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter } from '../lib';
+import { jsonFormatter, getDataFromReq } from '../lib';
 
 class TemplateCtl extends Controller {
 	constructor() {
@@ -19,7 +19,7 @@ class TemplateCtl extends Controller {
 	}
 	//创建模板
 	async createTemplate(req, res, next) {
-		const data = (req.method === 'get' || req.method === 'delete')  ? req.query : req.body
+		const data = getDataFromReq(req)
 		const params = {
 			catalog_id: data.catalog_id,
 			bg_img: data.bg_img,

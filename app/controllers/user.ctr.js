@@ -2,11 +2,11 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 15:34:00
+* @Last Modified time: 2018-03-14 18:00:53
 */
 import Controller from './index.js';
 import { UserModel } from '../models';
-import { jsonFormatter } from '../lib';
+import { jsonFormatter, getDataFromReq } from '../lib';
 
 class UserCtl extends Controller {
 	constructor() {
