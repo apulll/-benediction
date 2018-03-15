@@ -2,9 +2,9 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:31
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 11:38:44
+* @Last Modified time: 2018-03-15 10:54:06
 */
-
+const Logger = require('../lib/logger')('perry')
 const Sequelize = require('sequelize');
 const sequelizeDb = new Sequelize('test', 'root', 'root', {
   host: 'localhost',
@@ -13,7 +13,10 @@ const sequelizeDb = new Sequelize('test', 'root', 'root', {
   operatorsAliases: false,
   define: {
 	// 字段以下划线（_）来分割（默认是驼峰命名风格）
-	underscored: true
+	 underscored: true
+  },
+  logging: function(sql) { 
+        Logger.info(sql);  
   },
   pool: {
     max: 5,

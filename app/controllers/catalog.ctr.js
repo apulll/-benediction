@@ -2,11 +2,11 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 18:00:01
+* @Last Modified time: 2018-03-15 11:54:46
 */
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq } from '../lib';
+import { jsonFormatter, getDataFromReq, formatDataByCatalogId } from '../lib';
 
 class CatalogCtl extends Controller {
 	constructor() {
@@ -16,7 +16,13 @@ class CatalogCtl extends Controller {
 		const results = await model.CatalogModel.findAll({ raw: true});
 		res.status(200).send(jsonFormatter({ res : results}));
 	}
-	//创建分类
+	/**
+	 * 创建分类
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async createCatalog(req, res, next) {
 		const data = getDataFromReq(req)
 		const params = {
@@ -29,18 +35,14 @@ class CatalogCtl extends Controller {
 
 		res.status(200).send(jsonFormatter({ res : results}));
 	}
-	//根据分类id获取所有分类下的祝福
-	async getBenisonAll(req, res, next) {
+	//根据模板id获取所有祝福
+	async getBenisonAllByTemplateId(req, res , next) {
 		const data = getDataFromReq(req)
-		const params = {
-			catalog_id: data.catalog_id
-		}
-		var templates = await model.CatalogModel.findAll({ include: [{
-							model: model.TemplateModel,
-							where: { catalog_id: data.catalog_id }
-
-						}]});
-		res.status(200).send(jsonFormatter({ res : templates}));
+		const results  = await model.BenisonModel.findAll({
+							where: { template_id: data.templateIds },
+							order: [['updated_at', 'DESC']]
+						})
+		res.status(200).send(jsonFormatter({ res : results}));
 	}
 }
 

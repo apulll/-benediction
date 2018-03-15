@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 18:00:27
+* @Last Modified time: 2018-03-15 11:51:08
 */
 import Controller from './index.js';
 import model from '../models';
@@ -17,7 +17,13 @@ class TemplateCtl extends Controller {
 		const results = await model.TemplateModel.findAll({ raw: true});
 		res.status(200).send(jsonFormatter({ res : results}));
 	}
-	//创建模板
+	/**
+	 * 创建模板
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async createTemplate(req, res, next) {
 		const data = getDataFromReq(req)
 		const params = {

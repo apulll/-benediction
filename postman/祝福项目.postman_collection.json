@@ -3,7 +3,12 @@
 	"name": "祝福项目",
 	"description": "",
 	"order": [
-		"446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0"
+		"446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0",
+		"772fc621-020f-4cc1-51e0-88acb0024d69",
+		"73930638-b308-701d-3d0a-a5b2b740e797",
+		"56a81c59-808b-b6a2-efba-8369c59a0f03",
+		"85174cb2-492c-490c-9018-c246899cedd7",
+		"782da217-0bfe-9700-b902-5da25e3d5012"
 	],
 	"folders": [],
 	"folders_order": [],
@@ -15,20 +20,22 @@
 			"id": "446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0",
 			"headers": "",
 			"headerData": [],
-			"url": "",
+			"url": "{{apiUrl}}/catalog",
 			"queryParams": [],
+			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"preRequestScript": null,
 			"method": "GET",
-			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"data": null,
 			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521017324698,
 			"name": "分类列表",
 			"description": "获取分类列表",
-			"descriptionFormat": "html",
-			"time": 1521016478797,
-			"version": 2,
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"responses": [
 				{
 					"status": "",
@@ -101,10 +108,668 @@
 						"dataMode": "params"
 					}
 				}
+			]
+		},
+		{
+			"id": "56a81c59-808b-b6a2-efba-8369c59a0f03",
+			"headers": "",
+			"headerData": [],
+			"url": "{{apiUrl}}/benison/all?catalog_id=6&page=1&per_page=10",
+			"queryParams": [
+				{
+					"key": "catalog_id",
+					"value": "6",
+					"equals": true,
+					"description": "当catalog_id 为0时获取全部的数据",
+					"enabled": true
+				},
+				{
+					"key": "page",
+					"value": "1",
+					"equals": true,
+					"description": "页码",
+					"enabled": true
+				},
+				{
+					"key": "per_page",
+					"value": "10",
+					"equals": true,
+					"description": "每页多少条数据",
+					"enabled": true
+				}
 			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
 			"tests": null,
 			"currentHelper": "normal",
-			"helperAttributes": {}
+			"helperAttributes": {},
+			"time": 1521094907562,
+			"name": "获取祝福列表-根据分类id",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 153,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "1908",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 06:19:08 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"774-Sa7N4BM+ReWukSlQADtkFODpNAg\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"data\":[{\"id\":8,\"benisons_txt\":\"2222愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-15T01:45:09.000Z\",\"updated_at\":\"2018-03-15T01:45:09.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":1,\"benisons_txt\":\"愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱\",\"liked_total\":56,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T07:48:04.000Z\",\"updated_at\":\"2018-03-14T07:48:04.000Z\",\"template_id\":7,\"template\":{\"id\":7,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:18.000Z\",\"updated_at\":\"2018-03-14T09:19:18.000Z\",\"catalog_id\":3,\"catalog\":{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"}}}],\"total\":3,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "获取祝福列表-根据分类id-有分页",
+					"id": "881b1c94-ef8b-f8f0-dae4-7b7f7963e8ab",
+					"request": {
+						"url": "{{apiUrl}}/benison/all?catalog_id=0&page=1&per_page=10",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "catalog_id",
+								"value": "0",
+								"equals": true,
+								"description": "当catalog_id 为0时获取全部的数据",
+								"enabled": true
+							},
+							{
+								"key": "page",
+								"value": "1",
+								"equals": true,
+								"description": "页码",
+								"enabled": true
+							},
+							{
+								"key": "per_page",
+								"value": "10",
+								"equals": true,
+								"description": "每页多少条数据",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 92,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "107",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 06:20:52 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"6b-+GN0xSeQurSeBOAoONS6nXViyIA\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"data\":[],\"total\":0,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "获取祝福列表-根据分类id-无数据",
+					"id": "28cea2f3-c63a-e031-6005-890d24da6319",
+					"request": {
+						"url": "{{apiUrl}}/benison/all?catalog_id=6&page=1&per_page=10",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "catalog_id",
+								"value": "6",
+								"equals": true,
+								"description": "",
+								"enabled": true
+							},
+							{
+								"key": "page",
+								"value": "1",
+								"equals": true,
+								"description": "页码",
+								"enabled": true
+							},
+							{
+								"key": "per_page",
+								"value": "10",
+								"equals": true,
+								"description": "每页多少条数据",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				}
+			]
+		},
+		{
+			"id": "73930638-b308-701d-3d0a-a5b2b740e797",
+			"headers": "",
+			"headerData": [],
+			"url": "{{apiUrl}}/bycatalog?catalog_id=4",
+			"queryParams": [
+				{
+					"key": "catalog_id",
+					"value": "4",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521076976168,
+			"name": "祝福模板列表",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
+		},
+		{
+			"id": "772fc621-020f-4cc1-51e0-88acb0024d69",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{apiUrl}}/template",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "catalog_id",
+					"value": "4",
+					"type": "text",
+					"enabled": true,
+					"description": ""
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521023088868,
+			"name": "祝福模板创建",
+			"description": "祝福模板",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
+		},
+		{
+			"id": "782da217-0bfe-9700-b902-5da25e3d5012",
+			"headers": "",
+			"headerData": [],
+			"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=0",
+			"queryParams": [
+				{
+					"key": "benison_id",
+					"value": "7",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "template_id",
+					"value": "0",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521079677792,
+			"name": "祝福语详情",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 114,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "667",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 02:03:12 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"29b-76Cmz0LwbvvZBJRlWV35WsN4cDk\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "祝福语详情-成功",
+					"id": "2c127f74-0ba0-51a0-1740-e9502d71bd55",
+					"request": {
+						"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=1",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "benison_id",
+								"value": "7",
+								"equals": true,
+								"description": "",
+								"enabled": true
+							},
+							{
+								"key": "template_id",
+								"value": "1",
+								"equals": true,
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				},
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": 64,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "65",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 02:07:54 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"41-N+uKzsU9+mnHqRPxe4WNTVWa3oY\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "祝福语详情-无匹配数据",
+					"id": "4e0ba7eb-2fde-379d-033c-8441600a3834",
+					"request": {
+						"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=0",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "benison_id",
+								"value": "7",
+								"equals": true,
+								"description": "",
+								"enabled": true
+							},
+							{
+								"key": "template_id",
+								"value": "0",
+								"equals": true,
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					}
+				}
+			]
+		},
+		{
+			"id": "85174cb2-492c-490c-9018-c246899cedd7",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{apiUrl}}/benison",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "benisons_txt",
+					"value": "2222愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1",
+					"type": "text",
+					"enabled": true,
+					"description": "祝福语"
+				},
+				{
+					"key": "template_id",
+					"value": "1",
+					"type": "text",
+					"enabled": true,
+					"description": "祝福模板id"
+				},
+				{
+					"key": "is_belong_template",
+					"value": "1",
+					"type": "text",
+					"enabled": true,
+					"description": "是否是模板祝福语"
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521078352768,
+			"name": "祝福语创建",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": [
+				{
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK",
+						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+					},
+					"time": 124,
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "340",
+							"description": "The length of the response body in octets (8-bit bytes)"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 14 Mar 2018 10:23:53 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"154-9wPmytkjRsF80PT//yQ2HybiFio\"",
+							"description": "An identifier for a specific version of a resource, often a message digest"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"is_belong_template\":\"1\",\"template_id\":\"1\",\"updated_at\":\"2018-03-14T10:23:53.524Z\",\"created_at\":\"2018-03-14T10:23:53.524Z\"},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"previewType": "text",
+					"searchResultScrolledTo": -1,
+					"forceNoPretty": false,
+					"write": true,
+					"empty": false,
+					"failed": false,
+					"name": "祝福语创建-成功",
+					"id": "52d30d90-2fcb-ef4a-5af4-8c3db7ad9ebd",
+					"request": {
+						"url": "{{apiUrl}}/benison",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"type": "text",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/x-www-form-urlencoded\n",
+						"data": [
+							{
+								"key": "benisons_txt",
+								"value": "1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1",
+								"type": "text",
+								"enabled": true,
+								"description": "祝福语"
+							},
+							{
+								"key": "template_id",
+								"value": "1",
+								"type": "text",
+								"enabled": true,
+								"description": "祝福模板id"
+							},
+							{
+								"key": "is_belong_template",
+								"value": "1",
+								"type": "text",
+								"enabled": true,
+								"description": "是否是模板祝福语"
+							}
+						],
+						"method": "POST",
+						"dataMode": "urlencoded"
+					}
+				}
+			]
 		}
 	]
 }
