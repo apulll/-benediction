@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 16:07:02
+* @Last Modified time: 2018-03-15 17:54:37
 */
 
 const Sequelize = require('sequelize');
@@ -42,16 +42,20 @@ const Benison = db.define('benison', {
 });
 
 
+
 const User = db.define('user', {
-  firstName: {
+  openid: {
     type: Sequelize.STRING
   },
-  lastName: {
+  avatar_url: {
+    type: Sequelize.TEXT
+  },
+  nick_name: {
     type: Sequelize.STRING
   }
 });
 
-
+// User.sync({force: true})
 Template.belongsTo(Catalog)
 Benison.belongsTo(Template)
 Catalog.hasMany(Template)
