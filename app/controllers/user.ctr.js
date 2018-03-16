@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 16:22:49
+* @Last Modified time: 2018-03-16 16:32:12
 */
 import Controller from './index.js';
 import model from '../models';
@@ -34,11 +34,11 @@ class UserCtl extends Controller {
 			let results = null
 			userInfo = JSON.parse(userInfo)
 			const opt = {
-				url:'https://api.weixin.qq.com/sns/jscode2session',
+				url: config.CODE_URL,
 				data: {
-					grant_type: 'authorization_code',
-					appid: 'wx8276fe97311f08fc',
-					secret: '217676207b5ad04146995dbdab6e4602',
+					grant_type: config.GRANT_TYPE,
+					appid: config.APP_ID,
+					secret: config.SECRET,
 					js_code: code
 				}
 			}

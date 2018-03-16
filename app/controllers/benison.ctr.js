@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 16:26:15
+* @Last Modified time: 2018-03-16 18:06:11
 */
 
 import Controller from './index.js';
@@ -10,7 +10,8 @@ import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
-
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const Logger = require('../lib/logger')('controllers/benison');
 const { check,validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
@@ -28,7 +29,7 @@ class BenisonCtl extends Controller {
 	 * @return {[type]}        [description]
 	 */
 	async getBenisonAll(req, res, next) {
-		Logger.info(config,'config')
+		Logger.debug(config,'config')
 		try {
 			const data = getDataFromReq(req)
 			const per_page = parseInt(data.per_page) || 10
@@ -38,7 +39,7 @@ class BenisonCtl extends Controller {
 								order: [['updated_at', 'DESC']],
 								limit: per_page,
 								offset: per_page*(page-1),
-								where: { is_belong_template : data.is_belong_template },
+								where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
 								// logging: console.log,
 								benchmark:true,
 								include: [{
