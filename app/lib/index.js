@@ -2,19 +2,19 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 14:07:38
+* @Last Modified time: 2018-03-16 15:18:22
 */
 
 const _ = require('lodash');
 
 exports.jsonFormatter = function(response, err = false, code = 200) {
 	return {
-        res: response.res || {},
-        msg: response.msg || '成功！',
-        errors: response.errors || [],
-        status: !err,
-        code
-    }
+		res: response.res || {},
+		msg: response.msg || '成功！',
+		errors: response.errors || [],
+		status: !err,
+		code
+  }
 }
 
 exports.getDataFromReq = function(req) {

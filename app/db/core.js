@@ -2,9 +2,9 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:31
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 10:54:06
+* @Last Modified time: 2018-03-16 14:58:31
 */
-const Logger = require('../lib/logger')('perry')
+const Logger = require('../lib/logger')('db/core')
 const Sequelize = require('sequelize');
 const sequelizeDb = new Sequelize('test', 'root', 'root', {
   host: 'localhost',
@@ -29,10 +29,10 @@ const sequelizeDb = new Sequelize('test', 'root', 'root', {
 sequelizeDb
   .authenticate()
   .then(() => {
-    console.log('Connection has been established successfully.');
+    Logger.info('Connection has been established successfully.');
   })
   .catch(err => {
-    console.error('Unable to connect to the database:', err);
+    Logger.error('Unable to connect to the database:', err)
   });
 
 

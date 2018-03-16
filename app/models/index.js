@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 17:54:37
+* @Last Modified time: 2018-03-16 11:57:05
 */
 
 const Sequelize = require('sequelize');
@@ -38,8 +38,12 @@ const Benison = db.define('benison', {
   },
   is_belong_template: {
     type: Sequelize.STRING
+  },
+  password: {
+    type: Sequelize.STRING
   }
 });
+
 
 
 
@@ -58,8 +62,10 @@ const User = db.define('user', {
 // User.sync({force: true})
 Template.belongsTo(Catalog)
 Benison.belongsTo(Template)
+Benison.belongsTo(User)
 Catalog.hasMany(Template)
 Template.hasMany(Benison)
+User.hasMany(Benison)
 
 db.sync()
 
@@ -73,7 +79,9 @@ db.sync()
 //   return Benison.create({
 //     benisons_txt: '愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱',
 //     liked_total: 56,
-//     is_belong_template:'1'
+//     is_belong_template:'1',
+//     template_id: 1,
+//     user_id:1
 //   });
 // });
 

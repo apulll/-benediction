@@ -1,0 +1,23 @@
+{
+  "apps":[
+    {
+      "name"              : "Benision",
+      "script"            : "./dist/server.js",
+      "node_args"         : "--harmony",
+      "next_gen_js"       : true,
+      "log_date_format"   : "YYYY-MM-DD HH:mm Z",
+      "out_file"          : "./logs/pm2-out.log",
+      "error_file"        : "./logs/pm2-err.log",
+      "pid_file"          : "./logs/benision.pid",
+      "ignoreWatch"       : ["[\\/\\\\]\\./", "node_modules"],
+      "watch"             : "true",
+      "exec_mode"         : "fork_mode", //cluster_mode
+      "env" : {
+       "NODE_ENV"         : "production",
+       "PORT"             : 6554,
+       "DEBUG"            : 0,
+       "ONLOCAL"          : 0
+      }
+    }
+  ]
+}

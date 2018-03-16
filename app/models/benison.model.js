@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-14 14:35:05
+* @Last Modified time: 2018-03-16 11:33:05
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -17,6 +17,9 @@ const Benison = db.define('benison', {
   },
   is_belong_template: {
     type: Sequelize.STRING
+  },
+  password: {
+    type: Sequelize.INTEGER
   }
 });
 

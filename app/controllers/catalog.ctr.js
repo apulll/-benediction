@@ -2,11 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 11:54:46
+* @Last Modified time: 2018-03-16 15:08:33
 */
 import Controller from './index.js';
 import model from '../models';
 import { jsonFormatter, getDataFromReq, formatDataByCatalogId } from '../lib';
+const Logger = require('../lib/logger')('controllers/catalog');
 
 class CatalogCtl extends Controller {
 	constructor() {
@@ -24,16 +25,21 @@ class CatalogCtl extends Controller {
 	 * @return {[type]}        [description]
 	 */
 	async createCatalog(req, res, next) {
-		const data = getDataFromReq(req)
-		const params = {
-			catalog_name: data.catalog_name,
-			catalog_icon: data.catalog_icon,
-			catalog_bg: data.catalog_bg
+		try {
+			
+			const data = getDataFromReq(req)
+			const params = {
+				catalog_name: data.catalog_name,
+				catalog_icon: data.catalog_icon,
+				catalog_bg: data.catalog_bg
+			}
+
+			var results = await model.CatalogModel.create(params);
+
+			res.status(200).send(jsonFormatter({ res : results}));
+		}catch(error){
+			Logger.error(error)
 		}
-
-		var results = await model.CatalogModel.create(params);
-
-		res.status(200).send(jsonFormatter({ res : results}));
 	}
 	//根据模板id获取所有祝福
 	async getBenisonAllByTemplateId(req, res , next) {

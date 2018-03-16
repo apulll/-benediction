@@ -2,13 +2,14 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 17:14:13
+* @Last Modified time: 2018-03-16 11:07:22
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
 import BenisonCtl from '../controllers/benison.ctr';
 import TemplateCtl from '../controllers/template.ctr';
 import catalogCtl from '../controllers/catalog.ctr';
+const { check, validationResult } = require('express-validator/check');
 
 
 // const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
@@ -37,7 +38,11 @@ router.get('/login', UserCtl.onLogin)
 router.get('/user/all', UserCtl.getUserAll)
 router.get('/benison/all', BenisonCtl.getBenisonAll)
 
-router.post('/benison', BenisonCtl.createBenison)
+router.post('/benison', [
+	check('template_id', '不能为空').exists().custom((value, { req }) => value ? true :false),
+	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
+	], BenisonCtl.createBenison)
+
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
 
 router.get('/template', TemplateCtl.getTemplateAll)
