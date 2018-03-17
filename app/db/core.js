@@ -2,11 +2,14 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:31
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 17:56:42
+* @Last Modified time: 2018-03-17 10:54:36
 */
+import config from '../config';
+
 const Logger = require('../lib/logger')('db/core')
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
+
 const operatorsAliases = {
   $eq: Op.eq,
   $ne: Op.ne,
@@ -43,10 +46,11 @@ const operatorsAliases = {
   $values: Op.values,
   $col: Op.col
 };
-const sequelizeDb = new Sequelize('test', 'root', 'root', {
-  host: 'localhost',
-  dialect: 'mysql',
-  port: 3306,
+console.log(config,'config')
+const sequelizeDb = new Sequelize(config.DB_DATABASE, config.DB_USER_NAME ,config.DB_PASSWORD, {
+  host: config.DB_HOST,
+  dialect: config.DB_DIALECT,
+  port: config.DB_PORT,
   operatorsAliases: operatorsAliases,
   define: {
 	// 字段以下划线（_）来分割（默认是驼峰命名风格）
