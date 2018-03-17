@@ -14,6 +14,8 @@ VOLUME ["/usr/src/node"]
 
 WORKDIR /usr/src/node
 #编译运行node项目，使用npm安装程序的所有依赖,利用taobao的npm安装
+RUN npm install babel-cli --save-dev --registry=https://registry.npm.taobao.org
+RUN npm install pm2 -g --registry=https://registry.npm.taobao.org
 RUN npm install --registry=https://registry.npm.taobao.org
 
 #暴露container的端口
