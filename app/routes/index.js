@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 11:07:22
+* @Last Modified time: 2018-03-19 16:52:30
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -36,6 +36,8 @@ router.get('/login', UserCtl.onLogin)
  
 
 router.get('/user/all', UserCtl.getUserAll)
+router.post('/user/benison', UserCtl.updateUserBenisonRecords)
+
 router.get('/benison/all', BenisonCtl.getBenisonAll)
 
 router.post('/benison', [
@@ -43,10 +45,17 @@ router.post('/benison', [
 	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
 	], BenisonCtl.createBenison)
 
+router.put('/benison/:id', BenisonCtl.update)
+router.patch('/benison/:id', BenisonCtl.patch)
+router.patch('/benison/liked/:id', BenisonCtl.patchLiked)
+
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
 
 router.get('/template', TemplateCtl.getTemplateAll)
 router.post('/template', TemplateCtl.createTemplate)
+router.put('/template/:id', TemplateCtl.update)
+router.patch('/template/:id', TemplateCtl.update)
+// router.patch('/template/:id', TemplateCtl.update)
 
 
 router.get('/catalog', catalogCtl.getCatalogAll)
