@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 17:32:30
+* @Last Modified time: 2018-03-20 17:56:37
 */
 import Controller from './index.js';
 import model from '../models';
@@ -10,6 +10,7 @@ import { jsonFormatter, getDataFromReq } from '../lib';
 import fetch from '../lib/fetch';
 import config from '../config';
 import { has } from 'lodash';
+import validatorForm from '../lib/validator';
 
 const Logger = require('../lib/logger')('controllers/user');
 
@@ -31,8 +32,15 @@ class UserCtl extends Controller {
 	 */
 	async onLogin(req, res, next) {
 		try {
+
+			const errors = validatorForm(req);
+			if (!errors.isEmpty()) {
+				return res.status(422).json({ errors: errors.array() });
+			}
+
+
+			console.log(req.query,'query')
 			let { code, user_info }= req.query
-			console.log(req.query)
 			let results = null
 			user_info = JSON.parse(user_info)
 

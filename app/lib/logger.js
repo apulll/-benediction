@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-15 10:18:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 14:55:28
+* @Last Modified time: 2018-03-20 17:43:38
 */
 
 var log4js = require('log4js');
@@ -14,7 +14,7 @@ log4js.configure({
      everything: { type: 'dateFile', filename: 'logs/all-the-logs.log', pattern: '.yyyy-MM-dd', compress: true }
    },
    categories: {
-     default: { appenders: ['everything'], level: process.env.NODE_ENV == 'production' ? 'info' : 'debug' },
+     default: { appenders: ['app','everything'], level: process.env.NODE_ENV == 'production' ? 'info' : 'debug' },
      // local: { appenders: ['app'], level: process.env.NODE_ENV == 'production' ? 'info' : 'debug' }
    },
    pm2: process.env.NODE_ENV == 'production' ? true : false,

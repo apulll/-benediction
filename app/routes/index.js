@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 17:25:25
+* @Last Modified time: 2018-03-20 17:52:06
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -20,7 +20,10 @@ const router = express.Router();
 
 // --- 登录与授权 Demo --- //
 // 登录接口
-router.get('/openid', UserCtl.onLogin)
+router.get('/openid',[
+	check('code', '不能为空').exists().custom((value, { req }) => value ? true :false),
+	check('user_info', '不能为空').exists().custom((value, { req }) => value ? true :false)
+	], UserCtl.onLogin)
 // 用户信息接口（可以用来验证登录态）
 // router.get('/user', UserCtl.user)
 
