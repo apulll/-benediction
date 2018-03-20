@@ -4,98 +4,52 @@
 	"description": "",
 	"order": [
 		"446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0",
+		"9a32972c-d197-5cb9-6f5d-cdccfa2544af",
 		"772fc621-020f-4cc1-51e0-88acb0024d69",
-		"73930638-b308-701d-3d0a-a5b2b740e797",
+		"a6aeea28-aa66-1fb8-9381-5bda00bb701c",
+		"4d128f11-1484-a92c-33e3-e2724d3b7930",
 		"56a81c59-808b-b6a2-efba-8369c59a0f03",
 		"85174cb2-492c-490c-9018-c246899cedd7",
-		"782da217-0bfe-9700-b902-5da25e3d5012"
+		"782da217-0bfe-9700-b902-5da25e3d5012",
+		"8483c5db-d2c7-480a-4a7e-ea423c8ff316",
+		"abb56534-d99c-364e-ce5f-87b06b399351",
+		"d2910068-57f8-46ef-f7fe-252481b4ccc2"
 	],
 	"folders": [],
 	"folders_order": [],
-	"timestamp": 1521016431892,
+	"timestamp": 0,
 	"owner": "2987625",
 	"public": false,
 	"requests": [
 		{
+			"folder": null,
 			"id": "446fe06c-2479-6b8f-cf3a-d0a2ccfad1d0",
-			"headers": "",
-			"headerData": [],
-			"url": "{{apiUrl}}/catalog",
-			"queryParams": [],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1521017324698,
 			"name": "分类列表",
+			"dataMode": "params",
+			"data": null,
+			"auth": null,
+			"events": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
 			"description": "获取分类列表",
+			"variables": null,
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{apiUrl}}/catalog",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [],
+			"pathVariableData": [],
 			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"responses": [
 				{
-					"status": "",
-					"responseCode": {
-						"code": 200,
-						"name": "OK",
-						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-					},
-					"time": 37,
-					"headers": [
-						{
-							"name": "connection",
-							"key": "connection",
-							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
-						},
-						{
-							"name": "content-length",
-							"key": "content-length",
-							"value": "668",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"name": "content-type",
-							"key": "content-type",
-							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
-						},
-						{
-							"name": "date",
-							"key": "date",
-							"value": "Wed, 14 Mar 2018 08:40:21 GMT",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"name": "etag",
-							"key": "etag",
-							"value": "W/\"29c-3N5fm0uk6RSEqyoVETt9cHH2Czg\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
-						},
-						{
-							"name": "x-powered-by",
-							"key": "x-powered-by",
-							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-						}
-					],
-					"cookies": [],
-					"mime": "",
-					"text": "{\"res\":[{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"},{\"id\":2,\"catalog_name\":\"闺蜜\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:24.000Z\",\"updated_at\":\"2018-03-14T08:27:24.000Z\"},{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"},{\"id\":4,\"catalog_name\":\"生日\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:34.000Z\",\"updated_at\":\"2018-03-14T08:27:34.000Z\"}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
-					"language": "json",
-					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "分类列表-成功",
-					"id": "4f41d41d-3fb4-8408-1fb5-51d42c139d1a",
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3405132077,
 					"request": {
 						"url": "{{apiUrl}}/catalog",
 						"pathVariables": {},
@@ -106,35 +60,148 @@
 						"data": null,
 						"method": "GET",
 						"dataMode": "params"
-					}
+					},
+					"id": "4f41d41d-3fb4-8408-1fb5-51d42c139d1a",
+					"name": "分类列表-成功",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "37",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "668",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 14 Mar 2018 08:40:21 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"29c-3N5fm0uk6RSEqyoVETt9cHH2Czg\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"},{\"id\":2,\"catalog_name\":\"闺蜜\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:24.000Z\",\"updated_at\":\"2018-03-14T08:27:24.000Z\"},{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"},{\"id\":4,\"catalog_name\":\"生日\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:34.000Z\",\"updated_at\":\"2018-03-14T08:27:34.000Z\"}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/catalog\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-14T08:40:45.000Z",
+					"updatedAt": "2018-03-14T08:40:45.000Z",
+					"write": true
 				}
 			]
+		},
+		{
+			"id": "4d128f11-1484-a92c-33e3-e2724d3b7930",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{apiUrl}}/template/19",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PUT",
+			"data": [
+				{
+					"key": "catalog_id",
+					"value": "10",
+					"type": "text",
+					"enabled": true,
+					"description": "分类id "
+				},
+				{
+					"key": "bg_img",
+					"value": "",
+					"description": "模板背景图",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "bg_imgsumb",
+					"value": "",
+					"description": "模板供应首页背景图",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521444271181,
+			"name": "祝福模板更新",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
 		},
 		{
 			"id": "56a81c59-808b-b6a2-efba-8369c59a0f03",
 			"headers": "",
 			"headerData": [],
-			"url": "{{apiUrl}}/benison/all?catalog_id=6&page=1&per_page=10",
+			"url": "{{apiUrl}}/benison/all?catalog_id=1&page=1&per_page=100&is_belong_template=",
 			"queryParams": [
 				{
 					"key": "catalog_id",
-					"value": "6",
+					"value": "1",
 					"equals": true,
-					"description": "当catalog_id 为0时获取全部的数据",
+					"description": "必填-当catalog_id 为0时获取全部的数据",
 					"enabled": true
 				},
 				{
 					"key": "page",
 					"value": "1",
 					"equals": true,
-					"description": "页码",
+					"description": "非必填-页码",
 					"enabled": true
 				},
 				{
 					"key": "per_page",
-					"value": "10",
+					"value": "100",
 					"equals": true,
-					"description": "每页多少条数据",
+					"description": "非必填-每页多少条数据",
+					"enabled": true
+				},
+				{
+					"key": "is_belong_template",
+					"value": "",
+					"equals": true,
+					"description": "非必填-是否是后台定义为模板的数据",
 					"enabled": true
 				}
 			],
@@ -148,70 +215,15 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521094907562,
+			"time": 1521446813167,
 			"name": "获取祝福列表-根据分类id",
-			"description": "",
+			"description": null,
 			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"responses": [
 				{
-					"status": "",
-					"responseCode": {
-						"code": 200,
-						"name": "OK",
-						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-					},
-					"time": 153,
-					"headers": [
-						{
-							"name": "connection",
-							"key": "connection",
-							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
-						},
-						{
-							"name": "content-length",
-							"key": "content-length",
-							"value": "1908",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"name": "content-type",
-							"key": "content-type",
-							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
-						},
-						{
-							"name": "date",
-							"key": "date",
-							"value": "Thu, 15 Mar 2018 06:19:08 GMT",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"name": "etag",
-							"key": "etag",
-							"value": "W/\"774-Sa7N4BM+ReWukSlQADtkFODpNAg\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
-						},
-						{
-							"name": "x-powered-by",
-							"key": "x-powered-by",
-							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-						}
-					],
-					"cookies": [],
-					"mime": "",
-					"text": "{\"res\":{\"data\":[{\"id\":8,\"benisons_txt\":\"2222愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-15T01:45:09.000Z\",\"updated_at\":\"2018-03-15T01:45:09.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":1,\"benisons_txt\":\"愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱\",\"liked_total\":56,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T07:48:04.000Z\",\"updated_at\":\"2018-03-14T07:48:04.000Z\",\"template_id\":7,\"template\":{\"id\":7,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:18.000Z\",\"updated_at\":\"2018-03-14T09:19:18.000Z\",\"catalog_id\":3,\"catalog\":{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"}}}],\"total\":3,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
-					"language": "json",
-					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "获取祝福列表-根据分类id-有分页",
-					"id": "881b1c94-ef8b-f8f0-dae4-7b7f7963e8ab",
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3414052373,
 					"request": {
 						"url": "{{apiUrl}}/benison/all?catalog_id=0&page=1&per_page=10",
 						"pathVariables": {},
@@ -244,67 +256,67 @@
 						"data": null,
 						"method": "GET",
 						"dataMode": "params"
-					}
-				},
-				{
+					},
+					"id": "881b1c94-ef8b-f8f0-dae4-7b7f7963e8ab",
+					"name": "获取祝福列表-根据分类id-有分页",
 					"status": "",
 					"responseCode": {
 						"code": 200,
-						"name": "OK",
-						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
+						"name": "OK"
 					},
-					"time": 92,
+					"time": "153",
 					"headers": [
 						{
 							"name": "connection",
 							"key": "connection",
 							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
+							"description": ""
 						},
 						{
 							"name": "content-length",
 							"key": "content-length",
-							"value": "107",
-							"description": "The length of the response body in octets (8-bit bytes)"
+							"value": "1908",
+							"description": ""
 						},
 						{
 							"name": "content-type",
 							"key": "content-type",
 							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
+							"description": ""
 						},
 						{
 							"name": "date",
 							"key": "date",
-							"value": "Thu, 15 Mar 2018 06:20:52 GMT",
-							"description": "The date and time that the message was sent"
+							"value": "Thu, 15 Mar 2018 06:19:08 GMT",
+							"description": ""
 						},
 						{
 							"name": "etag",
 							"key": "etag",
-							"value": "W/\"6b-+GN0xSeQurSeBOAoONS6nXViyIA\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
+							"value": "W/\"774-Sa7N4BM+ReWukSlQADtkFODpNAg\"",
+							"description": ""
 						},
 						{
 							"name": "x-powered-by",
 							"key": "x-powered-by",
 							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+							"description": ""
 						}
 					],
 					"cookies": [],
 					"mime": "",
-					"text": "{\"res\":{\"data\":[],\"total\":0,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"text": "{\"res\":{\"data\":[{\"id\":8,\"benisons_txt\":\"2222愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-15T01:45:09.000Z\",\"updated_at\":\"2018-03-15T01:45:09.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}},{\"id\":1,\"benisons_txt\":\"愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱\",\"liked_total\":56,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T07:48:04.000Z\",\"updated_at\":\"2018-03-14T07:48:04.000Z\",\"template_id\":7,\"template\":{\"id\":7,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:18.000Z\",\"updated_at\":\"2018-03-14T09:19:18.000Z\",\"catalog_id\":3,\"catalog\":{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"}}}],\"total\":3,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
 					"language": "json",
 					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "获取祝福列表-根据分类id-无数据",
-					"id": "28cea2f3-c63a-e031-6005-890d24da6319",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/all?catalog_id=0&page=1&per_page=10\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"catalog_id\",\"value\":\"0\",\"equals\":true,\"description\":\"当catalog_id 为0时获取全部的数据\",\"enabled\":true},{\"key\":\"page\",\"value\":\"1\",\"equals\":true,\"description\":\"页码\",\"enabled\":true},{\"key\":\"per_page\",\"value\":\"10\",\"equals\":true,\"description\":\"每页多少条数据\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-15T06:20:03.000Z",
+					"updatedAt": "2018-03-15T06:20:03.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3414060592,
 					"request": {
 						"url": "{{apiUrl}}/benison/all?catalog_id=6&page=1&per_page=10",
 						"pathVariables": {},
@@ -337,39 +349,157 @@
 						"data": null,
 						"method": "GET",
 						"dataMode": "params"
-					}
+					},
+					"id": "28cea2f3-c63a-e031-6005-890d24da6319",
+					"name": "获取祝福列表-根据分类id-无数据",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "92",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "107",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 06:20:52 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"6b-+GN0xSeQurSeBOAoONS6nXViyIA\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"data\":[],\"total\":0,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/all?catalog_id=6&page=1&per_page=10\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"catalog_id\",\"value\":\"6\",\"equals\":true,\"description\":\"\",\"enabled\":true},{\"key\":\"page\",\"value\":\"1\",\"equals\":true,\"description\":\"页码\",\"enabled\":true},{\"key\":\"per_page\",\"value\":\"10\",\"equals\":true,\"description\":\"每页多少条数据\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-15T06:21:08.000Z",
+					"updatedAt": "2018-03-15T06:21:08.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3423305676,
+					"request": {
+						"url": "{{apiUrl}}/benison/all?catalog_id=1&page=1&per_page=10",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "catalog_id",
+								"value": "1",
+								"equals": true,
+								"description": "当catalog_id 为0时获取全部的数据",
+								"enabled": true
+							},
+							{
+								"key": "page",
+								"value": "1",
+								"equals": true,
+								"description": "页码",
+								"enabled": true
+							},
+							{
+								"key": "per_page",
+								"value": "10",
+								"equals": true,
+								"description": "每页多少条数据",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					},
+					"id": "15d6d255-4b94-6453-d4bd-7052b49ee750",
+					"name": "获取祝福列表-根据分类id-完整示列",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "251",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "9457",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 16 Mar 2018 03:23:47 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"24f1-UcQSez0V3mwHyNvUIcVig9Ata3E\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"data\":[{\"id\":19,\"benisons_txt\":\"33333金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:30.000Z\",\"updated_at\":\"2018-03-16T03:17:30.000Z\",\"template_id\":3,\"user_id\":12,\"template\":{\"id\":3,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:02.000Z\",\"updated_at\":\"2018-03-14T09:19:02.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":18,\"benisons_txt\":\"3333金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:28.000Z\",\"updated_at\":\"2018-03-16T03:17:28.000Z\",\"template_id\":3,\"user_id\":12,\"template\":{\"id\":3,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:02.000Z\",\"updated_at\":\"2018-03-14T09:19:02.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":17,\"benisons_txt\":\"333金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:26.000Z\",\"updated_at\":\"2018-03-16T03:17:26.000Z\",\"template_id\":3,\"user_id\":12,\"template\":{\"id\":3,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:02.000Z\",\"updated_at\":\"2018-03-14T09:19:02.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":16,\"benisons_txt\":\"33金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:24.000Z\",\"updated_at\":\"2018-03-16T03:17:24.000Z\",\"template_id\":3,\"user_id\":12,\"template\":{\"id\":3,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:02.000Z\",\"updated_at\":\"2018-03-14T09:19:02.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":15,\"benisons_txt\":\"3金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:20.000Z\",\"updated_at\":\"2018-03-16T03:17:20.000Z\",\"template_id\":3,\"user_id\":12,\"template\":{\"id\":3,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:02.000Z\",\"updated_at\":\"2018-03-14T09:19:02.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":14,\"benisons_txt\":\"22222金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:11.000Z\",\"updated_at\":\"2018-03-16T03:17:11.000Z\",\"template_id\":2,\"user_id\":12,\"template\":{\"id\":2,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:00.000Z\",\"updated_at\":\"2018-03-14T09:19:00.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":13,\"benisons_txt\":\"2222金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:08.000Z\",\"updated_at\":\"2018-03-16T03:17:08.000Z\",\"template_id\":2,\"user_id\":12,\"template\":{\"id\":2,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:00.000Z\",\"updated_at\":\"2018-03-14T09:19:00.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":12,\"benisons_txt\":\"222金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:06.000Z\",\"updated_at\":\"2018-03-16T03:17:06.000Z\",\"template_id\":2,\"user_id\":12,\"template\":{\"id\":2,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:00.000Z\",\"updated_at\":\"2018-03-14T09:19:00.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":11,\"benisons_txt\":\"22金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:03.000Z\",\"updated_at\":\"2018-03-16T03:17:03.000Z\",\"template_id\":2,\"user_id\":12,\"template\":{\"id\":2,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:00.000Z\",\"updated_at\":\"2018-03-14T09:19:00.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}},{\"id\":10,\"benisons_txt\":\"2金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:17:01.000Z\",\"updated_at\":\"2018-03-16T03:17:01.000Z\",\"template_id\":2,\"user_id\":12,\"template\":{\"id\":2,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:00.000Z\",\"updated_at\":\"2018-03-14T09:19:00.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}}],\"total\":14,\"page\":1,\"per_page\":10},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/all?catalog_id=1&page=1&per_page=10\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"catalog_id\",\"value\":\"1\",\"equals\":true,\"description\":\"当catalog_id 为0时获取全部的数据\",\"enabled\":true},{\"key\":\"page\",\"value\":\"1\",\"equals\":true,\"description\":\"页码\",\"enabled\":true},{\"key\":\"per_page\",\"value\":\"10\",\"equals\":true,\"description\":\"每页多少条数据\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-16T03:24:41.000Z",
+					"updatedAt": "2018-03-16T03:24:41.000Z",
+					"write": true
 				}
 			]
-		},
-		{
-			"id": "73930638-b308-701d-3d0a-a5b2b740e797",
-			"headers": "",
-			"headerData": [],
-			"url": "{{apiUrl}}/bycatalog?catalog_id=4",
-			"queryParams": [
-				{
-					"key": "catalog_id",
-					"value": "4",
-					"equals": true,
-					"description": "",
-					"enabled": true
-				}
-			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1521076976168,
-			"name": "祝福模板列表",
-			"description": "",
-			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
-			"responses": []
 		},
 		{
 			"id": "772fc621-020f-4cc1-51e0-88acb0024d69",
@@ -383,6 +513,7 @@
 				}
 			],
 			"url": "{{apiUrl}}/template",
+			"folder": null,
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
@@ -394,115 +525,69 @@
 					"value": "4",
 					"type": "text",
 					"enabled": true,
-					"description": ""
-				}
-			],
-			"dataMode": "urlencoded",
-			"version": 2,
-			"tests": null,
-			"currentHelper": "normal",
-			"helperAttributes": {},
-			"time": 1521023088868,
-			"name": "祝福模板创建",
-			"description": "祝福模板",
-			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
-			"responses": []
-		},
-		{
-			"id": "782da217-0bfe-9700-b902-5da25e3d5012",
-			"headers": "",
-			"headerData": [],
-			"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=0",
-			"queryParams": [
+					"description": "分类id "
+				},
 				{
-					"key": "benison_id",
-					"value": "7",
-					"equals": true,
-					"description": "",
+					"key": "bg_img",
+					"value": "",
+					"description": "模板背景图",
+					"type": "text",
 					"enabled": true
 				},
 				{
-					"key": "template_id",
-					"value": "0",
-					"equals": true,
-					"description": "",
+					"key": "bg_imgsumb",
+					"value": "",
+					"description": "模板供应首页背景图",
+					"type": "text",
 					"enabled": true
 				}
 			],
-			"preRequestScript": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
+			"dataMode": "urlencoded",
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521079677792,
+			"time": 1521440549979,
+			"name": "祝福模板创建",
+			"description": "祝福模板",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d"
+		},
+		{
+			"folder": null,
+			"id": "782da217-0bfe-9700-b902-5da25e3d5012",
 			"name": "祝福语详情",
-			"description": "",
+			"dataMode": "params",
+			"data": null,
+			"auth": null,
+			"events": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": null,
+			"variables": null,
+			"headers": "",
+			"method": "GET",
+			"pathVariables": {},
+			"url": "{{apiUrl}}/benison/detail?benison_id=79",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [
+				{
+					"key": "benison_id",
+					"value": "79",
+					"equals": true,
+					"description": "祝福id",
+					"enabled": true
+				}
+			],
+			"headerData": [],
+			"pathVariableData": [],
 			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"responses": [
 				{
-					"status": "",
-					"responseCode": {
-						"code": 200,
-						"name": "OK",
-						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-					},
-					"time": 114,
-					"headers": [
-						{
-							"name": "connection",
-							"key": "connection",
-							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
-						},
-						{
-							"name": "content-length",
-							"key": "content-length",
-							"value": "667",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"name": "content-type",
-							"key": "content-type",
-							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
-						},
-						{
-							"name": "date",
-							"key": "date",
-							"value": "Thu, 15 Mar 2018 02:03:12 GMT",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"name": "etag",
-							"key": "etag",
-							"value": "W/\"29b-76Cmz0LwbvvZBJRlWV35WsN4cDk\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
-						},
-						{
-							"name": "x-powered-by",
-							"key": "x-powered-by",
-							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-						}
-					],
-					"cookies": [],
-					"mime": "",
-					"text": "{\"res\":[{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
-					"language": "json",
-					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "祝福语详情-成功",
-					"id": "2c127f74-0ba0-51a0-1740-e9502d71bd55",
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3412603050,
 					"request": {
 						"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=1",
 						"pathVariables": {},
@@ -528,66 +613,67 @@
 						"data": null,
 						"method": "GET",
 						"dataMode": "params"
-					}
-				},
-				{
+					},
+					"id": "2c127f74-0ba0-51a0-1740-e9502d71bd55",
+					"name": "祝福语详情-成功",
 					"status": "",
 					"responseCode": {
 						"code": 200,
 						"name": "OK"
 					},
-					"time": 64,
+					"time": "114",
 					"headers": [
 						{
 							"name": "connection",
 							"key": "connection",
 							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
+							"description": ""
 						},
 						{
 							"name": "content-length",
 							"key": "content-length",
-							"value": "65",
-							"description": "The length of the response body in octets (8-bit bytes)"
+							"value": "667",
+							"description": ""
 						},
 						{
 							"name": "content-type",
 							"key": "content-type",
 							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
+							"description": ""
 						},
 						{
 							"name": "date",
 							"key": "date",
-							"value": "Thu, 15 Mar 2018 02:07:54 GMT",
-							"description": "The date and time that the message was sent"
+							"value": "Thu, 15 Mar 2018 02:03:12 GMT",
+							"description": ""
 						},
 						{
 							"name": "etag",
 							"key": "etag",
-							"value": "W/\"41-N+uKzsU9+mnHqRPxe4WNTVWa3oY\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
+							"value": "W/\"29b-76Cmz0LwbvvZBJRlWV35WsN4cDk\"",
+							"description": ""
 						},
 						{
 							"name": "x-powered-by",
 							"key": "x-powered-by",
 							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+							"description": ""
 						}
 					],
 					"cookies": [],
 					"mime": "",
-					"text": "{\"res\":[],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"text": "{\"res\":[{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-14T10:23:53.000Z\",\"updated_at\":\"2018-03-14T10:23:53.000Z\",\"template_id\":1,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}}}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
 					"language": "json",
 					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "祝福语详情-无匹配数据",
-					"id": "4e0ba7eb-2fde-379d-033c-8441600a3834",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/detail?benison_id=7&template_id=1\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"benison_id\",\"value\":\"7\",\"equals\":true,\"description\":\"\",\"enabled\":true},{\"key\":\"template_id\",\"value\":\"1\",\"equals\":true,\"description\":\"\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-15T02:03:52.000Z",
+					"updatedAt": "2018-03-15T02:03:52.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3412625491,
 					"request": {
 						"url": "{{apiUrl}}/benison/detail?benison_id=7&template_id=0",
 						"pathVariables": {},
@@ -613,12 +699,225 @@
 						"data": null,
 						"method": "GET",
 						"dataMode": "params"
-					}
+					},
+					"id": "4e0ba7eb-2fde-379d-033c-8441600a3834",
+					"name": "祝福语详情-无匹配数据",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "64",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "65",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Thu, 15 Mar 2018 02:07:54 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"41-N+uKzsU9+mnHqRPxe4WNTVWa3oY\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/detail?benison_id=7&template_id=0\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"benison_id\",\"value\":\"7\",\"equals\":true,\"description\":\"\",\"enabled\":true},{\"key\":\"template_id\",\"value\":\"0\",\"equals\":true,\"description\":\"\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-15T02:08:24.000Z",
+					"updatedAt": "2018-03-15T02:08:24.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3423335702,
+					"request": {
+						"url": "{{apiUrl}}/benison/detail?benison_id=8",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "benison_id",
+								"value": "8",
+								"equals": true,
+								"description": "祝福id",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					},
+					"id": "914c7c41-25d3-9d15-620f-63429749ebbd",
+					"name": "祝福语详情-完整版",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "266",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "995",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 16 Mar 2018 03:28:12 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"3e3-/d6d6lNPR/wslJU9uNfj3lYPyI8\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":8,\"benisons_txt\":\"金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"created_at\":\"2018-03-16T03:16:49.000Z\",\"updated_at\":\"2018-03-16T03:16:49.000Z\",\"template_id\":1,\"user_id\":12,\"template\":{\"id\":1,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:18:30.000Z\",\"updated_at\":\"2018-03-14T09:18:30.000Z\",\"catalog_id\":1,\"catalog\":{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/detail?benison_id=8\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"benison_id\",\"value\":\"8\",\"equals\":true,\"description\":\"祝福id\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-16T03:29:38.000Z",
+					"updatedAt": "2018-03-16T03:29:38.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3423457387,
+					"request": {
+						"url": "{{apiUrl}}/benison/detail?benison_id=79",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [
+							{
+								"key": "benison_id",
+								"value": "79",
+								"equals": true,
+								"description": "祝福id",
+								"enabled": true
+							}
+						],
+						"headerData": [],
+						"headers": "",
+						"data": null,
+						"method": "GET",
+						"dataMode": "params"
+					},
+					"id": "f113a6ad-6fe4-a41a-e605-a03fc842b767",
+					"name": "祝福语详情-带密码的完整版",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "224",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "1033",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 16 Mar 2018 03:50:30 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"409-I6DZzBx+9r0vzJEdhIAwZXdpRqA\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":79,\"benisons_txt\":\"4841216132金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"liked_total\":null,\"is_belong_template\":\"1\",\"password\":\"18794772731\",\"created_at\":\"2018-03-16T03:49:39.000Z\",\"updated_at\":\"2018-03-16T03:49:39.000Z\",\"template_id\":12,\"user_id\":12,\"template\":{\"id\":12,\"bg_img\":null,\"bg_imgsumb\":null,\"created_at\":\"2018-03-14T09:19:29.000Z\",\"updated_at\":\"2018-03-14T09:19:29.000Z\",\"catalog_id\":4,\"catalog\":{\"id\":4,\"catalog_name\":\"生日\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:34.000Z\",\"updated_at\":\"2018-03-14T08:27:34.000Z\"}},\"user\":{\"id\":12,\"openid\":\"oxDF35OkQRrDdkCMFkIk2B1y_-00\",\"avatar_url\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\",\"nick_name\":\"塞纳河畔\",\"created_at\":\"2018-03-15T10:14:51.000Z\",\"updated_at\":\"2018-03-15T10:14:51.000Z\"}}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison/detail?benison_id=79\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[{\"key\":\"benison_id\",\"value\":\"79\",\"equals\":true,\"description\":\"祝福id\",\"enabled\":true}],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-16T03:50:50.000Z",
+					"updatedAt": "2018-03-16T03:50:50.000Z",
+					"write": true
 				}
 			]
 		},
 		{
-			"id": "85174cb2-492c-490c-9018-c246899cedd7",
+			"id": "8483c5db-d2c7-480a-4a7e-ea423c8ff316",
 			"headers": "Content-Type: application/x-www-form-urlencoded\n",
 			"headerData": [
 				{
@@ -628,33 +927,47 @@
 					"enabled": true
 				}
 			],
-			"url": "{{apiUrl}}/benison",
+			"url": "{{apiUrl}}/benison/2",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},
 			"pathVariableData": [],
-			"method": "POST",
+			"method": "PATCH",
 			"data": [
-				{
-					"key": "benisons_txt",
-					"value": "2222愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1",
-					"type": "text",
-					"enabled": true,
-					"description": "祝福语"
-				},
 				{
 					"key": "template_id",
 					"value": "1",
 					"type": "text",
 					"enabled": true,
-					"description": "祝福模板id"
+					"description": "必填-"
+				},
+				{
+					"key": "user_id",
+					"value": "12",
+					"type": "text",
+					"enabled": true,
+					"description": "必填"
+				},
+				{
+					"key": "benisons_txt",
+					"value": "",
+					"type": "text",
+					"enabled": false,
+					"description": "必填-祝福语"
 				},
 				{
 					"key": "is_belong_template",
-					"value": "1",
+					"value": "",
 					"type": "text",
-					"enabled": true,
-					"description": "是否是模板祝福语"
+					"enabled": false,
+					"description": "默认为0"
+				},
+				{
+					"key": "password",
+					"value": "",
+					"type": "text",
+					"enabled": false,
+					"description": "非必填"
 				}
 			],
 			"dataMode": "urlencoded",
@@ -662,70 +975,84 @@
 			"tests": null,
 			"currentHelper": "normal",
 			"helperAttributes": {},
-			"time": 1521078352768,
-			"name": "祝福语创建",
+			"time": 1521446690103,
+			"name": "祝福语变更",
 			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
+		},
+		{
+			"folder": null,
+			"id": "85174cb2-492c-490c-9018-c246899cedd7",
+			"name": "祝福语创建",
+			"dataMode": "urlencoded",
+			"data": [
+				{
+					"key": "benisons_txt",
+					"value": "788444841216132金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1",
+					"type": "text",
+					"enabled": true,
+					"description": "必填-祝福语"
+				},
+				{
+					"key": "template_id",
+					"value": "12",
+					"type": "text",
+					"enabled": true,
+					"description": "必填-祝福模板id"
+				},
+				{
+					"key": "is_belong_template",
+					"value": "1",
+					"type": "text",
+					"enabled": true,
+					"description": "非必填-是否是模板祝福语"
+				},
+				{
+					"key": "user_id",
+					"value": "12",
+					"type": "text",
+					"enabled": true,
+					"description": "必填-用户id"
+				},
+				{
+					"key": "password",
+					"value": "18794772731",
+					"type": "text",
+					"enabled": true,
+					"description": "非必填-带密码的祝福语"
+				}
+			],
+			"auth": null,
+			"events": null,
+			"rawModeData": null,
+			"descriptionFormat": "html",
+			"description": null,
+			"variables": null,
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"method": "POST",
+			"pathVariables": {},
+			"url": "{{apiUrl}}/benison",
+			"preRequestScript": null,
+			"tests": null,
+			"currentHelper": null,
+			"helperAttributes": null,
+			"queryParams": [],
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariableData": [],
 			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
 			"responses": [
 				{
-					"status": "",
-					"responseCode": {
-						"code": 200,
-						"name": "OK",
-						"detail": "Standard response for successful HTTP requests. The actual response will depend on the request method used. In a GET request, the response will contain an entity corresponding to the requested resource. In a POST request the response will contain an entity describing or containing the result of the action."
-					},
-					"time": 124,
-					"headers": [
-						{
-							"name": "connection",
-							"key": "connection",
-							"value": "keep-alive",
-							"description": "Options that are desired for the connection"
-						},
-						{
-							"name": "content-length",
-							"key": "content-length",
-							"value": "340",
-							"description": "The length of the response body in octets (8-bit bytes)"
-						},
-						{
-							"name": "content-type",
-							"key": "content-type",
-							"value": "application/json; charset=utf-8",
-							"description": "The mime type of this content"
-						},
-						{
-							"name": "date",
-							"key": "date",
-							"value": "Wed, 14 Mar 2018 10:23:53 GMT",
-							"description": "The date and time that the message was sent"
-						},
-						{
-							"name": "etag",
-							"key": "etag",
-							"value": "W/\"154-9wPmytkjRsF80PT//yQ2HybiFio\"",
-							"description": "An identifier for a specific version of a resource, often a message digest"
-						},
-						{
-							"name": "x-powered-by",
-							"key": "x-powered-by",
-							"value": "Express",
-							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
-						}
-					],
-					"cookies": [],
-					"mime": "",
-					"text": "{\"res\":{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"is_belong_template\":\"1\",\"template_id\":\"1\",\"updated_at\":\"2018-03-14T10:23:53.524Z\",\"created_at\":\"2018-03-14T10:23:53.524Z\"},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
-					"language": "json",
-					"rawDataType": "text",
-					"previewType": "text",
-					"searchResultScrolledTo": -1,
-					"forceNoPretty": false,
-					"write": true,
-					"empty": false,
-					"failed": false,
-					"name": "祝福语创建-成功",
-					"id": "52d30d90-2fcb-ef4a-5af4-8c3db7ad9ebd",
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3412438549,
 					"request": {
 						"url": "{{apiUrl}}/benison",
 						"pathVariables": {},
@@ -767,9 +1094,416 @@
 						],
 						"method": "POST",
 						"dataMode": "urlencoded"
-					}
+					},
+					"id": "52d30d90-2fcb-ef4a-5af4-8c3db7ad9ebd",
+					"name": "祝福语创建-成功",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "124",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "340",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 14 Mar 2018 10:23:53 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"154-9wPmytkjRsF80PT//yQ2HybiFio\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"id\":7,\"benisons_txt\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"is_belong_template\":\"1\",\"template_id\":\"1\",\"updated_at\":\"2018-03-14T10:23:53.524Z\",\"created_at\":\"2018-03-14T10:23:53.524Z\"},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[],\"headerData\":[{\"key\":\"Content-Type\",\"type\":\"text\",\"name\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"description\":\"\",\"enabled\":true}],\"headers\":\"Content-Type: application/x-www-form-urlencoded\\n\",\"data\":[{\"key\":\"benisons_txt\",\"value\":\"1111愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"type\":\"text\",\"enabled\":true,\"description\":\"祝福语\"},{\"key\":\"template_id\",\"value\":\"1\",\"type\":\"text\",\"enabled\":true,\"description\":\"祝福模板id\"},{\"key\":\"is_belong_template\",\"value\":\"1\",\"type\":\"text\",\"enabled\":true,\"description\":\"是否是模板祝福语\"}],\"method\":\"POST\",\"dataMode\":\"urlencoded\"}",
+					"createdAt": "2018-03-15T01:22:51.000Z",
+					"updatedAt": "2018-03-15T01:22:51.000Z",
+					"write": true
+				},
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3423461526,
+					"request": {
+						"url": "{{apiUrl}}/benison",
+						"pathVariables": {},
+						"pathVariableData": [],
+						"queryParams": [],
+						"headerData": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": "",
+								"enabled": true
+							}
+						],
+						"headers": "Content-Type: application/x-www-form-urlencoded\n",
+						"data": [
+							{
+								"key": "benisons_txt",
+								"value": "4841216132金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1",
+								"type": "text",
+								"enabled": true,
+								"description": "祝福语"
+							},
+							{
+								"key": "template_id",
+								"value": "12",
+								"type": "text",
+								"enabled": true,
+								"description": "祝福模板id"
+							},
+							{
+								"key": "is_belong_template",
+								"value": "1",
+								"type": "text",
+								"enabled": true,
+								"description": "是否是模板祝福语"
+							},
+							{
+								"key": "user_id",
+								"value": "12",
+								"description": "送祝福的人id",
+								"type": "text",
+								"enabled": true
+							},
+							{
+								"key": "password",
+								"value": "18794772731",
+								"description": "祝福语加密数字 -建议为11为手机号码",
+								"type": "text",
+								"enabled": true
+							}
+						],
+						"method": "POST",
+						"dataMode": "urlencoded"
+					},
+					"id": "3c3e98c3-6653-d4af-ff01-fec6e0902b0d",
+					"name": "祝福语创建-完整版",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "351",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "403",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Fri, 16 Mar 2018 03:49:40 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"193-zgqvVEpIb1hGwXoP89g4HPPdKnE\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":{\"id\":79,\"benisons_txt\":\"4841216132金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"is_belong_template\":\"1\",\"password\":\"18794772731\",\"template_id\":\"12\",\"user_id\":\"12\",\"updated_at\":\"2018-03-16T03:49:39.933Z\",\"created_at\":\"2018-03-16T03:49:39.933Z\"},\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/benison\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[],\"headerData\":[{\"key\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"description\":\"\",\"enabled\":true}],\"headers\":\"Content-Type: application/x-www-form-urlencoded\\n\",\"data\":[{\"key\":\"benisons_txt\",\"value\":\"4841216132金风科技的愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱1\",\"type\":\"text\",\"enabled\":true,\"description\":\"祝福语\"},{\"key\":\"template_id\",\"value\":\"12\",\"type\":\"text\",\"enabled\":true,\"description\":\"祝福模板id\"},{\"key\":\"is_belong_template\",\"value\":\"1\",\"type\":\"text\",\"enabled\":true,\"description\":\"是否是模板祝福语\"},{\"key\":\"user_id\",\"value\":\"12\",\"description\":\"送祝福的人id\",\"type\":\"text\",\"enabled\":true},{\"key\":\"password\",\"value\":\"18794772731\",\"description\":\"祝福语加密数字 -建议为11为手机号码\",\"type\":\"text\",\"enabled\":true}],\"method\":\"POST\",\"dataMode\":\"urlencoded\"}",
+					"createdAt": "2018-03-16T03:51:33.000Z",
+					"updatedAt": "2018-03-16T03:51:33.000Z",
+					"write": true
 				}
 			]
+		},
+		{
+			"id": "9a32972c-d197-5cb9-6f5d-cdccfa2544af",
+			"headers": "",
+			"headerData": [],
+			"url": "{{apiUrl}}/openid?code=001o9Umx1p91za0QT5jx1IkOmx1o9UmB&user_info={\"nickName\":\"塞纳河畔\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Yichun\",\"province\":\"Jiangxi\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\"}",
+			"folder": null,
+			"queryParams": [
+				{
+					"key": "code",
+					"value": "001o9Umx1p91za0QT5jx1IkOmx1o9UmB",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				},
+				{
+					"key": "user_info",
+					"value": "{\"nickName\":\"塞纳河畔\",\"gender\":1,\"language\":\"zh_CN\",\"city\":\"Yichun\",\"province\":\"Jiangxi\",\"country\":\"China\",\"avatarUrl\":\"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0\"}",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521538016054,
+			"name": "openid获取",
+			"description": "获取分类列表",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": [
+				{
+					"owner": "2987625",
+					"lastUpdatedBy": "2987625",
+					"lastRevision": 3405132077,
+					"request": "9a32972c-d197-5cb9-6f5d-cdccfa2544af",
+					"id": "2bcbfc01-3aba-764d-7a93-678993522f5f",
+					"name": "分类列表-成功",
+					"status": "",
+					"responseCode": {
+						"code": 200,
+						"name": "OK"
+					},
+					"time": "37",
+					"headers": [
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "keep-alive",
+							"description": ""
+						},
+						{
+							"name": "content-length",
+							"key": "content-length",
+							"value": "668",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json; charset=utf-8",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Wed, 14 Mar 2018 08:40:21 GMT",
+							"description": ""
+						},
+						{
+							"name": "etag",
+							"key": "etag",
+							"value": "W/\"29c-3N5fm0uk6RSEqyoVETt9cHH2Czg\"",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "Express",
+							"description": ""
+						}
+					],
+					"cookies": [],
+					"mime": "",
+					"text": "{\"res\":[{\"id\":1,\"catalog_name\":\"朋友\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:22:28.000Z\",\"updated_at\":\"2018-03-14T08:22:28.000Z\"},{\"id\":2,\"catalog_name\":\"闺蜜\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:24.000Z\",\"updated_at\":\"2018-03-14T08:27:24.000Z\"},{\"id\":3,\"catalog_name\":\"爱情\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:29.000Z\",\"updated_at\":\"2018-03-14T08:27:29.000Z\"},{\"id\":4,\"catalog_name\":\"生日\",\"catalog_icon\":null,\"catalog_bg\":null,\"created_at\":\"2018-03-14T08:27:34.000Z\",\"updated_at\":\"2018-03-14T08:27:34.000Z\"}],\"msg\":\"成功！\",\"errors\":[],\"status\":true,\"code\":200}",
+					"language": "json",
+					"rawDataType": "text",
+					"requestObject": "{\"url\":\"{{apiUrl}}/catalog\",\"pathVariables\":{},\"pathVariableData\":[],\"queryParams\":[],\"headerData\":[],\"headers\":\"\",\"data\":null,\"method\":\"GET\",\"dataMode\":\"params\"}",
+					"createdAt": "2018-03-14T08:40:45.000Z",
+					"updatedAt": "2018-03-14T08:40:45.000Z",
+					"write": true
+				}
+			]
+		},
+		{
+			"id": "a6aeea28-aa66-1fb8-9381-5bda00bb701c",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{apiUrl}}/user/benison",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "user_id",
+					"value": "12",
+					"type": "text",
+					"enabled": true,
+					"description": "用户id "
+				},
+				{
+					"key": "bension_id",
+					"value": "89",
+					"type": "text",
+					"enabled": true,
+					"description": "祝福语id"
+				},
+				{
+					"key": "is_created",
+					"value": "0",
+					"type": "text",
+					"enabled": true,
+					"description": "祝福语自己创建的：1；如果是朋友送的：0"
+				}
+			],
+			"dataMode": "urlencoded",
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521450614652,
+			"name": "祝福语和用户关系更新",
+			"description": "祝福模板",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d"
+		},
+		{
+			"id": "abb56534-d99c-364e-ce5f-87b06b399351",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/x-www-form-urlencoded",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "{{apiUrl}}/benison/liked/2",
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "PATCH",
+			"data": [
+				{
+					"key": "liked_total_type",
+					"value": "decrement",
+					"description": "当值为increment：加一；当值为decrement: 减一",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "user_id",
+					"value": "12",
+					"description": "必填",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "template_id",
+					"value": "1",
+					"description": "必填",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521446546520,
+			"name": "祝福语点赞数变更",
+			"description": "",
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
+		},
+		{
+			"id": "d2910068-57f8-46ef-f7fe-252481b4ccc2",
+			"headers": "",
+			"headerData": [],
+			"url": "{{apiUrl}}/uploadImg",
+			"folder": null,
+			"queryParams": [],
+			"preRequestScript": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"method": "POST",
+			"data": [
+				{
+					"key": "files",
+					"value": "cat03_bg_03.jpg",
+					"description": "",
+					"type": "file",
+					"enabled": true
+				},
+				{
+					"key": "test",
+					"value": "aaaa1111",
+					"description": "",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"time": 1521535396922,
+			"name": "文件上传",
+			"description": null,
+			"collectionId": "31e21e29-8f18-ea1f-4ed3-96b645b8510d",
+			"responses": []
 		}
 	]
 }

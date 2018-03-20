@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-20 09:38:54
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 10:17:57
+* @Last Modified time: 2018-03-20 15:04:52
 */
 
 import config from '../config';
@@ -21,7 +21,10 @@ const storage = multer.diskStorage({
   }
 })
  
-const upload = multer({ storage: storage })
+const limits = {
+	fileSize: 1024*1024*2 //2 M
+}
+const upload = multer({ storage: storage, limits:limits })
 
 
 const cos = new COS({
