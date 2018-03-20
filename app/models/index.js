@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-19 17:06:45
+* @Last Modified time: 2018-03-20 11:57:50
 */
 
 const Sequelize = require('sequelize');
@@ -94,7 +94,21 @@ const UserBenison = db.define('user_benison', {
 }
 );
 
-UserBenison.sync({force: true})
+const Files = db.define('file', {
+  file_name:{
+    type: Sequelize.STRING,
+    allowNull: false
+
+  },
+  file_size:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  file_type:{
+    type: Sequelize.STRING
+  }
+})
+
 Template.belongsTo(Catalog)
 Benison.belongsTo(Template)
 Benison.belongsTo(User)
@@ -128,6 +142,7 @@ const model = {
 	TemplateModel: Template,
 	UserModel: User,
   UserBenisonModel: UserBenison,
+  FileModel: Files
 }
 
 export default model;

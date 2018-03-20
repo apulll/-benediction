@@ -2,15 +2,16 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-19 16:52:30
+* @Last Modified time: 2018-03-20 14:22:41
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
 import BenisonCtl from '../controllers/benison.ctr';
 import TemplateCtl from '../controllers/template.ctr';
 import catalogCtl from '../controllers/catalog.ctr';
+import commonCtl from '../controllers/common.ctr';
 const { check, validationResult } = require('express-validator/check');
-
+import { upload } from '../lib/upload';
 
 // const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
 
@@ -63,4 +64,10 @@ router.get('/catalog', catalogCtl.getCatalogAll)
 router.post('/catalog', catalogCtl.createCatalog)
 
 
+/**
+ * 公共接口
+ */
+//文件上传接口 多文件上传
+router.post('/uploadImg', upload.array('files'), commonCtl.uploadImg)
+router.post('/upload', upload.any(), commonCtl.uploadImg)
 export default router;
