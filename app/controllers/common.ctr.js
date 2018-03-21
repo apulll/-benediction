@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 16:46:59
+* @Last Modified time: 2018-03-21 11:40:49
 */
 
 import Controller from './index.js';
@@ -25,35 +25,33 @@ class CommonCtr extends Controller {
 	constructor() {
 		super();
 		this.uploadQcloud = this.uploadQcloud.bind(this)
-		this.uploadImg = this.uploadImg.bind(this)
+		this.upload = this.upload.bind(this)
 	}
 	/**
-	 * 多文件上传 暂时有问题
+	 * 图片上传 
 	 * @param  {[type]}   req  [description]
 	 * @param  {[type]}   res  [description]
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async uploadImg(req, res, next){
-		const _this = this;
-		const files = req.files;
-		let newFiles = []
-		Logger.debug(req)
-		// Promise.map(files).then(function(file){
-		// 	console.log(file,'file111')
-		// })
-		files.map(function(file){
-				const response = _this.uploadQcloud(file)
-				console.log(response,'response11111')
-				if(response){
-					newFiles.push(response)
-				}
-			// console.log(newFiles)
+	async upload(req, res, next){
 
-		})
-		console.log(newFiles,'newFiles')
-		Logger.debug(newFiles,'newFiles')
-		res.status(200).send('jsonFormatter({ res : newResults})');
+		try {
+			const _this = this;
+			const files = req.files;
+			console.log(files,'files')
+			let newFiles = []
+			const fileResults = await Promise.each(files, function(item, index, length){
+				 _this.uploadQcloud(item)
+			})
+			console.log(fileResults,'fileResults')
+			const results = await model.FileModel.bulkCreate(fileResults, { fields: ['filename','size','mimetype'] }, { validate: true })
+			res.status(200).send(jsonFormatter({ res : results}));
+		}catch(error){
+			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "上传文件异常"+error},true));
+		}
+
 	}
 
 	uploadQcloud(file){
@@ -65,23 +63,22 @@ class CommonCtr extends Controller {
 	    FilePath:  path.resolve(process.cwd(), file.path)                         
 		};
 		
-		cosAsync.sliceUploadFileAsync(params).then(function(res){
-				return Promise.resolve(res)
+		const aaa = cosAsync.sliceUploadFileAsync(params).then(function(res){
+				return res
 		}).catch(function(error){
-				return Promise.reject(error)
+				return error
 		})
-			
-			
+		return aaa
 		
 	}
 	/**
-	 * 文件上传，不仅有文件 还有其他的参数传进来的情况
+	 * 文件上传，限定只能传图片
 	 * @param  {[type]}   req  [description]
 	 * @param  {[type]}   res  [description]
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async upload(req, res, next) {
+	async uploadImg(req, res, next) {
 		const _this = this;
 		const files = req.files;
 		Logger.debug(req.body)

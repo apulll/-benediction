@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 17:52:06
+* @Last Modified time: 2018-03-21 11:08:08
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -42,8 +42,11 @@ router.get('/openid',[
 router.get('/user/all', UserCtl.getUserAll)
 router.post('/user/benison', UserCtl.updateUserBenisonRecords)
 
-router.get('/benison/all', BenisonCtl.getBenisonAll)
 
+/**
+ * 祝福语
+ */
+router.get('/benison/all', BenisonCtl.getBenisonAll)
 router.post('/benison', [
 	check('template_id', '不能为空').exists().custom((value, { req }) => value ? true :false),
 	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
@@ -52,18 +55,20 @@ router.post('/benison', [
 router.put('/benison/:id', BenisonCtl.update)
 router.patch('/benison/:id', BenisonCtl.patch)
 router.patch('/benison/liked/:id', BenisonCtl.patchLiked)
-
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
 
+/**
+ * 模板
+ */
 router.get('/template', TemplateCtl.getTemplateAll)
 router.post('/template', TemplateCtl.createTemplate)
 router.put('/template/:id', TemplateCtl.update)
 router.patch('/template/:id', TemplateCtl.update)
-// router.patch('/template/:id', TemplateCtl.update)
 
-
+/**
+ * 分类
+ */
 router.get('/catalog', catalogCtl.getCatalogAll)
-// router.get('/bycatalog', catalogCtl.getBenisonAll)
 router.post('/catalog', catalogCtl.createCatalog)
 
 
@@ -71,6 +76,10 @@ router.post('/catalog', catalogCtl.createCatalog)
  * 公共接口
  */
 //文件上传接口 多文件上传
-router.post('/uploadImg', upload.array('files'), commonCtl.uploadImg)
-router.post('/upload', upload.any(), commonCtl.uploadImg)
+router.post('/upload', upload.array('files'), commonCtl.upload)
+
+
+
+
+
 export default router;

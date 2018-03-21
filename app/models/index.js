@@ -2,11 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 11:57:50
+* @Last Modified time: 2018-03-21 11:56:23
 */
-
+import config from '../config';
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
+
 
 const Catalog = db.define('catalog', {
   catalog_name: {
@@ -95,17 +96,26 @@ const UserBenison = db.define('user_benison', {
 );
 
 const Files = db.define('file', {
-  file_name:{
+  filename:{
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notNull: { args: true, msg: 'name cannot be null' }
+    }
+  },
+  size:{
     type: Sequelize.STRING,
     allowNull: false
-
   },
-  file_size:{
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  file_type:{
+  mimetype:{
     type: Sequelize.STRING
+  }
+},{
+  getterMethods: {
+    url() {
+      const urlOrigin = `${config.QCLOUD_BUCKET}-${config.QCLOUD_APPID}.file.myqcloud.com/`
+      return urlOrigin + this.filename
+    }
   }
 })
 
