@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 11:40:49
+* @Last Modified time: 2018-03-21 17:29:29
 */
 
 import Controller from './index.js';
@@ -39,12 +39,10 @@ class CommonCtr extends Controller {
 		try {
 			const _this = this;
 			const files = req.files;
-			console.log(files,'files')
 			let newFiles = []
 			const fileResults = await Promise.each(files, function(item, index, length){
 				 _this.uploadQcloud(item)
 			})
-			console.log(fileResults,'fileResults')
 			const results = await model.FileModel.bulkCreate(fileResults, { fields: ['filename','size','mimetype'] }, { validate: true })
 			res.status(200).send(jsonFormatter({ res : results}));
 		}catch(error){
@@ -53,7 +51,7 @@ class CommonCtr extends Controller {
 		}
 
 	}
-
+	//上传到腾讯云
 	uploadQcloud(file){
 		
 		var params = {
@@ -63,12 +61,12 @@ class CommonCtr extends Controller {
 	    FilePath:  path.resolve(process.cwd(), file.path)                         
 		};
 		
-		const aaa = cosAsync.sliceUploadFileAsync(params).then(function(res){
+		const results = cosAsync.sliceUploadFileAsync(params).then(function(res){
 				return res
 		}).catch(function(error){
 				return error
 		})
-		return aaa
+		return results
 		
 	}
 	/**
@@ -78,17 +76,17 @@ class CommonCtr extends Controller {
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async uploadImg(req, res, next) {
-		const _this = this;
-		const files = req.files;
-		Logger.debug(req.body)
-		files.map(function(file){
-				const response = _this.uploadQcloud(file)
-				// if(response) return;
+	// async uploadImg(req, res, next) {
+	// 	const _this = this;
+	// 	const files = req.files;
+	// 	Logger.debug(req.body)
+	// 	files.map(function(file){
+	// 			const response = _this.uploadQcloud(file)
+	// 			// if(response) return;
 
-		})
-		res.status(200).send('jsonFormatter({ res : newResults})');
-	}
+	// 	})
+	// 	res.status(200).send('jsonFormatter({ res : newResults})');
+	// }
 
 }
 

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-19 16:35:30
+* @Last Modified time: 2018-03-21 16:25:19
 */
 
 import Controller from './index.js';
@@ -59,6 +59,7 @@ class BenisonCtl extends Controller {
 			res.status(200).send(jsonFormatter({ res : newResults}));
 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "获取列表异常"+error}, true));
 			Logger.error(error)
 		}
 	}
@@ -116,6 +117,7 @@ class BenisonCtl extends Controller {
 			}
 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "创建失败"+error}, true));
 			Logger.error(error)
 		}
 	}
@@ -156,6 +158,7 @@ class BenisonCtl extends Controller {
 			}
 			// 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "更新数据失败"+error}, true));
 			Logger.error(error)
 		}
 	}
@@ -190,6 +193,7 @@ class BenisonCtl extends Controller {
 			}
 			// 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "更新数据失败"+error}, true));
 			Logger.error(error)
 		}
 	}
@@ -199,7 +203,8 @@ class BenisonCtl extends Controller {
 			const data = getDataFromReq(req)
 			const { id } = req.params
 			const isIncrement = data.liked_total_type == 'increment' ? true : false
-
+			let results = null
+			let user_ben_rs = null
 			// const params = {
 			// 	liked_total: data.liked_total,
 			// 	template_id: data.template_id , //必填
@@ -215,12 +220,31 @@ class BenisonCtl extends Controller {
 			}else if(!user_res) {
 				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
 			}else {
-				const results = isIncrement ? await model.BenisonModel.increment('liked_total',{where:{id:id}}) : await model.BenisonModel.decrement('liked_total',{where:{id:id}});
+
+				if(isIncrement){
+					user_ben_rs = await model.UserBenisonModel.update({is_liked_bension:1},{
+						where: {
+			        bension_id: id,
+			        user_id: data.user_id
+			      }
+					});
+					results = await model.BenisonModel.increment('liked_total',{where:{id:id}})
+				}else{
+					user_ben_rs = await model.UserBenisonModel.update({is_liked_bension:0},{
+					where: {
+		        bension_id: id,
+		        user_id: data.user_id
+		      }
+				});
+					results = await model.BenisonModel.decrement('liked_total',{where:{id:id}})
+				}
+				
 				res.status(200).send(jsonFormatter({ res : results}));
 
 			}
 			// 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : '数据更新失败'+ error}, true));
 			Logger.error(error)
 		}
 	}
@@ -259,6 +283,7 @@ class BenisonCtl extends Controller {
 			res.status(200).send(jsonFormatter({ res : results}));
 
 		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "获取详情失败"+error}, true));
 			Logger.error(error)
 		}
 	}

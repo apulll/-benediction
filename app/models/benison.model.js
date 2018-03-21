@@ -2,34 +2,32 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-16 11:33:05
+* @Last Modified time: 2018-03-21 17:14:09
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
-
 
 const Benison = db.define('benison', {
   benisons_txt: {
     type: Sequelize.TEXT
   },
   liked_total: {
-    type: Sequelize.INTEGER
+    type: Sequelize.INTEGER,
+    defaultValue: 0,
+    comment:"用户喜欢度",
+    description:"用户喜欢度"
   },
   is_belong_template: {
-    type: Sequelize.STRING
+    type: Sequelize.INTEGER(2),
+    defaultValue: 0,
+    comment:"是否是默认的模板祝福语",
+    description:"是否是默认的模板祝福语"
   },
   password: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING,
+    comment:"祝福语密码，当密码设置了时，用户查看该祝福需要输入密码",
+    description:"祝福语密码，当密码设置了时，用户查看该祝福需要输入密码"
   }
-});
-
-Benison.sync({force: true}).then(() => {
-  // Table created
-  return Benison.create({
-    benisons_txt: '愿你强大到无需宠爱无需疼，却又幸运到有人宠有人疼一起走，一起笑，一起癫狂，一起怀抱',
-    liked_total: 56,
-    is_belong_template:'1'
-  });
 });
 
 

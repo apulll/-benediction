@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-19 14:59:57
+* @Last Modified time: 2018-03-21 17:31:03
 */
 import Controller from './index.js';
 import model from '../models';
@@ -14,12 +14,20 @@ class TemplateCtl extends Controller {
 		super();
 		
 	}
+	/**
+	 * 获取所有模板
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async getTemplateAll(req, res, next) {
 		try {
 			const results = await model.TemplateModel.findAll({ raw: true});
 			res.status(200).send(jsonFormatter({ res : results}));
 		}catch(error){
 			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "获取列表异常"+error},true));
 		}
 	}
 	/**
@@ -44,6 +52,7 @@ class TemplateCtl extends Controller {
 			res.status(200).send(jsonFormatter({ res : results}));
 		}catch(error){
 			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "写入数据异常"+error},true));
 		}
 	}
 	/**
@@ -77,6 +86,7 @@ class TemplateCtl extends Controller {
 			res.status(200).send(jsonFormatter({ res : results}));
 		}catch(error){
 			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "更新数据异常"+error},true));
 		}
 	}
 }

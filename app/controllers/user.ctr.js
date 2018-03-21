@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 14:09:08
+* @Last Modified time: 2018-03-21 18:13:03
 */
 import Controller from './index.js';
 import model from '../models';
@@ -19,9 +19,57 @@ class UserCtl extends Controller {
 		super();
 		
 	}
+	/**
+	 * 获取所有用户信息
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async getUserAll(req, res, next) {
-		const results = await UserModel.findAll({ raw: true});
-		res.status(200).send(jsonFormatter({ res : results}));
+		try{
+			const results = await UserModel.findAll({ raw: true});
+			res.status(200).send(jsonFormatter({ res : results}));
+		}catch(error){
+			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : '获取用户信息异常' + error }, true));
+		}
+		
+	}
+	/**
+	 * 获取单个用户信息
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
+	async getUserInfo(req, res, next) {
+		try{
+			const data = getDataFromReq(req)
+			const id = data.user_id //必填
+			const openid = data.openid //必填
+			const results = await model.UserModel.findOne({where:{id:id, openid:openid}})
+			if(results){
+				const newRes = await model.UserBenisonModel.findAndCountAll({
+								order: [['updated_at', 'DESC']],
+								where: { user_id: id },
+								include:[
+									{
+										model: model.BenisonModel,
+									}
+								]
+							})
+				const newUserInfo = {
+					total: newRes.count || null,
+					data: newRes.rows || []
+				}
+				res.status(200).send(jsonFormatter({ res : newUserInfo }, true));
+			}
+			// res.status(200).send(jsonFormatter({ res : results }, true));
+		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : "获取用户信息异常"+error }, true));
+		}
+		
 	}
 	/**
 	 * 小程序用户成功登录，获取openid 以及本系统id
@@ -108,6 +156,7 @@ class UserCtl extends Controller {
 			}
 		}catch(error){
 			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : '写入关系异常' + error }, true));
 		}
 		
 	}

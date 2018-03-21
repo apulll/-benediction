@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 11:08:08
+* @Last Modified time: 2018-03-21 17:36:34
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -39,9 +39,14 @@ router.get('/openid',[
 
  
 
+/**
+ * 用户
+ */
+
 router.get('/user/all', UserCtl.getUserAll)
 router.post('/user/benison', UserCtl.updateUserBenisonRecords)
 
+router.get('/userinfo', UserCtl.getUserInfo)
 
 /**
  * 祝福语
