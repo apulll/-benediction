@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 13:54:01
+* @Last Modified time: 2018-03-21 14:09:08
 */
 import Controller from './index.js';
 import model from '../models';
@@ -37,9 +37,6 @@ class UserCtl extends Controller {
 			if (!errors.isEmpty()) {
 				return res.status(422).json({ errors: errors.array() });
 			}
-
-
-			console.log(req.query,'query')
 			let { code, user_info }= req.query
 			let results = null
 			user_info = JSON.parse(user_info)
@@ -55,7 +52,18 @@ class UserCtl extends Controller {
 			}
 			const newData = await fetch(opt)
 			if(has(newData, 'errcode')){
-				res.status(200).send(jsonFormatter({ msg : newData.errmsg}, true));
+				//临时处理
+				results = {
+		        "id": 12,
+		        "openid": "oxDF35OkQRrDdkCMFkIk2B1y_-00",
+		        "avatar_url": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0",
+		        "nick_name": "塞纳河畔",
+		        "created_at": "2018-03-15T10:14:51.000Z",
+		        "updated_at": "2018-03-15T10:14:51.000Z"
+		    }
+				res.status(200).send(jsonFormatter({ res : results}));
+				//正式返回
+				// res.status(200).send(jsonFormatter({ msg : newData.errmsg}, true));
 			}else{
 				const params = {
 					openid: newData.openid,
@@ -66,14 +74,7 @@ class UserCtl extends Controller {
 				if(!results) {
 					results = await model.UserModel.create(params)
 				}
-				results = {
-		        "id": 12,
-		        "openid": "oxDF35OkQRrDdkCMFkIk2B1y_-00",
-		        "avatar_url": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0",
-		        "nick_name": "塞纳河畔",
-		        "created_at": "2018-03-15T10:14:51.000Z",
-		        "updated_at": "2018-03-15T10:14:51.000Z"
-		    }
+
 				res.status(200).send(jsonFormatter({ res : results}));
 			}
 
