@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 21:31:00
+* @Last Modified time: 2018-03-22 16:09:03
 */
 import Controller from './index.js';
 import model from '../models';
@@ -12,6 +12,7 @@ import config from '../config';
 import { has } from 'lodash';
 import validatorForm from '../lib/validator';
 
+const Promise = require("bluebird");
 const Logger = require('../lib/logger')('controllers/user');
 
 class UserCtl extends Controller {
@@ -37,7 +38,7 @@ class UserCtl extends Controller {
 		
 	}
 	/**
-	 * 获取单个用户信息
+	 * 获取单个用户信息并且返回相关的用户所创建和接收的祝福
 	 * @param  {[type]}   req  [description]
 	 * @param  {[type]}   res  [description]
 	 * @param  {Function} next [description]
@@ -48,26 +49,47 @@ class UserCtl extends Controller {
 			const data = getDataFromReq(req)
 			const id = data.user_id //必填
 			const openid = data.openid //必填
+			const is_created = data.is_created //必填
 			const results = await model.UserModel.findOne({where:{id:id, openid:openid}})
 			if(results){
 				const newRes = await model.UserBenisonModel.findAndCountAll({
 								order: [['updated_at', 'DESC']],
-								where: { user_id: id },
-								include:[
-									{
-										model: model.BenisonModel,
-									}
-								]
+								where: { user_id: id, is_created:is_created },
+								// include:[
+								// 	{
+								// 	 association: model.UserBenisonModel.hasOne( model.BenisonModel)
+								// 	}
+								// ]
 							})
-				const newUserInfo = {
+
+				let newData = []
+				await Promise.each(newRes.rows, async function(item, index, length){
+					 const resben = await model.BenisonModel.findById(item.bension_id, {
+														order: [['updated_at', 'DESC']],
+														required: true,
+														include: [{
+															model: model.TemplateModel,
+															required: true,
+															include:[
+															 { model:model.CatalogModel, required: true}
+															]
+														}
+
+														]
+													})
+					 newData.push(resben)
+				})
+				const newResults = {
 					total: newRes.count || null,
-					data: newRes.rows || []
+					data: newData || []
 				}
-				res.status(200).send(jsonFormatter({ res : newUserInfo }, true));
+				res.status(200).send(jsonFormatter({ res : newResults }));
+			}else{
+				res.status(200).send(jsonFormatter({ msg : "获取 用户信息失败" }, true));
 			}
-			// res.status(200).send(jsonFormatter({ res : results }, true));
 		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "获取用户信息异常"+error }, true));
+			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "获取 用户信息异常"+error }, true));
 		}
 		
 	}
@@ -100,16 +122,6 @@ class UserCtl extends Controller {
 			}
 			const newData = await fetch(opt)
 			if(has(newData, 'errcode')){
-				//临时处理
-				// results = {
-			 //        "id": 12,
-			 //        "openid": "oxDF35OkQRrDdkCMFkIk2B1y_-00",
-			 //        "avatar_url": "https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTJLk1UQL99icicEPKD8kgEJDuSjFiceQ4vI5DgomWvjuy2eaYUhRbs3bO3KEUOqqk803wTjC0k2mP5uw/0",
-			 //        "nick_name": "塞纳河畔",
-			 //        "created_at": "2018-03-15T10:14:51.000Z",
-			 //        "updated_at": "2018-03-15T10:14:51.000Z"
-			 //    }
-				// res.status(200).send(jsonFormatter({ res : results}));
 				//正式返回
 				res.status(200).send(jsonFormatter({ msg : newData.errmsg}, true));
 			}else{

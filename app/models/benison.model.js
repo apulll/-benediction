@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:14:09
+* @Last Modified time: 2018-03-22 16:28:16
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -14,7 +14,7 @@ const Benison = db.define('benison', {
   liked_total: {
     type: Sequelize.INTEGER,
     defaultValue: 0,
-    comment:"用户喜欢度",
+    COMMENT:"用户喜欢度",
     description:"用户喜欢度"
   },
   is_belong_template: {

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 16:25:19
+* @Last Modified time: 2018-03-22 16:40:11
 */
 
 import Controller from './index.js';
@@ -260,10 +260,11 @@ class BenisonCtl extends Controller {
 		try {
 
 			const data = getDataFromReq(req)
-			
-			// var results = await model.BenisonModel.create(params);
-			var results = await model.BenisonModel.findAll({
-							where: { id: data.benison_id },
+			const id = data.benison_id
+			const password = data.password
+			const whereConditions = password ? { id: data.benison_id, password:password } : { id: data.benison_id } 
+			var results = await model.BenisonModel.findOne({
+							where: whereConditions,
 							benchmark:true,
 							include: [{
 								model: model.TemplateModel,
