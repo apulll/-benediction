@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 18:01:19
+* @Last Modified time: 2018-03-22 18:14:31
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -178,12 +178,10 @@ class BenisonCtl extends Controller {
 			if(!firstRes){
 				res.status(200).send(jsonFormatter({ msg : "数据不存在"}, true));
 			}else{
-				const results = await model.BenisonModel.destroy({
-											  where: {
-											    id: id
-											  }
-											});
-				res.status(200).send(jsonFormatter({ res : newResults}));
+				const anres = await model.UserBenisonModel.destroy({ where:{bension_id:id}})
+				const results = await model.BenisonModel.destroy({where: {id: id}});
+				res.status(200).send(jsonFormatter({ res : results}));
+				
 			}
 			
 		}catch(error){
