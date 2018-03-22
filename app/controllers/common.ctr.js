@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:29:29
+* @Last Modified time: 2018-03-22 17:25:28
 */
 
 import Controller from './index.js';
@@ -11,7 +11,7 @@ import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 import { cos, qcloud_cod } from '../lib/upload';
-var Promise = require("bluebird");
+const Promise = require("bluebird");
 const path = require('path');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;

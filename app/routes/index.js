@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:36:34
+* @Last Modified time: 2018-03-22 17:53:37
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -61,7 +61,7 @@ router.put('/benison/:id', BenisonCtl.update)
 router.patch('/benison/:id', BenisonCtl.patch)
 router.patch('/benison/liked/:id', BenisonCtl.patchLiked)
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
-
+router.delete('/benison/:id', BenisonCtl.delete)
 /**
  * 模板
  */

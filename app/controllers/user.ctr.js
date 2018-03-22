@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 16:09:03
+* @Last Modified time: 2018-03-22 17:05:26
 */
 import Controller from './index.js';
 import model from '../models';
@@ -57,7 +57,7 @@ class UserCtl extends Controller {
 								where: { user_id: id, is_created:is_created },
 								// include:[
 								// 	{
-								// 	 association: model.UserBenisonModel.hasOne( model.BenisonModel)
+								// 	 association: model.BenisonModel.hasMany( model.UserBenisonModel, { foreignKey:'benison_id'})
 								// 	}
 								// ]
 							})

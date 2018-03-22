@@ -2,14 +2,15 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 16:40:11
+* @Last Modified time: 2018-03-22 18:01:19
 */
-
+import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
+const Promise = require("bluebird");
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 const Logger = require('../lib/logger')('controllers/benison');
@@ -162,7 +163,34 @@ class BenisonCtl extends Controller {
 			Logger.error(error)
 		}
 	}
-
+	/**
+	 * 删除祝福语
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
+	async delete(req, res, next) {
+		const { id }= req.params
+		const data = getDataFromReq(req)
+		try{
+			const firstRes = await model.BenisonModel.findById(id)
+			if(!firstRes){
+				res.status(200).send(jsonFormatter({ msg : "数据不存在"}, true));
+			}else{
+				const results = await model.BenisonModel.destroy({
+											  where: {
+											    id: id
+											  }
+											});
+				res.status(200).send(jsonFormatter({ res : newResults}));
+			}
+			
+		}catch(error){
+			Logger.error(error)
+			res.status(200).send(jsonFormatter({ msg : "删除数据异常"+error}, true));
+		}
+	}
 	async patch(req, res, next) {
 		try {
 
@@ -173,6 +201,7 @@ class BenisonCtl extends Controller {
 				benisons_txt: data.bemisons_txt,
 				is_belong_template: data.is_belong_template,
 				password: data.password,
+				status: data.status,
 				template_id: data.template_id , //必填
 				user_id: data.user_id // 必填
 			}
@@ -260,7 +289,7 @@ class BenisonCtl extends Controller {
 		try {
 
 			const data = getDataFromReq(req)
-			const id = data.benison_id
+			const id = data.benison_id //必填
 			const password = data.password
 			const whereConditions = password ? { id: data.benison_id, password:password } : { id: data.benison_id } 
 			var results = await model.BenisonModel.findOne({

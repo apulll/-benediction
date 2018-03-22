@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 16:28:16
+* @Last Modified time: 2018-03-22 18:02:20
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -27,6 +27,10 @@ const Benison = db.define('benison', {
     type: Sequelize.STRING,
     comment:"祝福语密码，当密码设置了时，用户查看该祝福需要输入密码",
     description:"祝福语密码，当密码设置了时，用户查看该祝福需要输入密码"
+  },
+  status: {
+    type: Sequelize.INTEGER(2),
+    defaultValue: 1,
   }
 });
 
