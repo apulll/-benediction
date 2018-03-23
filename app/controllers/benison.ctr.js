@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 18:14:31
+* @Last Modified time: 2018-03-22 18:26:14
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -189,6 +189,13 @@ class BenisonCtl extends Controller {
 			res.status(200).send(jsonFormatter({ msg : "删除数据异常"+error}, true));
 		}
 	}
+	/**
+	 * 更新祝福语的某一小块内容
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async patch(req, res, next) {
 		try {
 
@@ -224,6 +231,13 @@ class BenisonCtl extends Controller {
 			Logger.error(error)
 		}
 	}
+	/**
+	 * 用户喜欢度更新
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
 	async patchLiked(req, res, next) {
 		try {
 

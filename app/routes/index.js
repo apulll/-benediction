@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 17:53:37
+* @Last Modified time: 2018-03-23 13:39:12
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -10,6 +10,7 @@ import BenisonCtl from '../controllers/benison.ctr';
 import TemplateCtl from '../controllers/template.ctr';
 import catalogCtl from '../controllers/catalog.ctr';
 import commonCtl from '../controllers/common.ctr';
+import userBenisonCtl from '../controllers/user_benison.ctr';
 const { check, validationResult } = require('express-validator/check');
 import { upload } from '../lib/upload';
 
@@ -44,8 +45,6 @@ router.get('/openid',[
  */
 
 router.get('/user/all', UserCtl.getUserAll)
-router.post('/user/benison', UserCtl.updateUserBenisonRecords)
-
 router.get('/userinfo', UserCtl.getUserInfo)
 
 /**
@@ -62,6 +61,14 @@ router.patch('/benison/:id', BenisonCtl.patch)
 router.patch('/benison/liked/:id', BenisonCtl.patchLiked)
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
 router.delete('/benison/:id', BenisonCtl.delete)
+/**
+ * 祝福语-用户关系
+ */
+router.post('/user/benison', [
+	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false),
+	check('bension_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
+	], userBenisonCtl.updateUserBenisonRecords)
+
 /**
  * 模板
  */

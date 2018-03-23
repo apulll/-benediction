@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 17:25:28
+* @Last Modified time: 2018-03-23 09:58:27
 */
 
 import Controller from './index.js';
@@ -11,6 +11,7 @@ import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 import { cos, qcloud_cod } from '../lib/upload';
+import fetch from '../lib/fetch';
 const Promise = require("bluebird");
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -68,6 +69,23 @@ class CommonCtr extends Controller {
 		})
 		return results
 		
+	}
+	/**
+	 * 敏感词过滤
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
+	async textFilter(req, res, next) {
+		const data  = getDataFromReq(req)
+		const opts = {
+			url: config.ALI_FILTER_URL,
+			method:"POST",
+			data:{
+				
+			}
+		}
 	}
 	/**
 	 * 文件上传，限定只能传图片
