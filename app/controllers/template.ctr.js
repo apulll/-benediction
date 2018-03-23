@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:31:03
+* @Last Modified time: 2018-03-23 18:09:06
 */
 import Controller from './index.js';
 import model from '../models';
@@ -53,6 +53,13 @@ class TemplateCtl extends Controller {
 		}catch(error){
 			Logger.error(error)
 			res.status(200).send(jsonFormatter({ msg : "写入数据异常"+error},true));
+		}
+	}
+	async create(req, res, next) {
+		try{
+
+		}catch(error){
+			
 		}
 	}
 	/**

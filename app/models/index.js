@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 18:26:37
+* @Last Modified time: 2018-03-23 20:41:48
 */
 import config from '../config';
 const Sequelize = require('sequelize');
@@ -36,7 +36,7 @@ User.hasMany(Benison)
 //   foreignKey: 'benison_id',
 //   constraints: false
 // })
-User.hasMany(Benison)
+// User.hasMany(Benison)
 
 db.sync()
 
