@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-23 13:39:12
+* @Last Modified time: 2018-03-26 15:26:28
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -58,7 +58,7 @@ router.post('/benison', [
 
 router.put('/benison/:id', BenisonCtl.update)
 router.patch('/benison/:id', BenisonCtl.patch)
-router.patch('/benison/liked/:id', BenisonCtl.patchLiked)
+router.put('/benison/liked/:id', BenisonCtl.putLiked)
 router.get('/benison/detail', BenisonCtl.getBenisonDetail)
 router.delete('/benison/:id', BenisonCtl.delete)
 /**

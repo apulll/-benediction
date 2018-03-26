@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-23 20:49:19
+* @Last Modified time: 2018-03-26 15:32:06
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -238,7 +238,7 @@ class BenisonCtl extends Controller {
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async patchLiked(req, res, next) {
+	async putLiked(req, res, next) {
 		try {
 
 			const data = getDataFromReq(req)
