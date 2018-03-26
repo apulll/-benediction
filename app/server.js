@@ -2,13 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:05
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-15 16:18:07
+* @Last Modified time: 2018-03-26 15:15:05
 */
 import express from 'express';
 import http from 'http';
 import path from 'path';
 import bodyParser from 'body-parser';
-import swaggerJSDoc from 'swagger-jsdoc';
 import db from './db/core';
 import router from './routes';
 
@@ -22,44 +21,12 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 app.use('/api', router);
 
+
+
+
+
 const server = http.createServer(app);
 server.listen(port);
 
 console.log('server listening on:', port);
 
-
-
-
-
-
-// const origin = `192.168.1.113:${port}`;
-// // swagger definition
-// var swaggerDefinition = {
-//   info: {
-//     title: 'Node Swagger API',
-//     version: '2.0.0',
-//     description: 'Demonstrating how to desribe a RESTful API with Swagger',
-//   },
-//   host: process.env.SWAGGER === 'online' ? 'xxxxx' : origin,
-//   basePath: '/',
-// };
-
-// // options for the swagger docs
-// var options = {
-//   // import swaggerDefinitions
-//   swaggerDefinition: swaggerDefinition,
-//   // path to the API docs
-//   apis: ['app/definitions/**/*.js','app/routes/**/*.js'],
-// };
-
-// // initialize swagger-jsdoc
-// var swaggerSpec = swaggerJSDoc(options);
-
-
-
-// app.use('/api', router);
-
-// app.get('/swagger.json', function(req, res) {
-//   res.setHeader('Content-Type', 'application/json');
-//   res.send(swaggerSpec);
-// })

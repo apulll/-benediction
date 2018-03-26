@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-24 11:32:53
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-24 12:26:30
+* @Last Modified time: 2018-03-26 13:55:45
 */
 export default [
 
@@ -81,6 +81,7 @@ export default [
 				is_belong_template:1
 			
 			}
+		},
 		{
 			thumb:"20180321_0019",
 			bension:{
@@ -114,7 +115,7 @@ export default [
 			bension:{
 				benisons_txt:"愿你去往之地皆为热土 愿你所遇之人皆为挚友 愿生活里有热汤和甜食",
 				is_belong_template:1
-			
+			}
 		},
 		{
 			thumb:"20180321_0022",
