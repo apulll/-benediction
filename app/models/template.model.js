@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-26 16:00:06
+* @Last Modified time: 2018-03-26 17:31:38
 */
 import config from '../config';
 const Sequelize = require('sequelize');
@@ -12,6 +12,16 @@ const Template = db.define('template', {
   thumb: {
     type: Sequelize.TEXT,
     comment:"统一的使用一个名称，上传图片是只要统一前面的这个名称"
+  },
+  top: {
+    type: Sequelize.INTEGER(10),
+    defaultValue: 0,
+    comment:"文字距离顶部的坐标"
+  },
+  position: {
+    type: Sequelize.ENUM('center','left','right'),
+    defaultValue:'center',
+    comment:"文字对齐方式"
   }
 },{
   getterMethods: {
