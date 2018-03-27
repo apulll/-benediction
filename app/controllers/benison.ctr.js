@@ -2,12 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 16:29:33
+* @Last Modified time: 2018-03-27 17:26:43
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
+import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 const Promise = require("bluebird");
@@ -20,7 +20,8 @@ const { matchedData, sanitize } = require('express-validator/filter');
 class BenisonCtl extends Controller {
 	constructor() {
 		super();
-		
+		this.getBenisonAll = this.getBenisonAll.bind(this)
+		this.getBenisonByUserIdFromLike = this.getBenisonByUserIdFromLike.bind(this)
 	}
 	/**
 	 * 根据分类id获取所有分类下的祝福
@@ -32,14 +33,21 @@ class BenisonCtl extends Controller {
 	async getBenisonAll(req, res, next) {
 		Logger.debug(config,'config')
 		try {
+			const errors = validatorForm(req);
+			if (!errors.isEmpty()) {
+				return res.status(422).json({ errors: errors.array() });
+			}
+
+			
 			const data = getDataFromReq(req)
 			const per_page = parseInt(data.per_page) || 10
 			const page = parseInt(data.page) || 1
 
-			const results  = await model.BenisonModel.findAndCountAll({
+			let results  = await model.BenisonModel.findAndCountAll({
 								order: [['updated_at', 'DESC']],
 								limit: per_page,
 								offset: per_page*(page-1),
+
 								// where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
 								where: { is_belong_template : data.is_belong_template ? data.is_belong_template : 0 },
 								// logging: console.log,
@@ -51,12 +59,14 @@ class BenisonCtl extends Controller {
 									 data.catalog_id !== '0' ? { model:model.CatalogModel, required: true, where:{ id: data.catalog_id }}
 									 :{ model:model.CatalogModel, required: true}
 									]
-								},{
-									model: model.UserModel,
-									required: true,
 								}
 								]
 							})
+			
+			const newResults2 = await this.getBenisonByUserIdFromLike(data.user_id)
+			 					results = benisonAllDataFormat(JSON.parse(JSON.stringify(results)), JSON.parse(JSON.stringify(newResults2)))
+
+
 			const newResults = formatPage(page, per_page, results)
 			res.status(200).send(jsonFormatter({ res : newResults}));
 
@@ -296,13 +306,13 @@ class BenisonCtl extends Controller {
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async getBenisonByUserIdFromLike(req, res, next){
+	async getBenisonByUserIdFromLike(user_id){
 		try {
-			const data = getDataFromReq(req)
-			const results = await model.UserBenisonLikeModel.findAll({where:{user_id:data.user_id}})
-			res.status(200).send(jsonFormatter({ res : results }));
+			
+			const results = await model.UserBenisonLikeModel.findAll({where:{user_id:user_id}})
+			return results
 		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : '数据获取失败'+ error}, true));
+			return null
 			Logger.error(error)
 		}
 		

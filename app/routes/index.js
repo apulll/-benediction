@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 16:30:51
+* @Last Modified time: 2018-03-27 17:27:13
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -50,7 +50,10 @@ router.get('/userinfo', UserCtl.getUserInfo)
 /**
  * 祝福语
  */
-router.get('/benison/all', BenisonCtl.getBenisonAll)
+router.get('/benison/all', [
+	check('catalog_id', '不能为空').exists().custom((value, { req }) => value ? true :false),
+	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
+	], BenisonCtl.getBenisonAll)
 router.post('/benison', [
 	check('template_id', '不能为空').exists().custom((value, { req }) => value ? true :false),
 	check('user_id', '不能为空').exists().custom((value, { req }) => value ? true :false)
