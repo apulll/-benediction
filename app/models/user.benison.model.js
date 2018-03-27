@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:04:49
+* @Last Modified time: 2018-03-27 15:04:45
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -20,12 +20,6 @@ const UserBenison = db.define('user_benison', {
       type: Sequelize.INTEGER,
       comment: "是否是当前用户创建的 1 是，0 代表从其他用户处收到的祝福",
       description: "是否是当前用户创建的 1 是，0 代表从其他用户处收到的祝福"
-    },
-    is_liked_bension: {
-      type: Sequelize.INTEGER(2),
-      defaultValue: 0,
-      comment:"是否用户对当前祝福语是喜欢的；喜欢为 1 否则为 0",
-      description:"是否用户对当前祝福语是喜欢的；喜欢为 1 否则为 0"
     }
   },
   {

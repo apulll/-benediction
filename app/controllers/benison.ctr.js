@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-26 15:32:06
+* @Last Modified time: 2018-03-27 16:04:03
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -40,7 +40,8 @@ class BenisonCtl extends Controller {
 								order: [['updated_at', 'DESC']],
 								limit: per_page,
 								offset: per_page*(page-1),
-								where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
+								// where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
+								where: { is_belong_template : data.is_belong_template ? data.is_belong_template : 0 },
 								// logging: console.log,
 								benchmark:true,
 								include: [{
@@ -87,10 +88,10 @@ class BenisonCtl extends Controller {
 				template_id: data.template_id , //必填
 				user_id: data.user_id // 必填
 			}
-			const temp_res = await model.TemplateModel.findById(data.template_id)
+			const bension_res = await model.TemplateModel.findById(data.template_id)
 			const user_res = await model.UserModel.findById(data.user_id)
 
-			if(!temp_res) {
+			if(!bension_res) {
 				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
 			}else if(!user_res) {
 				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
@@ -142,10 +143,10 @@ class BenisonCtl extends Controller {
 				template_id: data.template_id , //必填
 				user_id: data.user_id // 必填
 			}
-			const temp_res = await model.TemplateModel.findById(id)
+			const bension_res = await model.TemplateModel.findById(id)
 			const user_res = await model.UserModel.findById(data.user_id)
 
-			if(!temp_res) {
+			if(!bension_res) {
 				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
 			}else if(!user_res) {
 				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
@@ -210,10 +211,10 @@ class BenisonCtl extends Controller {
 				template_id: data.template_id , //必填
 				user_id: data.user_id // 必填
 			}
-			const temp_res = await model.TemplateModel.findById(data.template_id)
+			const bension_res = await model.TemplateModel.findById(data.template_id)
 			const user_res = await model.UserModel.findById(data.user_id)
 
-			if(!temp_res) {
+			if(!bension_res) {
 				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
 			}else if(!user_res) {
 				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
@@ -246,44 +247,43 @@ class BenisonCtl extends Controller {
 			const isIncrement = data.liked_total_type == 'increment' ? true : false
 			let results = null
 			let user_ben_rs = null
-			// const params = {
-			// 	liked_total: data.liked_total,
-			// 	template_id: data.template_id , //必填
-			// 	user_id: data.user_id // 必填
-			// }
-			const temp_res = await model.TemplateModel.findById(data.template_id)
+			const bension_res = await model.BenisonModel.findById(id)
 			
 			const user_res = await model.UserModel.findById(data.user_id)
-			
+			const user_like_res = await model.UserBenisonLikeModel.findOne({where: {bension_id: id,user_id: data.user_id}})
 
-			if(!temp_res) {
-				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
+			if(!bension_res) {
+				res.status(200).send(jsonFormatter({ msg : '祝福数据不存在'}, true));
 			}else if(!user_res) {
 				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
 			}else {
-
-				if(isIncrement){
-					user_ben_rs = await model.UserBenisonModel.update({is_liked_bension:1},{
+				if(user_like_res){
+					//已经存在记录
+					const is_liked_bension_val = isIncrement ? 1 : 0
+					const recieved = await model.UserBenisonLikeModel.update({is_liked_bension:is_liked_bension_val},{
 						where: {
-			        bension_id: id,
-			        user_id: data.user_id
-			      }
+				      bension_id: id,
+				      user_id: data.user_id
+				    }
 					});
-					results = await model.BenisonModel.increment('liked_total',{where:{id:id}})
+					if(recieved && (user_like_res.is_liked_bension != is_liked_bension_val)){
+							//防止重复更新一条数据
+							results = isIncrement ? await model.BenisonModel.increment('liked_total',{where:{id:id}}) :await model.BenisonModel.decrement('liked_total',{where:{id:id}})
+					}
 				}else{
-					user_ben_rs = await model.UserBenisonModel.update({is_liked_bension:0},{
-					where: {
-		        bension_id: id,
-		        user_id: data.user_id
-		      }
-				});
-					results = await model.BenisonModel.decrement('liked_total',{where:{id:id}})
-				}
-				
-				res.status(200).send(jsonFormatter({ res : results}));
-
+					const is_liked_bension_val = isIncrement ? 1 : 0
+					const recieved = await model.UserBenisonLikeModel.upsert({is_liked_bension:is_liked_bension_val,bension_id: id,user_id: data.user_id});
+					if(recieved){
+						results = isIncrement ? await model.BenisonModel.increment('liked_total',{where:{id:id}}) :await model.BenisonModel.decrement('liked_total',{where:{id:id}})
+					}
+				}	
 			}
-			// 
+				
+			if(results){
+				res.status(200).send(jsonFormatter({ res : results}));
+			}else{
+				res.status(200).send(jsonFormatter({ msg : "数据更新失败"}, true));
+			} 
 		}catch(error){
 			res.status(200).send(jsonFormatter({ msg : '数据更新失败'+ error}, true));
 			Logger.error(error)

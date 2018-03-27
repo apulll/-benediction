@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-20 09:38:54
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-20 15:04:52
+* @Last Modified time: 2018-03-27 13:53:12
 */
 
 import config from '../config';
@@ -10,13 +10,14 @@ const fs = require('fs');
 const COS = require('cos-nodejs-sdk-v5');
 const multer  = require('multer');
 // const upload = multer({ dest: 'tmp/' });
-
+const Logger = require('../lib/logger')('lib/upload');
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, 'tmp/')
   },
   filename: function (req, file, cb) {
+    Logger.debug(req.body,'req.body')
     cb(null, file.fieldname + '-' + Date.now())
   }
 })

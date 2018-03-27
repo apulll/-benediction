@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-26 15:26:28
+* @Last Modified time: 2018-03-27 11:08:38
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -89,7 +89,7 @@ router.post('/catalog', catalogCtl.createCatalog)
  */
 //文件上传接口 多文件上传
 router.post('/upload', upload.array('files'), commonCtl.upload)
-
+router.post('/text/filter', commonCtl.textFilter)
 
 
 

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-23 09:58:27
+* @Last Modified time: 2018-03-27 13:51:29
 */
 
 import Controller from './index.js';
@@ -12,6 +12,7 @@ import validatorForm from '../lib/validator';
 import config from '../config';
 import { cos, qcloud_cod } from '../lib/upload';
 import fetch from '../lib/fetch';
+import axios from 'axios';
 const Promise = require("bluebird");
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -40,6 +41,8 @@ class CommonCtr extends Controller {
 		try {
 			const _this = this;
 			const files = req.files;
+			
+			Logger.debug(req.body)
 			let newFiles = []
 			const fileResults = await Promise.each(files, function(item, index, length){
 				 _this.uploadQcloud(item)
@@ -79,13 +82,19 @@ class CommonCtr extends Controller {
 	 */
 	async textFilter(req, res, next) {
 		const data  = getDataFromReq(req)
+
 		const opts = {
-			url: config.ALI_FILTER_URL,
-			method:"POST",
 			data:{
-				
-			}
+				src:data.src
+			},
+			
 		}
+		const url = `${config.ALI_FILTER_URL}?src=${data.src}`
+		axios.post(url,{
+				headers: {'Authorization': 'APPCODE ${config.ALI_FILTER_TEXT_APPCODE}','Content-Type': 'application/x-www-form-urlencoded'}
+			}).then(function(response){
+			console.log(response,'response')
+		})
 	}
 	/**
 	 * 文件上传，限定只能传图片
