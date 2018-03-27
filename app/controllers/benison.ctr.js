@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 16:04:03
+* @Last Modified time: 2018-03-27 16:29:33
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -288,6 +288,24 @@ class BenisonCtl extends Controller {
 			res.status(200).send(jsonFormatter({ msg : '数据更新失败'+ error}, true));
 			Logger.error(error)
 		}
+	}
+	/**
+	 * 根据当前用户id获取到用户所有喜欢的祝福
+	 * @param  {[type]}   req  [description]
+	 * @param  {[type]}   res  [description]
+	 * @param  {Function} next [description]
+	 * @return {[type]}        [description]
+	 */
+	async getBenisonByUserIdFromLike(req, res, next){
+		try {
+			const data = getDataFromReq(req)
+			const results = await model.UserBenisonLikeModel.findAll({where:{user_id:data.user_id}})
+			res.status(200).send(jsonFormatter({ res : results }));
+		}catch(error){
+			res.status(200).send(jsonFormatter({ msg : '数据获取失败'+ error}, true));
+			Logger.error(error)
+		}
+		
 	}
 	/**
 	 * 祝福语详情
