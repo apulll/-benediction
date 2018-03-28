@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-23 11:55:36
+* @Last Modified time: 2018-03-28 14:36:37
 */
 
 import Controller from './index.js';
@@ -59,7 +59,7 @@ class UserBenisonCtl extends Controller {
 				bension_id: data.bension_id,
 				is_created: data.is_created
 			})
-
+			console.log(results,'results updateUserBenisonRecords')
 			if(results){
 				res.status(200).send(jsonFormatter({ res : results}));
 			}else{

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 17:27:13
+* @Last Modified time: 2018-03-28 17:01:46
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -46,6 +46,7 @@ router.get('/openid',[
 
 router.get('/user/all', UserCtl.getUserAll)
 router.get('/userinfo', UserCtl.getUserInfo)
+router.get('/userinfo/benison/count', UserCtl.getUserCreateAndRecieveCount)
 
 /**
  * 祝福语

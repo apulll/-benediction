@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 11:59:15
+* @Last Modified time: 2018-03-28 17:19:59
 */
 
 const _ = require('lodash');
@@ -69,4 +69,28 @@ exports.benisonAllDataFormat = function(resource, target){
 		rows: newRows
 	}
 	return newRecource
+}
+/**
+ * 用户接收和创建的祝福数据处理
+ */
+exports.createAndRecieveBenisonFormat = function(resource){
+	let newRes = _.sortBy(_.cloneDeep(resource), ['template.catalog_id', 'updated_at']);
+	console.log(newRes,'newRes12121')
+	let target = []
+
+	_.map(resource, function(value, key){
+		if(_.isEmpty(target)) {
+			const newObj = _.assign({},)
+		}
+		_.map(target, function(value2, key2){
+			if(value.template.catalog_id == target){}
+		})
+		
+	})
+}
+
+exports.getBenisonIds = function(data, column){
+	return _.map(data, function(value, key){
+		return value[column]
+	})
 }
