@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 17:19:48
+* @Last Modified time: 2018-03-28 18:18:46
 */
 import Controller from './index.js';
 import model from '../models';
@@ -235,13 +235,13 @@ class UserCtl extends Controller {
 				}
 			}
 			const newData = await fetch(opt)
-			if(!has(newData, 'errcode')){
+			if(has(newData, 'errcode')){
 				//正式返回
 				res.status(200).send(jsonFormatter({ msg : newData.errmsg}, true));
 			}else{
 				const params = {
 					id: uuidv1(),
-					openid: 'jfkdjsuoiurjlfjjdf',
+					openid: newData.openid,
 					avatar_url: user_info.avatarUrl,
 					nick_name: user_info.nickName,
 				}
