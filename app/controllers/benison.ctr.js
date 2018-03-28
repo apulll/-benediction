@@ -2,26 +2,33 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 17:26:43
+* @Last Modified time: 2018-03-28 22:36:26
 */
-import { cloneDeep, assign } from 'lodash';
-import Controller from './index.js';
-import model from '../models';
-import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat } from '../lib';
-import validatorForm from '../lib/validator';
-import config from '../config';
+import { cloneDeep, assign } from "lodash";
+import Controller from "./index.js";
+import model from "../models";
+import {
+	jsonFormatter,
+	getDataFromReq,
+	formatPage,
+	benisonAllDataFormat
+} from "../lib";
+import validatorForm from "../lib/validator";
+import config from "../config";
 const Promise = require("bluebird");
-const Sequelize = require('sequelize');
+const Sequelize = require("sequelize");
 const Op = Sequelize.Op;
-const Logger = require('../lib/logger')('controllers/benison');
-const { check,validationResult } = require('express-validator/check');
-const { matchedData, sanitize } = require('express-validator/filter');
+const Logger = require("../lib/logger")("controllers/benison");
+const { check, validationResult } = require("express-validator/check");
+const { matchedData, sanitize } = require("express-validator/filter");
 
 class BenisonCtl extends Controller {
 	constructor() {
 		super();
-		this.getBenisonAll = this.getBenisonAll.bind(this)
-		this.getBenisonByUserIdFromLike = this.getBenisonByUserIdFromLike.bind(this)
+		this.getBenisonAll = this.getBenisonAll.bind(this);
+		this.getBenisonByUserIdFromLike = this.getBenisonByUserIdFromLike.bind(
+			this
+		);
 	}
 	/**
 	 * 根据分类id获取所有分类下的祝福
@@ -31,48 +38,62 @@ class BenisonCtl extends Controller {
 	 * @return {[type]}        [description]
 	 */
 	async getBenisonAll(req, res, next) {
-		Logger.debug(config,'config')
+		Logger.debug(config, "config");
 		try {
 			const errors = validatorForm(req);
 			if (!errors.isEmpty()) {
 				return res.status(422).json({ errors: errors.array() });
 			}
 
-			
-			const data = getDataFromReq(req)
-			const per_page = parseInt(data.per_page) || 10
-			const page = parseInt(data.page) || 1
+			const data = getDataFromReq(req);
+			const per_page = parseInt(data.per_page) || 10;
+			const page = parseInt(data.page) || 1;
 
-			let results  = await model.BenisonModel.findAndCountAll({
-								order: [['updated_at', 'DESC']],
-								limit: per_page,
-								offset: per_page*(page-1),
+			let results = await model.BenisonModel.findAndCountAll({
+				order: [["updated_at", "DESC"]],
+				limit: per_page,
+				offset: per_page * (page - 1),
 
-								// where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
-								where: { is_belong_template : data.is_belong_template ? data.is_belong_template : 0 },
-								// logging: console.log,
-								benchmark:true,
-								include: [{
-									model: model.TemplateModel,
-									required: true,
-									include:[
-									 data.catalog_id !== '0' ? { model:model.CatalogModel, required: true, where:{ id: data.catalog_id }}
-									 :{ model:model.CatalogModel, required: true}
-									]
-								}
-								]
-							})
-			
-			const newResults2 = await this.getBenisonByUserIdFromLike(data.user_id)
-			 					results = benisonAllDataFormat(JSON.parse(JSON.stringify(results)), JSON.parse(JSON.stringify(newResults2)))
+				// where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
+				where: {
+					is_belong_template: data.is_belong_template
+						? data.is_belong_template
+						: 0
+				},
+				// logging: console.log,
+				benchmark: true,
+				include: [
+					{
+						model: model.TemplateModel,
+						required: true,
+						include: [
+							data.catalog_id !== "0"
+								? {
+										model: model.CatalogModel,
+										required: true,
+										where: { id: data.catalog_id }
+								  }
+								: { model: model.CatalogModel, required: true }
+						]
+					}
+				]
+			});
 
+			const newResults2 = await this.getBenisonByUserIdFromLike(
+				data.user_id
+			);
+			results = benisonAllDataFormat(
+				JSON.parse(JSON.stringify(results)),
+				JSON.parse(JSON.stringify(newResults2))
+			);
 
-			const newResults = formatPage(page, per_page, results)
-			res.status(200).send(jsonFormatter({ res : newResults}));
-
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "获取列表异常"+error}, true));
-			Logger.error(error)
+			const newResults = formatPage(page, per_page, results);
+			res.status(200).send(jsonFormatter({ res: newResults }));
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "获取列表异常" + error }, true));
+			Logger.error(error);
 		}
 	}
 	/**
@@ -84,53 +105,61 @@ class BenisonCtl extends Controller {
 	 */
 	async createBenison(req, res, next) {
 		try {
-
 			const errors = validatorForm(req);
 			if (!errors.isEmpty()) {
 				return res.status(422).json({ errors: errors.array() });
 			}
 
-			const data = getDataFromReq(req)
+			const data = getDataFromReq(req);
 			const params = {
 				benisons_txt: data.benisons_txt,
 				is_belong_template: data.is_belong_template,
 				password: data.password,
-				template_id: data.template_id , //必填
+				template_id: data.template_id, //必填
 				user_id: data.user_id // 必填
-			}
-			const bension_res = await model.TemplateModel.findById(data.template_id)
-			const user_res = await model.UserModel.findById(data.user_id)
+			};
+			const bension_res = await model.TemplateModel.findById(
+				data.template_id
+			);
+			const user_res = await model.UserModel.findById(data.user_id);
 
-			if(!bension_res) {
-				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
-			}else if(!user_res) {
-				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
-			}else {
+			if (!bension_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "模板不存在" }, true));
+			} else if (!user_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "用户不存在" }, true));
+			} else {
 				const results = await model.BenisonModel.create(params);
-				if(results){
-					
+				if (results) {
 					const user_ben_rs = await model.UserBenisonModel.create({
 						user_id: data.user_id,
 						bension_id: results.id,
 						is_created: 1
-					})
+					});
 
-					if(user_ben_rs){
-						res.status(200).send(jsonFormatter({ res : results}));
-					}else{
-						res.status(200).send(jsonFormatter({ msg : '创建失败，请重试'}, true));
+					if (user_ben_rs) {
+						res.status(200).send(jsonFormatter({ res: results }));
+					} else {
+						res
+							.status(200)
+							.send(
+								jsonFormatter({ msg: "创建失败，请重试" }, true)
+							);
 					}
-
-				}else{
-					res.status(200).send(jsonFormatter({ msg : '创建失败，请重试'}, true));
+				} else {
+					res
+						.status(200)
+						.send(jsonFormatter({ msg: "创建失败，请重试" }, true));
 				}
-				
-				
 			}
-
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "创建失败"+error}, true));
-			Logger.error(error)
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "创建失败" + error }, true));
+			Logger.error(error);
 		}
 	}
 
@@ -143,35 +172,40 @@ class BenisonCtl extends Controller {
 	 */
 	async update(req, res, next) {
 		try {
-
-			const data = getDataFromReq(req)
-			const { id } = req.params
+			const data = getDataFromReq(req);
+			const { id } = req.params;
 			const params = {
 				benisons_txt: data.benisons_txt,
 				is_belong_template: data.is_belong_template,
 				password: data.password,
-				template_id: data.template_id , //必填
+				template_id: data.template_id, //必填
 				user_id: data.user_id // 必填
-			}
-			const bension_res = await model.TemplateModel.findById(id)
-			const user_res = await model.UserModel.findById(data.user_id)
+			};
+			const bension_res = await model.TemplateModel.findById(id);
+			const user_res = await model.UserModel.findById(data.user_id);
 
-			if(!bension_res) {
-				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
-			}else if(!user_res) {
-				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
-			}else {
-				const results = await model.BenisonModel.update(params,{
+			if (!bension_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "模板不存在" }, true));
+			} else if (!user_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "用户不存在" }, true));
+			} else {
+				const results = await model.BenisonModel.update(params, {
 					where: {
-		        id: id
-		      }
+						id: id
+					}
 				});
-				res.status(200).send(jsonFormatter({ res : results}));
+				res.status(200).send(jsonFormatter({ res: results }));
 			}
-			// 
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "更新数据失败"+error}, true));
-			Logger.error(error)
+			//
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "更新数据失败" + error }, true));
+			Logger.error(error);
 		}
 	}
 	/**
@@ -182,22 +216,28 @@ class BenisonCtl extends Controller {
 	 * @return {[type]}        [description]
 	 */
 	async delete(req, res, next) {
-		const { id }= req.params
-		const data = getDataFromReq(req)
-		try{
-			const firstRes = await model.BenisonModel.findById(id)
-			if(!firstRes){
-				res.status(200).send(jsonFormatter({ msg : "数据不存在"}, true));
-			}else{
-				const anres = await model.UserBenisonModel.destroy({ where:{bension_id:id}})
-				const results = await model.BenisonModel.destroy({where: {id: id}});
-				res.status(200).send(jsonFormatter({ res : results}));
-				
+		const { id } = req.params;
+		const data = getDataFromReq(req);
+		try {
+			const firstRes = await model.BenisonModel.findById(id);
+			if (!firstRes) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "数据不存在" }, true));
+			} else {
+				const anres = await model.UserBenisonModel.destroy({
+					where: { bension_id: id }
+				});
+				const results = await model.BenisonModel.destroy({
+					where: { id: id }
+				});
+				res.status(200).send(jsonFormatter({ res: results }));
 			}
-			
-		}catch(error){
-			Logger.error(error)
-			res.status(200).send(jsonFormatter({ msg : "删除数据异常"+error}, true));
+		} catch (error) {
+			Logger.error(error);
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "删除数据异常" + error }, true));
 		}
 	}
 	/**
@@ -209,37 +249,44 @@ class BenisonCtl extends Controller {
 	 */
 	async patch(req, res, next) {
 		try {
-
-			const data = getDataFromReq(req)
-			const { id } = req.params
+			const data = getDataFromReq(req);
+			const { id } = req.params;
 			const params = {
 				liked_total: data.liked_total,
 				benisons_txt: data.bemisons_txt,
 				is_belong_template: data.is_belong_template,
 				password: data.password,
 				status: data.status,
-				template_id: data.template_id , //必填
+				template_id: data.template_id, //必填
 				user_id: data.user_id // 必填
-			}
-			const bension_res = await model.TemplateModel.findById(data.template_id)
-			const user_res = await model.UserModel.findById(data.user_id)
+			};
+			const bension_res = await model.TemplateModel.findById(
+				data.template_id
+			);
+			const user_res = await model.UserModel.findById(data.user_id);
 
-			if(!bension_res) {
-				res.status(200).send(jsonFormatter({ msg : '模板不存在'}, true));
-			}else if(!user_res) {
-				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
-			}else {
-				const results = await model.BenisonModel.update(params,{
+			if (!bension_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "模板不存在" }, true));
+			} else if (!user_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "用户不存在" }, true));
+			} else {
+				const results = await model.BenisonModel.update(params, {
 					where: {
-		        id: id
-		      }
+						id: id
+					}
 				});
-				res.status(200).send(jsonFormatter({ res : results}));
+				res.status(200).send(jsonFormatter({ res: results }));
 			}
-			// 
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "更新数据失败"+error}, true));
-			Logger.error(error)
+			//
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "更新数据失败" + error }, true));
+			Logger.error(error);
 		}
 	}
 	/**
@@ -251,52 +298,88 @@ class BenisonCtl extends Controller {
 	 */
 	async putLiked(req, res, next) {
 		try {
+			const data = getDataFromReq(req);
+			const { id } = req.params;
+			const isIncrement =
+				data.liked_total_type == "increment" ? true : false;
+			let results = null;
+			let user_ben_rs = null;
+			const bension_res = await model.BenisonModel.findById(id);
 
-			const data = getDataFromReq(req)
-			const { id } = req.params
-			const isIncrement = data.liked_total_type == 'increment' ? true : false
-			let results = null
-			let user_ben_rs = null
-			const bension_res = await model.BenisonModel.findById(id)
-			
-			const user_res = await model.UserModel.findById(data.user_id)
-			const user_like_res = await model.UserBenisonLikeModel.findOne({where: {bension_id: id,user_id: data.user_id}})
+			const user_res = await model.UserModel.findById(data.user_id);
+			const user_like_res = await model.UserBenisonLikeModel.findOne({
+				where: { bension_id: id, user_id: data.user_id }
+			});
 
-			if(!bension_res) {
-				res.status(200).send(jsonFormatter({ msg : '祝福数据不存在'}, true));
-			}else if(!user_res) {
-				res.status(200).send(jsonFormatter({ msg : '用户不存在'}, true));
-			}else {
-				if(user_like_res){
+			if (!bension_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "祝福数据不存在" }, true));
+			} else if (!user_res) {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "用户不存在" }, true));
+			} else {
+				if (user_like_res) {
 					//已经存在记录
-					const is_liked_bension_val = isIncrement ? 1 : 0
-					const recieved = await model.UserBenisonLikeModel.update({is_liked_bension:is_liked_bension_val},{
-						where: {
-				      bension_id: id,
-				      user_id: data.user_id
-				    }
+					const is_liked_bension_val = isIncrement ? 1 : 0;
+					const recieved = await model.UserBenisonLikeModel.update(
+						{ is_liked_bension: is_liked_bension_val },
+						{
+							where: {
+								bension_id: id,
+								user_id: data.user_id
+							}
+						}
+					);
+					if (
+						recieved &&
+						user_like_res.is_liked_bension != is_liked_bension_val
+					) {
+						//防止重复更新一条数据
+						results = isIncrement
+							? await model.BenisonModel.increment(
+									"liked_total",
+									{ where: { id: id } }
+							  )
+							: await model.BenisonModel.decrement(
+									"liked_total",
+									{ where: { id: id } }
+							  );
+					}
+				} else {
+					const is_liked_bension_val = isIncrement ? 1 : 0;
+					const recieved = await model.UserBenisonLikeModel.upsert({
+						is_liked_bension: is_liked_bension_val,
+						bension_id: id,
+						user_id: data.user_id
 					});
-					if(recieved && (user_like_res.is_liked_bension != is_liked_bension_val)){
-							//防止重复更新一条数据
-							results = isIncrement ? await model.BenisonModel.increment('liked_total',{where:{id:id}}) :await model.BenisonModel.decrement('liked_total',{where:{id:id}})
+					if (recieved) {
+						results = isIncrement
+							? await model.BenisonModel.increment(
+									"liked_total",
+									{ where: { id: id } }
+							  )
+							: await model.BenisonModel.decrement(
+									"liked_total",
+									{ where: { id: id } }
+							  );
 					}
-				}else{
-					const is_liked_bension_val = isIncrement ? 1 : 0
-					const recieved = await model.UserBenisonLikeModel.upsert({is_liked_bension:is_liked_bension_val,bension_id: id,user_id: data.user_id});
-					if(recieved){
-						results = isIncrement ? await model.BenisonModel.increment('liked_total',{where:{id:id}}) :await model.BenisonModel.decrement('liked_total',{where:{id:id}})
-					}
-				}	
+				}
 			}
-				
-			if(results){
-				res.status(200).send(jsonFormatter({ res : results}));
-			}else{
-				res.status(200).send(jsonFormatter({ msg : "数据更新失败"}, true));
-			} 
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : '数据更新失败'+ error}, true));
-			Logger.error(error)
+
+			if (results) {
+				res.status(200).send(jsonFormatter({ res: results }));
+			} else {
+				res
+					.status(200)
+					.send(jsonFormatter({ msg: "数据更新失败" }, true));
+			}
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "数据更新失败" + error }, true));
+			Logger.error(error);
 		}
 	}
 	/**
@@ -306,16 +389,16 @@ class BenisonCtl extends Controller {
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
-	async getBenisonByUserIdFromLike(user_id){
+	async getBenisonByUserIdFromLike(user_id) {
 		try {
-			
-			const results = await model.UserBenisonLikeModel.findAll({where:{user_id:user_id}})
-			return results
-		}catch(error){
-			return null
-			Logger.error(error)
+			const results = await model.UserBenisonLikeModel.findAll({
+				where: { user_id: user_id }
+			});
+			return results;
+		} catch (error) {
+			return null;
+			Logger.error(error);
 		}
-		
 	}
 	/**
 	 * 祝福语详情
@@ -325,38 +408,40 @@ class BenisonCtl extends Controller {
 	 * @return {[type]}        [description]
 	 */
 	async getBenisonDetail(req, res, next) {
-
 		try {
-
-			const data = getDataFromReq(req)
-			const id = data.benison_id //必填
-			const password = data.password
-			const whereConditions = password ? { id: data.benison_id, password:password } : { id: data.benison_id } 
+			const data = getDataFromReq(req);
+			const id = data.benison_id; //必填
+			const password = data.password;
+			const whereConditions = password
+				? { id: data.benison_id, password: password }
+				: { id: data.benison_id };
 			var results = await model.BenisonModel.findOne({
-							where: whereConditions,
-							benchmark:true,
-							include: [{
-								model: model.TemplateModel,
-								// where: { id: data.template_id },
-								include:[
-									{
-										model:model.CatalogModel
-									}
-								]
-							},
+				where: whereConditions,
+				benchmark: true,
+				include: [
+					{
+						model: model.TemplateModel,
+						// where: { id: data.template_id },
+						include: [
 							{
-								model: model.UserModel,
-								required: true,
+								model: model.CatalogModel
 							}
-							]
-						});
-			res.status(200).send(jsonFormatter({ res : results}));
-
-		}catch(error){
-			res.status(200).send(jsonFormatter({ msg : "获取详情失败"+error}, true));
-			Logger.error(error)
+						]
+					},
+					{
+						model: model.UserModel,
+						required: true
+					}
+				]
+			});
+			res.status(200).send(jsonFormatter({ res: results }));
+		} catch (error) {
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "获取详情失败" + error }, true));
+			Logger.error(error);
 		}
 	}
 }
 
-export default new BenisonCtl()
+export default new BenisonCtl();

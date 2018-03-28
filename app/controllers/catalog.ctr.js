@@ -2,12 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-21 17:28:57
+* @Last Modified time: 2018-03-28 22:38:42
 */
-import Controller from './index.js';
-import model from '../models';
-import { jsonFormatter, getDataFromReq, formatDataByCatalogId } from '../lib';
-const Logger = require('../lib/logger')('controllers/catalog');
+import Controller from "./index.js";
+import model from "../models";
+import { jsonFormatter, getDataFromReq, formatDataByCatalogId } from "../lib";
+const Logger = require("../lib/logger")("controllers/catalog");
 
 class CatalogCtl extends Controller {
 	constructor() {
@@ -20,15 +20,17 @@ class CatalogCtl extends Controller {
 	 * @param  {Function} next [description]
 	 * @return {[type]}        [description]
 	 */
+
 	async getCatalogAll(req, res, next) {
-		try{
-			const results = await model.CatalogModel.findAll({ raw: true});
-			res.status(200).send(jsonFormatter({ res : results}));
-		}catch(error){
-			Logger.error(error)
-			res.status(200).send(jsonFormatter({ msg : "获取列表异常"+error},true));
+		try {
+			const results = await model.CatalogModel.findAll({ raw: true });
+			res.status(200).send(jsonFormatter({ res: results }));
+		} catch (error) {
+			Logger.error(error);
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "获取列表异常" + error }, true));
 		}
-		
 	}
 	/**
 	 * 创建分类
@@ -39,24 +41,22 @@ class CatalogCtl extends Controller {
 	 */
 	async createCatalog(req, res, next) {
 		try {
-			
-			const data = getDataFromReq(req)
+			const data = getDataFromReq(req);
 			const params = {
 				catalog_name: data.catalog_name,
 				catalog_icon: data.catalog_icon,
 				catalog_bg: data.catalog_bg
-			}
-
+			};
 			var results = await model.CatalogModel.create(params);
 
-			res.status(200).send(jsonFormatter({ res : results}));
-		}catch(error){
-			Logger.error(error)
-			res.status(200).send(jsonFormatter({ msg : "写入数据异常"+error},true));
+			res.status(200).send(jsonFormatter({ res: results }));
+		} catch (error) {
+			Logger.error(error);
+			res
+				.status(200)
+				.send(jsonFormatter({ msg: "写入数据异常" + error }, true));
 		}
 	}
-	
 }
 
-
-export default new CatalogCtl()
+export default new CatalogCtl();

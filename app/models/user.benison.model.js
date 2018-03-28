@@ -4,10 +4,12 @@
 * @Last Modified by:   perry
 * @Last Modified time: 2018-03-28 10:19:35
 */
-const Sequelize = require('sequelize');
-const db = require('../db/core.js');
+const Sequelize = require("sequelize");
+const db = require("../db/core.js");
 
-const UserBenison = db.define('user_benison', {
+const UserBenison = db.define(
+  "user_benison",
+  {
     user_id: {
       type: Sequelize.UUID(32),
       allowNull: false
@@ -23,20 +25,20 @@ const UserBenison = db.define('user_benison', {
     }
   },
   {
-    comment: '用户-祝福语表',
+    comment: "用户-祝福语表",
     indexes: [
       {
-        name: 'user_benison_index_name_1',
-        method: 'BTREE',
-        fields: ['user_id']
-      },{
-        name: 'user_benison_index_name_2',
-        method: 'BTREE',
-        fields: ['bension_id']
+        name: "user_benison_index_name_1",
+        method: "BTREE",
+        fields: ["user_id"]
+      },
+      {
+        name: "user_benison_index_name_2",
+        method: "BTREE",
+        fields: ["bension_id"]
       }
     ]
   }
 );
-
 
 export default UserBenison;

@@ -4,10 +4,10 @@
 * @Last Modified by:   perry
 * @Last Modified time: 2018-03-28 10:00:43
 */
-const Sequelize = require('sequelize');
-const db = require('../db/core.js');
+const Sequelize = require("sequelize");
+const db = require("../db/core.js");
 
-const User = db.define('user', {
+const User = db.define("user", {
   id: {
     type: Sequelize.UUID(32),
     notNull: true,
@@ -24,6 +24,5 @@ const User = db.define('user', {
     type: Sequelize.STRING
   }
 });
-
 
 export default User;
