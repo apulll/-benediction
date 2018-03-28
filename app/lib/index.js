@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 17:58:25
+* @Last Modified time: 2018-03-28 11:59:15
 */
 
 const _ = require('lodash');
@@ -52,18 +52,16 @@ exports.formatPage = function(page=1, per_page=10, results) {
 exports.benisonAllDataFormat = function(resource, target){
 	let newRecource = {}
 	let newRows = _.cloneDeep(resource.rows)
-	// if(_.isEmpty(target)) return resource;
-	console.log(target, 'aaaaaaaaaaaa2222222')
 	newRows = _.map(newRows, function(value, key) {
 		console.log(value.id, 'value')
 		let newObj = _.cloneDeep(value)
-
+			newObj = _.assign({}, newObj, {is_liked_bension:0})
 			_.map(target, function(value2, key2) {
 			  if(value.id == value2.bension_id) {
 			  	newObj = _.assign({}, newObj, {is_liked_bension:value2.is_liked_bension})
 			  }
 			});
-			console.log(newObj, 'newObj ==111111=====')
+			
 		return newObj
 	});
 	newRecource = {

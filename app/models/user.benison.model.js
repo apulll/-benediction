@@ -2,14 +2,14 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 15:04:45
+* @Last Modified time: 2018-03-28 10:19:35
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
 
 const UserBenison = db.define('user_benison', {
     user_id: {
-      type: Sequelize.INTEGER,
+      type: Sequelize.UUID(32),
       allowNull: false
     },
     bension_id: {

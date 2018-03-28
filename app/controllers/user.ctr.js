@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-23 11:30:06
+* @Last Modified time: 2018-03-28 12:00:00
 */
 import Controller from './index.js';
 import model from '../models';
@@ -12,6 +12,7 @@ import config from '../config';
 import { has } from 'lodash';
 import validatorForm from '../lib/validator';
 
+const uuidv1 = require('uuid/v1');
 const Promise = require("bluebird");
 const Logger = require('../lib/logger')('controllers/user');
 
@@ -126,6 +127,7 @@ class UserCtl extends Controller {
 				res.status(200).send(jsonFormatter({ msg : newData.errmsg}, true));
 			}else{
 				const params = {
+					id: uuidv1(),
 					openid: newData.openid,
 					avatar_url: user_info.avatarUrl,
 					nick_name: user_info.nickName,

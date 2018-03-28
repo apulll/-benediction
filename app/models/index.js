@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-27 14:46:53
+* @Last Modified time: 2018-03-28 10:38:38
 */
 import config from '../config';
 const Sequelize = require('sequelize');

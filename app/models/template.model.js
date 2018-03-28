@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-26 17:31:38
+* @Last Modified time: 2018-03-28 10:11:20
 */
 import config from '../config';
 const Sequelize = require('sequelize');
@@ -10,7 +10,7 @@ const db = require('../db/core.js');
 
 const Template = db.define('template', {
   thumb: {
-    type: Sequelize.TEXT,
+    type: Sequelize.STRING,
     comment:"统一的使用一个名称，上传图片是只要统一前面的这个名称"
   },
   top: {
@@ -39,7 +39,6 @@ const Template = db.define('template', {
     }
   }
 });
-
 
 export default Template;
 
