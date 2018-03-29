@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-29 16:05:12
+* @Last Modified time: 2018-03-29 17:02:40
 */
 import Controller from "./index.js";
 import model from "../models";
@@ -137,12 +137,14 @@ class UserCtl extends Controller {
 					});
 					const resben = await model.BenisonModel.findAll({
 						order: [["updated_at", "DESC"]],
+
 						where: { id: { $in: ids } },
 						required: true,
 						include: [
 							{
 								model: model.TemplateModel,
 								where: { catalog_id: item },
+
 								required: true,
 								include: [
 									{
