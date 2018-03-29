@@ -2,8 +2,9 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-29 11:49:29
+* @Last Modified time: 2018-03-29 15:49:00
 */
+import moment from "moment";
 import config from "../config";
 const Sequelize = require("sequelize");
 const db = require("../db/core.js");
@@ -29,14 +30,18 @@ const Catalog = db.define("catalog", {
   created_at: {
     type: Sequelize.DATE,
     get() {
-        return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss');
+      return moment(this.getDataValue("created_at")).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
     }
   },
   updated_at: {
-      type: Sequelize.DATE,
-      get() {
-          return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss');
-      }
+    type: Sequelize.DATE,
+    get() {
+      return moment(this.getDataValue("updated_at")).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
+    }
   }
 });
 
