@@ -2,8 +2,10 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-22 18:02:20
+* @Last Modified time: 2018-03-29 11:48:21
 */
+
+import moment from 'moment';
 const Sequelize = require("sequelize");
 const db = require("../db/core.js");
 
@@ -31,6 +33,18 @@ const Benison = db.define("benison", {
   status: {
     type: Sequelize.INTEGER(2),
     defaultValue: 1
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    get() {
+        return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss');
+    }
+  },
+  updated_at: {
+      type: Sequelize.DATE,
+      get() {
+          return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss');
+      }
   }
 });
 

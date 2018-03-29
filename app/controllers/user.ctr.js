@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 22:38:59
+* @Last Modified time: 2018-03-29 13:46:03
 */
 import Controller from "./index.js";
 import model from "../models";
@@ -62,22 +62,19 @@ class UserCtl extends Controller {
 			});
 
 			if (results) {
-				const newResults = await model.UserBenisonModel.findAndCountAll(
-					{
-						raw: true,
-						where: { user_id: id, is_created: 1 }
-					}
-				);
-				const newResults2 = await model.UserBenisonModel.findAndCountAll(
-					{
-						raw: true,
-						where: { user_id: id, is_created: 0 }
-					}
-				);
+				const newResults = await model.UserBenisonModel.findAndCountAll({
+					raw: true,
+					where: { user_id: id, is_created: 1 }
+				});
+				const newResults2 = await model.UserBenisonModel.findAndCountAll({
+					raw: true,
+					where: { user_id: id, is_created: 0 }
+				});
 				const is_created_1 = assign(
 					{},
 					{ is_created: 1, total: newResults ? newResults.count : 0 }
 				);
+
 				const is_created_0 = assign(
 					{},
 					{
@@ -88,9 +85,7 @@ class UserCtl extends Controller {
 				const lastResults = [is_created_1, is_created_0];
 				res.status(200).send(jsonFormatter({ res: lastResults }));
 			} else {
-				res
-					.status(200)
-					.send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
+				res.status(200).send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
 			}
 		} catch (error) {
 			res
@@ -136,11 +131,7 @@ class UserCtl extends Controller {
 				);
 				const catalogsData = JSON.parse(JSON.stringify(catalogs));
 				let newData = [];
-				await Promise.each(catalogids, async function(
-					item,
-					index,
-					length
-				) {
+				await Promise.each(catalogids, async function(item, index, length) {
 					let newObj = assign({}, catalogsData[index], {
 						benisons: []
 					});
@@ -165,41 +156,15 @@ class UserCtl extends Controller {
 					newObj["benisons"] = resben;
 					newData.push(newObj);
 				});
-				// let newData = []
-				// await Promise.each(newRes.rows, async function(item, index, length){
-				// 	 const resben = await model.BenisonModel.findById(item.bension_id, {
-				// 										order: [['updated_at', 'DESC']],
-				// 										required: true,
-				// 										include: [{
-				// 											model: model.TemplateModel,
-				// 											required: true,
-				// 											include:[
-				// 											 { model:model.CatalogModel, required: true}
-				// 											]
-				// 										}
-
-				// 										]
-				// 									})
-				// 	 newData.push(resben)
-				// })
-				// const newResults = {
-				// 	total: newRes.count || null,
-				// 	data: newData || []
-				// }
-				// createAndRecieveBenisonFormat(JSON.parse(JSON.stringify(newData)))
 				res.status(200).send(jsonFormatter({ res: newData }));
 			} else {
-				res
-					.status(200)
-					.send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
+				res.status(200).send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
 			}
 		} catch (error) {
 			Logger.error(error);
 			res
 				.status(200)
-				.send(
-					jsonFormatter({ msg: "获取 用户信息异常" + error }, true)
-				);
+				.send(jsonFormatter({ msg: "获取 用户信息异常" + error }, true));
 		}
 	}
 	async getUserInfOld(req, res, next) {
@@ -223,52 +188,39 @@ class UserCtl extends Controller {
 				});
 
 				let newData = [];
-				await Promise.each(newRes.rows, async function(
-					item,
-					index,
-					length
-				) {
-					const resben = await model.BenisonModel.findById(
-						item.bension_id,
-						{
-							order: [["updated_at", "DESC"]],
-							required: true,
-							include: [
-								{
-									model: model.TemplateModel,
-									required: true,
-									include: [
-										{
-											model: model.CatalogModel,
-											required: true
-										}
-									]
-								}
-							]
-						}
-					);
+				await Promise.each(newRes.rows, async function(item, index, length) {
+					const resben = await model.BenisonModel.findById(item.bension_id, {
+						order: [["updated_at", "DESC"]],
+						required: true,
+						include: [
+							{
+								model: model.TemplateModel,
+								required: true,
+								include: [
+									{
+										model: model.CatalogModel,
+										required: true
+									}
+								]
+							}
+						]
+					});
 					newData.push(resben);
 				});
 				const newResults = {
 					total: newRes.count || null,
 					data: newData || []
 				};
-				createAndRecieveBenisonFormat(
-					JSON.parse(JSON.stringify(newData))
-				);
+				createAndRecieveBenisonFormat(JSON.parse(JSON.stringify(newData)));
 				res.status(200).send(jsonFormatter({ res: newResults }));
 			} else {
-				res
-					.status(200)
-					.send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
+				res.status(200).send(jsonFormatter({ msg: "获取 用户信息失败" }, true));
 			}
 		} catch (error) {
 			Logger.error(error);
 			res
 				.status(200)
-				.send(
-					jsonFormatter({ msg: "获取 用户信息异常" + error }, true)
-				);
+				.send(jsonFormatter({ msg: "获取 用户信息异常" + error }, true));
 		}
 	}
 	/**
@@ -300,9 +252,7 @@ class UserCtl extends Controller {
 			const newData = await fetch(opt);
 			if (has(newData, "errcode")) {
 				//正式返回
-				res
-					.status(200)
-					.send(jsonFormatter({ msg: newData.errmsg }, true));
+				res.status(200).send(jsonFormatter({ msg: newData.errmsg }, true));
 			} else {
 				const params = {
 					id: uuidv1(),

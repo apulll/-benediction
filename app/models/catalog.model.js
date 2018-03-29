@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-26 15:59:48
+* @Last Modified time: 2018-03-29 11:49:29
 */
 import config from "../config";
 const Sequelize = require("sequelize");
@@ -25,6 +25,18 @@ const Catalog = db.define("catalog", {
   },
   catalog_bg: {
     type: Sequelize.TEXT
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    get() {
+        return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss');
+    }
+  },
+  updated_at: {
+      type: Sequelize.DATE,
+      get() {
+          return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss');
+      }
   }
 });
 

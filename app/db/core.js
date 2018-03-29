@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:31
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 22:39:17
+* @Last Modified time: 2018-03-29 11:40:57
 */
 import config from "../config";
 
@@ -64,6 +64,8 @@ const sequelizeDb = new Sequelize(
     logging: function(sql) {
       Logger.info(sql);
     },
+    timezone: '+08:00', //东八时区
+    benchmark: true,
     pool: {
       max: 5,
       min: 0,

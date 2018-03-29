@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 10:11:20
+* @Last Modified time: 2018-03-29 11:50:42
 */
 import config from "../config";
 const Sequelize = require("sequelize");
@@ -24,6 +24,18 @@ const Template = db.define(
       type: Sequelize.ENUM("center", "left", "right"),
       defaultValue: "center",
       comment: "文字对齐方式"
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      get() {
+          return moment(this.getDataValue('created_at')).format('YYYY-MM-DD HH:mm:ss');
+      }
+    },
+    updated_at: {
+        type: Sequelize.DATE,
+        get() {
+            return moment(this.getDataValue('updated_at')).format('YYYY-MM-DD HH:mm:ss');
+        }
     }
   },
   {

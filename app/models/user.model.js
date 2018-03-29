@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 10:00:43
+* @Last Modified time: 2018-03-29 11:55:48
 */
 const Sequelize = require("sequelize");
 const db = require("../db/core.js");
@@ -22,6 +22,22 @@ const User = db.define("user", {
   },
   nick_name: {
     type: Sequelize.STRING
+  },
+  created_at: {
+    type: Sequelize.DATE,
+    get() {
+      return moment(this.getDataValue("created_at")).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
+    }
+  },
+  updated_at: {
+    type: Sequelize.DATE,
+    get() {
+      return moment(this.getDataValue("updated_at")).format(
+        "YYYY-MM-DD HH:mm:ss"
+      );
+    }
   }
 });
 
