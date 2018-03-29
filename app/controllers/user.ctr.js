@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-29 13:46:03
+* @Last Modified time: 2018-03-29 16:05:12
 */
 import Controller from "./index.js";
 import model from "../models";
@@ -150,6 +150,10 @@ class UserCtl extends Controller {
 										required: true
 									}
 								]
+							},
+							{
+								model: model.UserModel,
+								required: true
 							}
 						]
 					});
