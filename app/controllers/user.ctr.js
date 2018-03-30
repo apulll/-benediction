@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-29 17:02:40
+* @Last Modified time: 2018-03-30 21:59:20
 */
 import Controller from './index.js';
 import model from '../models';
@@ -200,9 +200,11 @@ class UserCtl extends Controller {
         createAndRecieveBenisonFormat(JSON.parse(JSON.stringify(newData)));
         res.status(200).send(jsonFormatter({ res: newResults }));
       } else {
+        console.log('获取 用户信息失败');
         res.status(200).send(jsonFormatter({ msg: '获取 用户信息失败' }, true));
       }
     } catch (error) {
+      console.log('获取 用户信息异常', error);
       Logger.error(error);
       res.status(200).send(jsonFormatter({ msg: '获取 用户信息异常' + error }, true));
     }
