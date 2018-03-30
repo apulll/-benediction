@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 21:59:20
+* @Last Modified time: 2018-03-30 23:32:21
 */
 import Controller from './index.js';
 import model from '../models';
@@ -104,9 +104,9 @@ class UserCtl extends Controller {
           order: [['bension_id', 'ASC']],
           where: { user_id: id, is_created: is_created }
           // include:[
-          // 	{
-          // 	 association: model.BenisonModel.hasOne( model.UserBenisonModel, { foreignKey:'benison_id'})
-          // 	}
+          //  {
+          //   association: model.BenisonModel.hasOne( model.UserBenisonModel, { foreignKey:'benison_id'})
+          //  }
           // ]
         });
         const ids = getBenisonIds(JSON.parse(JSON.stringify(newResults)), 'bension_id');
@@ -167,9 +167,9 @@ class UserCtl extends Controller {
           order: [['updated_at', 'DESC']],
           where: { user_id: id, is_created: is_created }
           // include:[
-          // 	{
-          // 	 association: model.BenisonModel.hasMany( model.UserBenisonModel, { foreignKey:'benison_id'})
-          // 	}
+          //  {
+          //   association: model.BenisonModel.hasMany( model.UserBenisonModel, { foreignKey:'benison_id'})
+          //  }
           // ]
         });
 
@@ -256,7 +256,7 @@ class UserCtl extends Controller {
         res.status(200).send(jsonFormatter({ res: results }));
       }
     } catch (error) {
-      res.status(200).send(jsonFormatter({ msg: '未知的错误' }, true));
+      res.status(200).send(jsonFormatter({ msg: '获取openid异常' + error }, true));
       Logger.error(error);
     }
   }
