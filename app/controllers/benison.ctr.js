@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 22:55:57
+* @Last Modified time: 2018-03-30 20:55:51
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -46,7 +46,6 @@ class BenisonCtl extends Controller {
         order: [['updated_at', 'DESC']],
         limit: per_page,
         offset: per_page * (page - 1),
-
         // where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
         where: {
           is_belong_template: data.is_belong_template ? data.is_belong_template : 0
@@ -66,10 +65,13 @@ class BenisonCtl extends Controller {
                   }
                 : { model: model.CatalogModel, required: true }
             ]
+          },
+          {
+            model: model.UserModel,
+            required: true
           }
         ]
       });
-
       const newResults2 = await this.getBenisonByUserIdFromLike(data.user_id);
       results = benisonAllDataFormat(JSON.parse(JSON.stringify(results)), JSON.parse(JSON.stringify(newResults2)));
 
