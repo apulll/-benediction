@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 21:58:28
+* @Last Modified time: 2018-03-30 22:20:05
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -35,7 +35,7 @@ class BenisonCtl extends Controller {
     try {
       const errors = validatorForm(req);
       if (!errors.isEmpty()) {
-        return res.status(422).send(jsonFormatter({ msg: '用户ID不能为空', errors: errors.array() }, true));
+        return res.status(422).send(jsonFormatter({ msg: '用户未登录', errors: errors.array() }, true));
       }
 
       const data = getDataFromReq(req);
@@ -100,7 +100,8 @@ class BenisonCtl extends Controller {
     try {
       const errors = validatorForm(req);
       if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+        return res.status(422).send(jsonFormatter({ msg: '用户未登录', errors: errors.array() }, true));
+        // return res.status(422).json({ errors: errors.array() });
       }
 
       const data = getDataFromReq(req);
