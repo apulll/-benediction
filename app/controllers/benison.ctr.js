@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 20:55:51
+* @Last Modified time: 2018-03-30 21:32:19
 */
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
@@ -35,7 +35,7 @@ class BenisonCtl extends Controller {
     try {
       const errors = validatorForm(req);
       if (!errors.isEmpty()) {
-        return res.status(422).json({ errors: errors.array() });
+        return res.status(422).send(jsonFormatter({ msg: '用户ID不能为空', errors: errors.array() }, true));
       }
 
       const data = getDataFromReq(req);
@@ -76,7 +76,11 @@ class BenisonCtl extends Controller {
       results = benisonAllDataFormat(JSON.parse(JSON.stringify(results)), JSON.parse(JSON.stringify(newResults2)));
 
       const newResults = formatPage(page, per_page, results);
-      res.status(200).send(jsonFormatter({ res: newResults }));
+      if (results) {
+        res.status(200).send(jsonFormatter({ res: newResults }));
+      } else {
+        res.status(200).send(jsonFormatter({ msg: '获取列表失败' }, true));
+      }
     } catch (error) {
       res.status(200).send(jsonFormatter({ msg: '获取列表异常' + error }, true));
       Logger.error(error);
