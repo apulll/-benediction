@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-31 17:14:13
+* @Last Modified time: 2018-03-31 17:15:59
 */
 import Controller from './index.js';
 import model from '../models';
@@ -240,6 +240,7 @@ class UserCtl extends Controller {
         //正式返回
         res.status(200).send(jsonFormatter({ msg: newData.errmsg }, true));
       } else {
+        Logger.info(user_info, 'user_info from client');
         const params = {
           id: uuidv1(),
           openid: newData.openid,
