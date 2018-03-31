@@ -2,16 +2,24 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-31 17:14:13
+* @Last Modified time: 2018-03-31 16:47:21
 */
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq, createAndRecieveBenisonFormat, getBenisonIds } from '../lib';
+import {
+  jsonFormatter,
+  getDataFromReq,
+  createAndRecieveBenisonFormat,
+  getBenisonIds,
+  getUserInfoFromWeChart
+} from '../lib';
 import fetch from '../lib/fetch';
 import config from '../config';
 import { has, assign } from 'lodash';
 import validatorForm from '../lib/validator';
 import db from '../db/core';
+
+const urlencode = require('urlencode');
 const base64url = require('base64-url');
 const uuidv1 = require('uuid/v1');
 const Promise = require('bluebird');
@@ -222,7 +230,7 @@ class UserCtl extends Controller {
       if (!errors.isEmpty()) {
         return res.status(422).json({ errors: errors.array() });
       }
-      let { code, user_info } = req.query;
+      let { code, user_info, iv, encryptedData } = req.query;
       let results = null;
       user_info = JSON.parse(user_info);
 
@@ -240,14 +248,20 @@ class UserCtl extends Controller {
         //正式返回
         res.status(200).send(jsonFormatter({ msg: newData.errmsg }, true));
       } else {
+        Logger.info(newData, 'newData');
+        const newUserInfo = getUserInfoFromWeChart(config.APP_ID, newData.session_key, encryptedData, iv);
         const params = {
           id: uuidv1(),
-          openid: newData.openid,
-          avatar_url: user_info.avatarUrl,
-          nick_name: base64url.encode(user_info.nickName)
+          openid: newUserInfo.openId,
+          avatar_url: newUserInfo.avatarUrl,
+          // nick_name: base64url.encode(newUserInfo.nickName),
+          nick_name: urlencode(newUserInfo.nickName)
         };
+        // const newUserInfo = getUserInfoFromWeChart(config.APP_ID, newData.session_key, encryptedData, iv);
+        Logger.info(newUserInfo, 'newUserInfo');
+
         results = await model.UserModel.findOne({
-          where: { openid: newData.openid }
+          where: { openid: newUserInfo.openId }
         });
         if (!results) {
           results = await model.UserModel.create(params);

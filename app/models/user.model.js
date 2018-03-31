@@ -2,9 +2,11 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 23:13:50
+* @Last Modified time: 2018-03-31 17:14:29
 */
 import moment from 'moment';
+const base64url = require('base64-url');
+const urlencode = require('urlencode');
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
 
@@ -22,7 +24,10 @@ const User = db.define('user', {
     type: Sequelize.TEXT
   },
   nick_name: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    get() {
+      return base64url.decode(this.getDataValue('nick_name'));
+    }
   },
   created_at: {
     type: Sequelize.DATE,

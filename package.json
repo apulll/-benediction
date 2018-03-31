@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "babel-runtime": "^6.23.0",
+    "base64-url": "^2.2.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "cos-nodejs-sdk-v5": "^2.3.5",
@@ -40,6 +41,7 @@
     "sequelize": "^4.36.1",
     "sequelize-fixtures": "^0.7.0",
     "swagger-jsdoc": "^1.9.7",
+    "urlencode": "^1.1.0",
     "uuid": "^3.2.1",
     "wafer-node-sdk": "^1.2.0"
   }
