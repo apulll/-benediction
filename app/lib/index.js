@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-31 16:21:00
+* @Last Modified time: 2018-04-02 15:05:46
 */
 const WXBizDataCrypt = require('./WXBizDataCrypt');
 const _ = require('lodash');
