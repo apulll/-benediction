@@ -2,24 +2,25 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-28 22:30:26
+* @Last Modified time: 2018-04-03 13:43:17
 */
 
-import Controller from "./index.js";
-import model from "../models";
-import { jsonFormatter, getDataFromReq, formatPage } from "../lib";
-import validatorForm from "../lib/validator";
-import config from "../config";
-import { cos, qcloud_cod } from "../lib/upload";
-import fetch from "../lib/fetch";
-import axios from "axios";
-const Promise = require("bluebird");
-const path = require("path");
-const Sequelize = require("sequelize");
+import Controller from './index.js';
+import model from '../models';
+import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
+import validatorForm from '../lib/validator';
+import config from '../config';
+import { cos, qcloud_cod } from '../lib/upload';
+import fetch from '../lib/fetch';
+import axios from 'axios';
+const Promise = require('bluebird');
+const path = require('path');
+const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
-const Logger = require("../lib/logger")("controllers/common");
-const { check, validationResult } = require("express-validator/check");
-const { matchedData, sanitize } = require("express-validator/filter");
+const Logger = require('../lib/logger')('controllers/common');
+const { check, validationResult } = require('express-validator/check');
+const { matchedData, sanitize } = require('express-validator/filter');
+const utf8 = require('utf8');
 
 var cosAsync = Promise.promisifyAll(cos);
 
@@ -43,24 +44,18 @@ class CommonCtr extends Controller {
 
 			Logger.debug(req.body);
 			let newFiles = [];
-			const fileResults = await Promise.each(files, function(
-				item,
-				index,
-				length
-			) {
+			const fileResults = await Promise.each(files, function(item, index, length) {
 				_this.uploadQcloud(item);
 			});
 			const results = await model.FileModel.bulkCreate(
 				fileResults,
-				{ fields: ["filename", "size", "mimetype"] },
+				{ fields: ['filename', 'size', 'mimetype'] },
 				{ validate: true }
 			);
 			res.status(200).send(jsonFormatter({ res: results }));
 		} catch (error) {
 			Logger.error(error);
-			res
-				.status(200)
-				.send(jsonFormatter({ msg: "上传文件异常" + error }, true));
+			res.status(200).send(jsonFormatter({ msg: '上传文件异常' + error }, true));
 		}
 	}
 	//上传到腾讯云
@@ -91,22 +86,26 @@ class CommonCtr extends Controller {
 	 */
 	async textFilter(req, res, next) {
 		const data = getDataFromReq(req);
-
+		console.log(data, 'data ===');
 		const opts = {
 			data: {
 				src: data.src
 			}
 		};
-		const url = `${config.ALI_FILTER_URL}?src=${data.src}`;
-		axios
-			.post(url, {
-				headers: {
-					Authorization: "APPCODE ${config.ALI_FILTER_TEXT_APPCODE}",
-					"Content-Type": "application/x-www-form-urlencoded"
-				}
-			})
+		const url = `${ALI_FILTER_URL}?src=${utf8.encode(data.src)}`;
+		console.log(`APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`, 'url textfilter');
+		// axios.headers['Authorization'] = `APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`;
+		axios({
+			method: 'post',
+			url: url,
+			headers: { Authorization: `APPCODE ${config.ALI_FILTER_TEXT_APPCODE}` }
+		})
 			.then(function(response) {
-				console.log(response, "response");
+				res.status(200).send(jsonFormatter({ res: response.data }));
+				// console.log(response, 'response');
+			})
+			.catch(function(error) {
+				Logger.error(error);
 			});
 	}
 	/**

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-31 17:14:29
+* @Last Modified time: 2018-04-03 14:59:13
 */
 import moment from 'moment';
 const base64url = require('base64-url');
@@ -27,6 +27,7 @@ const User = db.define('user', {
     type: Sequelize.STRING,
     get() {
       return base64url.decode(this.getDataValue('nick_name'));
+      // return this.getDataValue('nick_name');
     }
   },
   created_at: {

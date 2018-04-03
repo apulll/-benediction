@@ -2,8 +2,9 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 22:20:05
+* @Last Modified time: 2018-04-03 14:34:09
 */
+import axios from 'axios';
 import { cloneDeep, assign } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
@@ -16,10 +17,13 @@ const Op = Sequelize.Op;
 const Logger = require('../lib/logger')('controllers/benison');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
+const utf8 = require('utf8');
 
 class BenisonCtl extends Controller {
   constructor() {
     super();
+    this.createBenison = this.createBenison.bind(this);
+    this.wordFilter = this.wordFilter.bind(this);
     this.getBenisonAll = this.getBenisonAll.bind(this);
     this.getBenisonByUserIdFromLike = this.getBenisonByUserIdFromLike.bind(this);
   }
@@ -105,7 +109,12 @@ class BenisonCtl extends Controller {
       }
 
       const data = getDataFromReq(req);
-      const params = {
+      // 启动监听敏感词文件 改变 自动更新
+      // var path = __dirname + '/test/word.txt'; // 敏感词文件路径
+      // var time = 10 * 60 * 1000; // 监听间隔时间 默认 10 * 60 * 10000 ms (10分钟)
+      // word.watch(path, time);
+
+      let params = {
         benisons_txt: data.benisons_txt,
         is_belong_template: data.is_belong_template,
         password: data.password,
@@ -120,6 +129,9 @@ class BenisonCtl extends Controller {
       } else if (!user_res) {
         res.status(200).send(jsonFormatter({ msg: '用户不存在' }, true));
       } else {
+        // const filterResults = await this.wordFilter(data.benisons_txt);
+        // params = assign({}, params, { benisons_txt: filterResults.result });
+        // console.log(params, filterResults);
         const results = await model.BenisonModel.create(params);
         if (results) {
           const user_ben_rs = await model.UserBenisonModel.create({
@@ -142,7 +154,30 @@ class BenisonCtl extends Controller {
       Logger.error(error);
     }
   }
+  async wordFilter(txt) {
+    const url = `${config.ALI_FILTER_URL}?src=${utf8.encode(txt)}`;
+    console.log(`APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`, 'url textfilter');
+    // axios.headers['Authorization'] = `APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`;
 
+    const fetch = function(txt) {
+      return axios({
+        method: 'post',
+        url: url,
+        headers: { Authorization: `APPCODE ${config.ALI_FILTER_TEXT_APPCODE}` }
+      })
+        .then(function(response) {
+          return response.data;
+        })
+        .catch(function(error) {
+          return null;
+          Logger.error(error);
+        });
+    };
+
+    const results = await fetch(txt);
+
+    return results;
+  }
   /**
    * 更新祝福语
    * @param  {[type]}   req  [description]
