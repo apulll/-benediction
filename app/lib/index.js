@@ -2,8 +2,9 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-02 15:05:46
+* @Last Modified time: 2018-04-09 14:56:02
 */
+const crypto = require('crypto');
 const WXBizDataCrypt = require('./WXBizDataCrypt');
 const _ = require('lodash');
 
@@ -104,4 +105,10 @@ exports.getUserInfoFromWeChart = function(appId, sessionKey, encryptedData, iv) 
   var data = pc.decryptData(encryptedData, iv);
 
   return data;
+};
+exports.sha1 = function(message) {
+  return crypto
+    .createHash('sha1')
+    .update(message, 'utf8')
+    .digest('hex');
 };

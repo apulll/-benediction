@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-03 14:34:09
+* @Last Modified time: 2018-04-09 15:49:34
 */
 import axios from 'axios';
 import { cloneDeep, assign } from 'lodash';
@@ -52,7 +52,8 @@ class BenisonCtl extends Controller {
         offset: per_page * (page - 1),
         // where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
         where: {
-          is_belong_template: data.is_belong_template ? data.is_belong_template : 0
+          is_belong_template: data.is_belong_template ? data.is_belong_template : 0,
+          password: { $eq: '' }
         },
         // logging: console.log,
         benchmark: true,

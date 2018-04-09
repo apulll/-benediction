@@ -2,12 +2,12 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-06 18:26:36
+* @Last Modified time: 2018-04-09 15:38:05
 */
 import { has } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq, formatPage } from '../lib';
+import { jsonFormatter, getDataFromReq, formatPage, sha1 } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 import { cos, qcloud_cod } from '../lib/upload';
@@ -130,9 +130,9 @@ class CommonCtr extends Controller {
         url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${newData.access_token}`,
         data: params,
         // data: {
-        // 	scene: '?aaa=1212',
-        // 	page: '/pages/detail/detail',
-        // 	width: 128
+        //  scene: '?aaa=1212',
+        //  page: '/pages/detail/detail',
+        //  width: 128
         // },
         method: 'post'
       };
@@ -144,16 +144,26 @@ class CommonCtr extends Controller {
       // const url = `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${newData.access_token}`;
       // // 发送POST请求
       // const results = await axios.post(
-      // 	url,
-      // 	{
-      // 		page: '/pages/detail/detail',
-      // 		scene: 'aaa=1212'
-      // 	},
-      // 	{ responseType: 'stream' }
+      //  url,
+      //  {
+      //    page: '/pages/detail/detail',
+      //    scene: 'aaa=1212'
+      //  },
+      //  { responseType: 'stream' }
       // );
       // results.data.pipe(fs.createWriteStream('qrcode.png'));
       Logger.debug(results, 'response111');
     }
+  }
+  /**
+   * 获得微信小程序二维码-无限制方案 B
+   * @param  {[type]} options.page  [description]
+   * @param  {[type]} options.scene [description]
+   * @return {[type]}               [description]
+   */
+  async getWxaCodeUnlimit({ page, scene }) {
+    const filename = sha1(page + scene);
+    const filePath = path.join(__dirname, `./qrcode/${filename}.png`);
   }
   /**
    * 文件上传，限定只能传图片
@@ -163,15 +173,15 @@ class CommonCtr extends Controller {
    * @return {[type]}        [description]
    */
   // async uploadImg(req, res, next) {
-  // 	const _this = this;
-  // 	const files = req.files;
-  // 	Logger.debug(req.body)
-  // 	files.map(function(file){
-  // 			const response = _this.uploadQcloud(file)
-  // 			// if(response) return;
+  //  const _this = this;
+  //  const files = req.files;
+  //  Logger.debug(req.body)
+  //  files.map(function(file){
+  //      const response = _this.uploadQcloud(file)
+  //      // if(response) return;
 
-  // 	})
-  // 	res.status(200).send('jsonFormatter({ res : newResults})');
+  //  })
+  //  res.status(200).send('jsonFormatter({ res : newResults})');
   // }
 }
 
