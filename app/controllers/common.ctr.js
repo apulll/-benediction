@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-10 13:41:05
+* @Last Modified time: 2018-04-10 15:12:34
 */
 import { has } from 'lodash';
 import Controller from './index.js';
@@ -48,11 +48,14 @@ class CommonCtr extends Controller {
 
       Logger.debug(req.body);
       let newFiles = [];
-      const fileResults = await Promise.each(files, function(item, index, length) {
-        console.log(item);
-        _this.uploadOss(item);
+      const fileResults = await Promise.each(files, async function(item, index, length) {
+        // throw new Error(item.originlname);
+        const recieve = await _this.uploadOss(item);
+        if (!recieve) {
+          //如果有文件上传异常
+          throw '--' + item.originalname;
+        }
       });
-      console.log(fileResults, 'fileresults');
       const results = await model.FileModel.bulkCreate(
         fileResults,
         { fields: ['filename', 'size', 'mimetype'] },
@@ -93,18 +96,18 @@ class CommonCtr extends Controller {
     const key = file.filename;
     const filepath = path.resolve(process.cwd(), file.path);
     // ali_oss.useBucket(config.ALI_BUCKET);
-    co(function*() {
+    return co(function*() {
       // client.useBucket(ali_oss.bucket);
       var result = yield ali_oss.put(key, filepath);
-      var imageSrc = 'http://image.hgdqdev.cn/' + result.name;
-      console.log(result, ' result');
       // 上传之后删除本地文件
       fs.unlinkSync(filepath);
+      // Promise.reject();
       return result;
     }).catch(function(error) {
       Logger.error(error);
       // 上传之后删除本地文件
       fs.unlinkSync(filepath);
+
       return null;
     });
   }
@@ -117,14 +120,14 @@ class CommonCtr extends Controller {
    */
   async textFilter(req, res, next) {
     const data = getDataFromReq(req);
-    console.log(data, 'data ===');
+
     const opts = {
       data: {
         src: data.src
       }
     };
     const url = `${ALI_FILTER_URL}?src=${utf8.encode(data.src)}`;
-    console.log(`APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`, 'url textfilter');
+
     // axios.headers['Authorization'] = `APPCODE ${config.ALI_FILTER_TEXT_APPCODE}`;
     axios({
       method: 'post',
@@ -133,7 +136,7 @@ class CommonCtr extends Controller {
     })
       .then(function(response) {
         res.status(200).send(jsonFormatter({ res: response.data }));
-        // console.log(response, 'response');
+        // (response, 'response');
       })
       .catch(function(error) {
         Logger.error(error);
@@ -153,7 +156,6 @@ class CommonCtr extends Controller {
       //正式返回
       res.status(200).send(jsonFormatter({ msg: newData.errmsg }, true));
     } else {
-      console.log(newData, 'newData');
       let params = { path: '/pages/detail/detail?query=2', width: 430 };
       const filename = sha1(params.path);
       const filePath = path.join(__dirname, `../../public/qrcode/${filename}.png`);
