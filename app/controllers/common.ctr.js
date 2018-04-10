@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-09 15:38:05
+* @Last Modified time: 2018-04-10 13:41:05
 */
 import { has } from 'lodash';
 import Controller from './index.js';
@@ -10,9 +10,10 @@ import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage, sha1 } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
-import { cos, qcloud_cod } from '../lib/upload';
+import { cos, qcloud_cod, ali_oss } from '../lib/upload';
 import fetch from '../lib/fetch';
 import axios from 'axios';
+const co = require('co');
 const Promise = require('bluebird');
 const fs = require('fs');
 const path = require('path');
@@ -24,11 +25,13 @@ const { matchedData, sanitize } = require('express-validator/filter');
 const utf8 = require('utf8');
 
 var cosAsync = Promise.promisifyAll(cos);
+// var ossAsync = Promise.promisifyAll(ali_oss);
 
 class CommonCtr extends Controller {
   constructor() {
     super();
     this.uploadQcloud = this.uploadQcloud.bind(this);
+    this.uploadOss = this.uploadOss.bind(this);
     this.upload = this.upload.bind(this);
   }
   /**
@@ -46,8 +49,10 @@ class CommonCtr extends Controller {
       Logger.debug(req.body);
       let newFiles = [];
       const fileResults = await Promise.each(files, function(item, index, length) {
-        _this.uploadQcloud(item);
+        console.log(item);
+        _this.uploadOss(item);
       });
+      console.log(fileResults, 'fileresults');
       const results = await model.FileModel.bulkCreate(
         fileResults,
         { fields: ['filename', 'size', 'mimetype'] },
@@ -71,12 +76,37 @@ class CommonCtr extends Controller {
     const results = cosAsync
       .sliceUploadFileAsync(params)
       .then(function(res) {
+        // 上传之后删除本地文件
+        fs.unlinkSync(params.FilePath);
         return res;
       })
       .catch(function(error) {
-        return error;
+        Logger.error(error);
+        // 上传之后删除本地文件
+        fs.unlinkSync(params.FilePath);
+        return null;
       });
     return results;
+  }
+  //阿里云上传
+  uploadOss(file) {
+    const key = file.filename;
+    const filepath = path.resolve(process.cwd(), file.path);
+    // ali_oss.useBucket(config.ALI_BUCKET);
+    co(function*() {
+      // client.useBucket(ali_oss.bucket);
+      var result = yield ali_oss.put(key, filepath);
+      var imageSrc = 'http://image.hgdqdev.cn/' + result.name;
+      console.log(result, ' result');
+      // 上传之后删除本地文件
+      fs.unlinkSync(filepath);
+      return result;
+    }).catch(function(error) {
+      Logger.error(error);
+      // 上传之后删除本地文件
+      fs.unlinkSync(filepath);
+      return null;
+    });
   }
   /**
    * 敏感词过滤
@@ -124,22 +154,34 @@ class CommonCtr extends Controller {
       res.status(200).send(jsonFormatter({ msg: newData.errmsg }, true));
     } else {
       console.log(newData, 'newData');
-      let params = { path: '/pages/detail/detail?query=1', width: 430 };
-      params = JSON.stringify(params);
-      const opts2 = {
-        url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${newData.access_token}`,
-        data: params,
-        // data: {
-        //  scene: '?aaa=1212',
-        //  page: '/pages/detail/detail',
-        //  width: 128
-        // },
-        method: 'post'
-      };
-      const url = `https://api.weixin.qq.com/wxa/getwxacode?access_token=${newData.access_token}`;
-      const results = await axios.post(url, params, { responseType: 'stream' });
-      results.data.pipe(fs.createWriteStream('qrcode.png'));
-      console.log(results, 'results');
+      let params = { path: '/pages/detail/detail?query=2', width: 430 };
+      const filename = sha1(params.path);
+      const filePath = path.join(__dirname, `../../public/qrcode/${filename}.png`);
+      try {
+        // 检测该名字的小程序码图片文件是否已存在
+        await bluebird.promisify(fs.access)(filePath, fs.constants.R_OK);
+      } catch (e) {
+        const opts2 = {
+          url: `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${newData.access_token}`,
+          data: JSON.stringify(params),
+          // data: {
+          //  scene: '?aaa=1212',
+          //  page: '/pages/detail/detail',
+          //  width: 128
+          // },
+          method: 'post'
+        };
+
+        const url = `https://api.weixin.qq.com/wxa/getwxacode?access_token=${newData.access_token}`;
+        const results = await axios.post(url, params, { responseType: 'stream' });
+        results.data.pipe(fs.createWriteStream(filePath));
+      }
+      res
+        .status(200)
+        .send(jsonFormatter({ res: { codeUrl: `https://smallcode.chenqingpu.cn/qrcode/${filename}.png` } }));
+      // res.send(fs.createReadStream(filePath));
+
+      // console.log(results, 'results');
       // // 拼接url
       // const url = `https://api.weixin.qq.com/wxa/getwxacodeunlimit?access_token=${newData.access_token}`;
       // // 发送POST请求
@@ -152,7 +194,6 @@ class CommonCtr extends Controller {
       //  { responseType: 'stream' }
       // );
       // results.data.pipe(fs.createWriteStream('qrcode.png'));
-      Logger.debug(results, 'response111');
     }
   }
   /**
