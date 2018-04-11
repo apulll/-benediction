@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-09 14:56:02
+* @Last Modified time: 2018-04-11 17:52:55
 */
 const crypto = require('crypto');
 const WXBizDataCrypt = require('./WXBizDataCrypt');
@@ -54,7 +54,6 @@ exports.benisonAllDataFormat = function(resource, target) {
   let newRecource = {};
   let newRows = _.cloneDeep(resource.rows);
   newRows = _.map(newRows, function(value, key) {
-    console.log(value.id, 'value');
     let newObj = _.cloneDeep(value);
     newObj = _.assign({}, newObj, { is_liked_bension: 0 });
     _.map(target, function(value2, key2) {
