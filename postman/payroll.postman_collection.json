@@ -1,0 +1,652 @@
+{
+  "id": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+  "name": "payroll",
+  "description": "薪酬2.0",
+  "order": [],
+  "folders_order": ["2901822e-b3c8-a1a5-6694-1637ebf139a6"],
+  "folders": [
+    {
+      "id": "2901822e-b3c8-a1a5-6694-1637ebf139a6",
+      "name": "计薪酬设置",
+      "description": "",
+      "order": [
+        "3860516d-85fa-965c-f304-559aa9b3c864",
+        "9bc5cf19-fa9a-60f9-e58e-c3f1a4089f7e",
+        "153b97d6-994e-af2a-72e5-590f17699b8b",
+        "02ea0114-aa52-3b02-6a57-126c543ed197"
+      ],
+      "folders_order": [],
+      "owner": "2987625",
+      "collectionId": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107"
+    }
+  ],
+  "owner": "2987625",
+  "hasRequests": true,
+  "requests": [
+    {
+      "id": "02ea0114-aa52-3b02-6a57-126c543ed197",
+      "name": "日期设置",
+      "description": "",
+      "collectionId": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "method": "POST",
+      "headers": "",
+      "dataMode": "params",
+      "data": [
+        {
+          "key": "unit_id",
+          "value": "1",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "date",
+          "value": "2018-04-09",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "status",
+          "value": "1",
+          "type": "text",
+          "description": ""
+        }
+      ],
+      "rawModeData": "",
+      "pathVariables": {},
+      "url": "{{base_uri}}/Api/v2/payrolls/group/payset/days?access_token={{access_token}}",
+      "responses": [],
+      "pathVariableData": [],
+      "queryParams": [
+        {
+          "key": "access_token",
+          "value": "{{access_token}}",
+          "equals": true,
+          "description": ""
+        }
+      ],
+      "headerData": [],
+      "collection_id": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "folder": "2901822e-b3c8-a1a5-6694-1637ebf139a6"
+    },
+    {
+      "id": "153b97d6-994e-af2a-72e5-590f17699b8b",
+      "name": "获取某个月的周六和周末",
+      "description": "",
+      "collectionId": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "method": "GET",
+      "headers": "",
+      "data": [],
+      "rawModeData": "",
+      "pathVariables": {},
+      "url": "{{base_uri}}/Api/v2/payrolls/group/payset/days?access_token={{access_token}}&unit_id=1&date=2018-04",
+      "responses": [
+        {
+          "request": {
+            "id": "67989e04-2a50-4c11-86ca-e5d8fe1c12f5",
+            "description": "",
+            "method": "GET",
+            "headers": "",
+            "data": [],
+            "rawModeData": "",
+            "pathVariables": {},
+            "url":
+              "{{base_uri}}/Api/v2/payrolls/group/payset/days?access_token={{access_token}}&unit_id=1&date=2018-04",
+            "pathVariableData": [],
+            "queryParams": [
+              {
+                "key": "access_token",
+                "value": "{{access_token}}",
+                "equals": true,
+                "description": ""
+              },
+              {
+                "key": "unit_id",
+                "value": "1",
+                "equals": true,
+                "description": ""
+              },
+              {
+                "key": "date",
+                "value": "2018-04",
+                "equals": true,
+                "description": ""
+              }
+            ],
+            "headerData": []
+          },
+          "requestObject":
+            "{\"id\":\"67989e04-2a50-4c11-86ca-e5d8fe1c12f5\",\"description\":\"\",\"method\":\"GET\",\"headers\":\"\",\"data\":[],\"rawModeData\":\"\",\"pathVariables\":{},\"url\":\"{{base_uri}}/Api/v2/payrolls/group/payset/days?access_token={{access_token}}&unit_id=1&date=2018-04\",\"pathVariableData\":[],\"queryParams\":[{\"key\":\"access_token\",\"value\":\"{{access_token}}\",\"equals\":true,\"description\":\"\"},{\"key\":\"unit_id\",\"value\":\"1\",\"equals\":true,\"description\":\"\"},{\"key\":\"date\",\"value\":\"2018-04\",\"equals\":true,\"description\":\"\"}],\"headerData\":[]}",
+          "id": "98328c08-cc76-4d5d-5e38-88bbeaf962f5",
+          "name": "获取某个月的周六和周末",
+          "status": "OK",
+          "responseCode": {
+            "code": 200,
+            "name": "OK",
+            "detail": ""
+          },
+          "language": "json",
+          "previewType": "text",
+          "time": 120,
+          "headers": [
+            {
+              "name": "access-control-allow-credentials",
+              "key": "access-control-allow-credentials",
+              "value": "true",
+              "description":
+                "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+            },
+            {
+              "name": "access-control-allow-headers",
+              "key": "access-control-allow-headers",
+              "value": "Content-Type, Accept, Authorization, X-Requested-With, Application",
+              "description":
+                "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+            },
+            {
+              "name": "access-control-allow-methods",
+              "key": "access-control-allow-methods",
+              "value": "POST, GET, OPTIONS, PUT, DELETE",
+              "description":
+                "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+            },
+            {
+              "name": "access-control-allow-origin",
+              "key": "access-control-allow-origin",
+              "value": "*",
+              "description":
+                "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+            },
+            {
+              "name": "access-control-max-age",
+              "key": "access-control-max-age",
+              "value": "86400",
+              "description": "Indicates how long the results of a preflight request can be cached in seconds."
+            },
+            {
+              "name": "cache-control",
+              "key": "cache-control",
+              "value": "no-cache",
+              "description":
+                "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+            },
+            {
+              "name": "connection",
+              "key": "connection",
+              "value": "keep-alive",
+              "description": "Options that are desired for the connection"
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json",
+              "description": "The mime type of this content"
+            },
+            {
+              "name": "date",
+              "key": "date",
+              "value": "Mon, 09 Apr 2018 09:11:23 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "nginx",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description":
+                "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "x-powered-by",
+              "key": "x-powered-by",
+              "value": "PHP/7.0.26",
+              "description":
+                "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+            }
+          ],
+          "cookies": [],
+          "text":
+            "{\"code\":0,\"status\":true,\"msg\":\"\\u6570\\u636e\\u83b7\\u53d6\\u6210\\u529f\",\"res\":[\"2018-04-01\",\"2018-04-07\",\"2018-04-08\",\"2018-04-14\",\"2018-04-15\",\"2018-04-21\",\"2018-04-22\",\"2018-04-28\",\"2018-04-29\"]}",
+          "rawDataType": "text",
+          "owner": "2987625"
+        }
+      ],
+      "pathVariableData": [],
+      "queryParams": [
+        {
+          "key": "access_token",
+          "value": "{{access_token}}",
+          "equals": true,
+          "description": ""
+        },
+        {
+          "key": "unit_id",
+          "value": "1",
+          "equals": true,
+          "description": ""
+        },
+        {
+          "key": "date",
+          "value": "2018-04",
+          "equals": true,
+          "description": ""
+        }
+      ],
+      "headerData": [],
+      "collection_id": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "folder": "2901822e-b3c8-a1a5-6694-1637ebf139a6"
+    },
+    {
+      "id": "3860516d-85fa-965c-f304-559aa9b3c864",
+      "name": "更新计薪设置基本设置",
+      "description": "",
+      "collectionId": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "method": "PUT",
+      "headers": "Content-Type: application/x-www-form-urlencoded",
+      "dataMode": "urlencoded",
+      "data": [
+        {
+          "key": "unit_id",
+          "value": "1",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "month_base",
+          "value": "1,2,3",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "day_hour",
+          "value": "8",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "day_formula_type",
+          "value": "0",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "day_formula_value",
+          "value": "1",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "hour_formula_type",
+          "value": "0",
+          "type": "text",
+          "description": ""
+        },
+        {
+          "key": "hour_formula_value",
+          "value": "1",
+          "type": "text",
+          "description": ""
+        }
+      ],
+      "rawModeData": "",
+      "pathVariables": {},
+      "url": "{{base_uri}}/Api/v2/payrolls/group/payset/1?access_token={{access_token}}",
+      "responses": [
+        {
+          "request": {
+            "id": "475871b0-abb4-47c6-adc8-8011177679df",
+            "description": "",
+            "method": "PUT",
+            "headers": "Content-Type: application/x-www-form-urlencoded",
+            "dataMode": "urlencoded",
+            "data": [
+              {
+                "key": "unit_id",
+                "value": "1",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "month_base",
+                "value": "1,2,3",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "day_hour",
+                "value": "8",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "day_formula_type",
+                "value": "0",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "day_formula_value",
+                "value": "1",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "hour_formula_type",
+                "value": "0",
+                "type": "text",
+                "description": ""
+              },
+              {
+                "key": "hour_formula_value",
+                "value": "1",
+                "type": "text",
+                "description": ""
+              }
+            ],
+            "rawModeData": "",
+            "pathVariables": {},
+            "url": "{{base_uri}}/Api/v2/payrolls/group/payset/1?access_token={{access_token}}",
+            "pathVariableData": [],
+            "queryParams": [
+              {
+                "key": "access_token",
+                "value": "{{access_token}}",
+                "equals": true,
+                "description": ""
+              }
+            ],
+            "headerData": [
+              {
+                "key": "Content-Type",
+                "type": "text",
+                "name": "Content-Type",
+                "value": "application/x-www-form-urlencoded",
+                "description": ""
+              }
+            ]
+          },
+          "requestObject":
+            "{\"id\":\"475871b0-abb4-47c6-adc8-8011177679df\",\"description\":\"\",\"method\":\"PUT\",\"headers\":\"Content-Type: application/x-www-form-urlencoded\",\"dataMode\":\"urlencoded\",\"data\":[{\"key\":\"unit_id\",\"value\":\"1\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"month_base\",\"value\":\"1,2,3\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"day_hour\",\"value\":\"8\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"day_formula_type\",\"value\":\"0\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"day_formula_value\",\"value\":\"1\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"hour_formula_type\",\"value\":\"0\",\"type\":\"text\",\"description\":\"\"},{\"key\":\"hour_formula_value\",\"value\":\"1\",\"type\":\"text\",\"description\":\"\"}],\"rawModeData\":\"\",\"pathVariables\":{},\"url\":\"{{base_uri}}/Api/v2/payrolls/group/payset/1?access_token={{access_token}}\",\"pathVariableData\":[],\"queryParams\":[{\"key\":\"access_token\",\"value\":\"{{access_token}}\",\"equals\":true,\"description\":\"\"}],\"headerData\":[{\"key\":\"Content-Type\",\"type\":\"text\",\"name\":\"Content-Type\",\"value\":\"application/x-www-form-urlencoded\",\"description\":\"\"}]}",
+          "id": "d8c66f14-ba02-c6f3-e355-cc79dd1ddd49",
+          "name": "更新计薪设置",
+          "status": "OK",
+          "responseCode": {
+            "code": 200,
+            "name": "OK",
+            "detail": ""
+          },
+          "language": "json",
+          "previewType": "text",
+          "time": 394,
+          "headers": [
+            {
+              "name": "access-control-allow-credentials",
+              "key": "access-control-allow-credentials",
+              "value": "true",
+              "description":
+                "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+            },
+            {
+              "name": "access-control-allow-headers",
+              "key": "access-control-allow-headers",
+              "value": "Content-Type, Accept, Authorization, X-Requested-With, Application",
+              "description":
+                "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+            },
+            {
+              "name": "access-control-allow-methods",
+              "key": "access-control-allow-methods",
+              "value": "POST, GET, OPTIONS, PUT, DELETE",
+              "description":
+                "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+            },
+            {
+              "name": "access-control-allow-origin",
+              "key": "access-control-allow-origin",
+              "value": "*",
+              "description":
+                "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+            },
+            {
+              "name": "access-control-max-age",
+              "key": "access-control-max-age",
+              "value": "86400",
+              "description": "Indicates how long the results of a preflight request can be cached in seconds."
+            },
+            {
+              "name": "cache-control",
+              "key": "cache-control",
+              "value": "no-cache",
+              "description":
+                "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+            },
+            {
+              "name": "connection",
+              "key": "connection",
+              "value": "keep-alive",
+              "description": "Options that are desired for the connection"
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json",
+              "description": "The mime type of this content"
+            },
+            {
+              "name": "date",
+              "key": "date",
+              "value": "Mon, 09 Apr 2018 05:47:22 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "nginx",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description":
+                "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "x-powered-by",
+              "key": "x-powered-by",
+              "value": "PHP/7.0.26",
+              "description":
+                "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+            }
+          ],
+          "cookies": [],
+          "text":
+            "{\n    \"code\": 0,\n    \"status\": true,\n    \"msg\": \"更新成功\",\n    \"res\": {\n        \"month_base\": \"1,2,3\",\n        \"day_hour\": \"8\",\n        \"day_formula_type\": \"0\",\n        \"day_formula_value\": \"1\",\n        \"hour_formula_type\": \"0\",\n        \"hour_formula_value\": \"1\",\n        \"company_id\": 197\n    }\n}",
+          "rawDataType": "text",
+          "owner": "2987625"
+        }
+      ],
+      "pathVariableData": [],
+      "queryParams": [
+        {
+          "key": "access_token",
+          "value": "{{access_token}}",
+          "equals": true,
+          "description": ""
+        }
+      ],
+      "headerData": [
+        {
+          "key": "Content-Type",
+          "value": "application/x-www-form-urlencoded",
+          "description": ""
+        }
+      ],
+      "collection_id": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "folder": "2901822e-b3c8-a1a5-6694-1637ebf139a6"
+    },
+    {
+      "id": "9bc5cf19-fa9a-60f9-e58e-c3f1a4089f7e",
+      "name": "获取计薪设置基本设置",
+      "description": "",
+      "collectionId": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "method": "GET",
+      "headers": "",
+      "data": [],
+      "rawModeData": "",
+      "pathVariables": {},
+      "url": "{{base_uri}}/Api/v2/payrolls/group/payset?access_token={{access_token}}&unit_id=191",
+      "responses": [
+        {
+          "request": {
+            "id": "e655ad17-9345-4933-ab84-4458f374e9c9",
+            "description": "",
+            "method": "GET",
+            "headers": "",
+            "data": [],
+            "rawModeData": "",
+            "pathVariables": {},
+            "url": "{{base_uri}}/Api/v2/payrolls/group/payset?access_token={{access_token}}&unit_id=191",
+            "pathVariableData": [],
+            "queryParams": [
+              {
+                "key": "access_token",
+                "value": "{{access_token}}",
+                "equals": true,
+                "description": ""
+              },
+              {
+                "key": "unit_id",
+                "value": "191",
+                "equals": true,
+                "description": ""
+              }
+            ],
+            "headerData": []
+          },
+          "requestObject":
+            "{\"id\":\"e655ad17-9345-4933-ab84-4458f374e9c9\",\"description\":\"\",\"method\":\"GET\",\"headers\":\"\",\"data\":[],\"rawModeData\":\"\",\"pathVariables\":{},\"url\":\"{{base_uri}}/Api/v2/payrolls/group/payset?access_token={{access_token}}&unit_id=191\",\"pathVariableData\":[],\"queryParams\":[{\"key\":\"access_token\",\"value\":\"{{access_token}}\",\"equals\":true,\"description\":\"\"},{\"key\":\"unit_id\",\"value\":\"191\",\"equals\":true,\"description\":\"\"}],\"headerData\":[]}",
+          "id": "7322a970-0430-4fda-f543-40fb2453179d",
+          "name": "获取计薪设置",
+          "status": "OK",
+          "responseCode": {
+            "code": 200,
+            "name": "OK",
+            "detail": ""
+          },
+          "language": "json",
+          "previewType": "text",
+          "time": 130,
+          "headers": [
+            {
+              "name": "access-control-allow-credentials",
+              "key": "access-control-allow-credentials",
+              "value": "true",
+              "description":
+                "Indicates whether or not the response to the request can be exposed when the credentials flag is true. When used as part of a response to a preflight request, this indicates whether or not the actual request can be made using credentials."
+            },
+            {
+              "name": "access-control-allow-headers",
+              "key": "access-control-allow-headers",
+              "value": "Content-Type, Accept, Authorization, X-Requested-With, Application",
+              "description":
+                "Used in response to a preflight request to indicate which HTTP headers can be used when making the actual request."
+            },
+            {
+              "name": "access-control-allow-methods",
+              "key": "access-control-allow-methods",
+              "value": "POST, GET, OPTIONS, PUT, DELETE",
+              "description":
+                "Specifies the method or methods allowed when accessing the resource. This is used in response to a preflight request."
+            },
+            {
+              "name": "access-control-allow-origin",
+              "key": "access-control-allow-origin",
+              "value": "*",
+              "description":
+                "Specifies a URI that may access the resource. For requests without credentials, the server may specify '*' as a wildcard, thereby allowing any origin to access the resource."
+            },
+            {
+              "name": "access-control-max-age",
+              "key": "access-control-max-age",
+              "value": "86400",
+              "description": "Indicates how long the results of a preflight request can be cached in seconds."
+            },
+            {
+              "name": "cache-control",
+              "key": "cache-control",
+              "value": "no-cache",
+              "description":
+                "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+            },
+            {
+              "name": "connection",
+              "key": "connection",
+              "value": "keep-alive",
+              "description": "Options that are desired for the connection"
+            },
+            {
+              "name": "content-type",
+              "key": "content-type",
+              "value": "application/json",
+              "description": "The mime type of this content"
+            },
+            {
+              "name": "date",
+              "key": "date",
+              "value": "Mon, 09 Apr 2018 07:14:35 GMT",
+              "description": "The date and time that the message was sent"
+            },
+            {
+              "name": "server",
+              "key": "server",
+              "value": "nginx",
+              "description": "A name for the server"
+            },
+            {
+              "name": "transfer-encoding",
+              "key": "transfer-encoding",
+              "value": "chunked",
+              "description":
+                "The form of encoding used to safely transfer the entity to the user. Currently defined methods are: chunked, compress, deflate, gzip, identity."
+            },
+            {
+              "name": "x-powered-by",
+              "key": "x-powered-by",
+              "value": "PHP/7.0.26",
+              "description":
+                "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+            }
+          ],
+          "cookies": [],
+          "text":
+            "{\"res\":{\"detail\":{\"id\":2,\"unit_id\":191,\"company_id\":197,\"day_hour\":8,\"fid_id\":null,\"day_formula_type\":\"0\",\"hour_formula_type\":\"0\",\"created_at\":null,\"updated_at\":null,\"month_base\":\"381\",\"day_formula_value\":0,\"hour_formula_value\":0}}}",
+          "rawDataType": "text",
+          "owner": "2987625"
+        }
+      ],
+      "pathVariableData": [],
+      "queryParams": [
+        {
+          "key": "access_token",
+          "value": "{{access_token}}",
+          "equals": true,
+          "description": ""
+        },
+        {
+          "key": "unit_id",
+          "value": "191",
+          "equals": true,
+          "description": ""
+        }
+      ],
+      "headerData": [],
+      "collection_id": "ea1c9a52-6a74-dd6a-baa6-c6f8d31ff107",
+      "folder": "2901822e-b3c8-a1a5-6694-1637ebf139a6"
+    }
+  ]
+}
