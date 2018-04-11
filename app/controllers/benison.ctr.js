@@ -2,10 +2,10 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-09 15:49:34
+* @Last Modified time: 2018-04-10 21:36:01
 */
 import axios from 'axios';
-import { cloneDeep, assign } from 'lodash';
+import { cloneDeep, assign, has } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat } from '../lib';
@@ -45,16 +45,15 @@ class BenisonCtl extends Controller {
       const data = getDataFromReq(req);
       const per_page = parseInt(data.per_page) || 10;
       const page = parseInt(data.page) || 1;
-
+      const whereConditions = has(data, 'password')
+        ? { is_belong_template: data.is_belong_template ? data.is_belong_template : 0, password: '' }
+        : { is_belong_template: data.is_belong_template ? data.is_belong_template : 0 };
       let results = await model.BenisonModel.findAndCountAll({
         order: [['updated_at', 'DESC']],
         limit: per_page,
         offset: per_page * (page - 1),
         // where: { is_belong_template : data.is_belong_template ? data.is_belong_template : { $ne: null } },
-        where: {
-          is_belong_template: data.is_belong_template ? data.is_belong_template : 0,
-          password: { $eq: '' }
-        },
+        where: whereConditions,
         // logging: console.log,
         benchmark: true,
         include: [
