@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-10 21:36:01
+* @Last Modified time: 2018-04-11 17:10:11
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -46,8 +46,15 @@ class BenisonCtl extends Controller {
       const per_page = parseInt(data.per_page) || 10;
       const page = parseInt(data.page) || 1;
       const whereConditions = has(data, 'password')
-        ? { is_belong_template: data.is_belong_template ? data.is_belong_template : 0, password: '' }
-        : { is_belong_template: data.is_belong_template ? data.is_belong_template : 0 };
+        ? {
+            is_belong_template: data.is_belong_template ? data.is_belong_template : 0,
+            status: data.status ? data.status : 1,
+            password: ''
+          }
+        : {
+            is_belong_template: data.is_belong_template ? data.is_belong_template : 0,
+            status: data.status ? data.status : 1
+          };
       let results = await model.BenisonModel.findAndCountAll({
         order: [['updated_at', 'DESC']],
         limit: per_page,
@@ -119,7 +126,8 @@ class BenisonCtl extends Controller {
         is_belong_template: data.is_belong_template,
         password: data.password,
         template_id: data.template_id, //必填
-        user_id: data.user_id // 必填
+        user_id: data.user_id, // 必填
+        status: 0 //默认为0
       };
       const bension_res = await model.TemplateModel.findById(data.template_id);
       const user_res = await model.UserModel.findById(data.user_id);
@@ -193,14 +201,16 @@ class BenisonCtl extends Controller {
         benisons_txt: data.benisons_txt,
         is_belong_template: data.is_belong_template,
         password: data.password,
+        liked_total: data.liked_total,
+        status: data.status,
         template_id: data.template_id, //必填
         user_id: data.user_id // 必填
       };
-      const bension_res = await model.TemplateModel.findById(id);
+      const bension_res = await model.BenisonModel.findById(id);
       const user_res = await model.UserModel.findById(data.user_id);
 
       if (!bension_res) {
-        res.status(200).send(jsonFormatter({ msg: '模板不存在' }, true));
+        res.status(200).send(jsonFormatter({ msg: '祝福不存在' }, true));
       } else if (!user_res) {
         res.status(200).send(jsonFormatter({ msg: '用户不存在' }, true));
       } else {
