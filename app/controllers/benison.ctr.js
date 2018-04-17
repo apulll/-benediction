@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-11 17:10:11
+* @Last Modified time: 2018-04-17 10:12:15
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -11,6 +11,7 @@ import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
+import filter from '../middlewares/word';
 const Promise = require('bluebird');
 const Sequelize = require('sequelize');
 const Op = Sequelize.Op;
@@ -120,9 +121,13 @@ class BenisonCtl extends Controller {
       // var path = __dirname + '/test/word.txt'; // 敏感词文件路径
       // var time = 10 * 60 * 1000; // 监听间隔时间 默认 10 * 60 * 10000 ms (10分钟)
       // word.watch(path, time);
+      const hasKeyWord = filter.hasKeyword(data.benisons_txt);
 
+      // if (hasKeyWord) {
+      //   return res.status(200).send(jsonFormatter({ msg: '含有非法字符，请删除后重试' }, true));
+      // }
       let params = {
-        benisons_txt: data.benisons_txt,
+        benisons_txt: filter.replaceKeywords(data.benisons_txt, '*'),
         is_belong_template: data.is_belong_template,
         password: data.password,
         template_id: data.template_id, //必填
