@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-17 10:12:15
+* @Last Modified time: 2018-04-17 14:37:25
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -126,6 +126,7 @@ class BenisonCtl extends Controller {
       // if (hasKeyWord) {
       //   return res.status(200).send(jsonFormatter({ msg: '含有非法字符，请删除后重试' }, true));
       // }
+
       let params = {
         benisons_txt: filter.replaceKeywords(data.benisons_txt, '*'),
         is_belong_template: data.is_belong_template,
@@ -142,9 +143,6 @@ class BenisonCtl extends Controller {
       } else if (!user_res) {
         res.status(200).send(jsonFormatter({ msg: '用户不存在' }, true));
       } else {
-        // const filterResults = await this.wordFilter(data.benisons_txt);
-        // params = assign({}, params, { benisons_txt: filterResults.result });
-        // console.log(params, filterResults);
         const results = await model.BenisonModel.create(params);
         if (results) {
           const user_ben_rs = await model.UserBenisonModel.create({
