@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-11 17:52:55
+* @Last Modified time: 2018-04-18 09:48:23
 */
 const crypto = require('crypto');
 const WXBizDataCrypt = require('./WXBizDataCrypt');
@@ -25,7 +25,6 @@ exports.getDataFromReq = function(req) {
 
 exports.formatDataByCatalogId = function(results) {
   const data = JSON.parse(JSON.stringify(results));
-  console.log(data[0], 'data');
   const arrs = data[0].templates;
   const template_ids = _.map(arrs, 'id');
 
@@ -77,7 +76,6 @@ exports.benisonAllDataFormat = function(resource, target) {
  */
 exports.createAndRecieveBenisonFormat = function(resource) {
   let newRes = _.sortBy(_.cloneDeep(resource), ['template.catalog_id', 'updated_at']);
-  console.log(newRes, 'newRes12121');
   let target = [];
 
   _.map(resource, function(value, key) {
@@ -98,7 +96,6 @@ exports.getBenisonIds = function(data, column) {
 };
 
 exports.getUserInfoFromWeChart = function(appId, sessionKey, encryptedData, iv) {
-  console.log(appId, sessionKey, encryptedData, iv, 'appId, sessionKey, encryptedData, iv');
   var pc = new WXBizDataCrypt(appId, sessionKey);
 
   var data = pc.decryptData(encryptedData, iv);

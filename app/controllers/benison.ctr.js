@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-17 14:37:25
+* @Last Modified time: 2018-04-18 09:46:42
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -89,10 +89,8 @@ class BenisonCtl extends Controller {
 
       const newResults = formatPage(page, per_page, results);
       if (results) {
-        // console.log('获取列表失败');
         res.status(200).send(jsonFormatter({ res: newResults }));
       } else {
-        console.log('获取列表失败');
         res.status(200).send(jsonFormatter({ msg: '获取列表失败' }, true));
       }
     } catch (error) {

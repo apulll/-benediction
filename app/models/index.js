@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-17 23:03:44
+* @Last Modified time: 2018-04-18 09:57:43
 */
 import config from '../config';
 const Sequelize = require('sequelize');
@@ -51,6 +51,10 @@ db.sync().then(aaa => {
     )
     .then(function(doStuffAfterLoad) {
       console.log(doStuffAfterLoad, 'doStuffAfterLoad');
+    })
+    .catch(error => {
+      console.log(error);
+      Logger.error(error);
     });
 });
 

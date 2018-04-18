@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:38:31
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-29 11:40:57
+* @Last Modified time: 2018-04-18 09:47:46
 */
 import config from '../config';
 
@@ -47,7 +47,7 @@ const operatorsAliases = {
   $col: Op.col
 };
 
-console.log(config, 'config');
+Logger.info(config);
 const sequelizeDb = new Sequelize(config.DB_DATABASE, config.DB_USER_NAME, config.DB_PASSWORD, {
   host: config.DB_HOST,
   dialect: config.DB_DIALECT,
