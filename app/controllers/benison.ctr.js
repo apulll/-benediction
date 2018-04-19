@@ -2,13 +2,13 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-18 09:46:42
+* @Last Modified time: 2018-04-19 17:41:46
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat } from '../lib';
+import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat, filteremoji } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 import filter from '../middlewares/word';
@@ -19,6 +19,7 @@ const Logger = require('../lib/logger')('controllers/benison');
 const { check, validationResult } = require('express-validator/check');
 const { matchedData, sanitize } = require('express-validator/filter');
 const utf8 = require('utf8');
+const base64url = require('base64-url');
 
 class BenisonCtl extends Controller {
   constructor() {
@@ -124,9 +125,10 @@ class BenisonCtl extends Controller {
       // if (hasKeyWord) {
       //   return res.status(200).send(jsonFormatter({ msg: '含有非法字符，请删除后重试' }, true));
       // }
-
+      // if()
+      const benisons_txt = filter.replaceKeywords(data.benisons_txt, '*');
       let params = {
-        benisons_txt: filter.replaceKeywords(data.benisons_txt, '*'),
+        benisons_txt: filteremoji(benisons_txt),
         is_belong_template: data.is_belong_template,
         password: data.password,
         template_id: data.template_id, //必填

@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-18 09:48:23
+* @Last Modified time: 2018-04-19 17:40:52
 */
 const crypto = require('crypto');
 const WXBizDataCrypt = require('./WXBizDataCrypt');
@@ -107,4 +107,15 @@ exports.sha1 = function(message) {
     .createHash('sha1')
     .update(message, 'utf8')
     .digest('hex');
+};
+/**
+ * 过滤emoji表情
+ * @param  {[type]} val [description]
+ * @return {[type]}     [description]
+ */
+exports.filteremoji = function(val) {
+  let ranges = ['\ud83c[\udf00-\udfff]', '\ud83d[\udc00-\ude4f]', '\ud83d[\ude80-\udeff]'];
+  let emojireg = val;
+  emojireg = emojireg.replace(new RegExp(ranges.join('|'), 'g'), '');
+  return emojireg;
 };

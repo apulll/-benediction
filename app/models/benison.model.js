@@ -2,12 +2,13 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 23:12:52
+* @Last Modified time: 2018-04-19 17:42:02
 */
 
 import moment from 'moment';
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
+const base64url = require('base64-url');
 
 const Benison = db.define('benison', {
   benisons_txt: {
