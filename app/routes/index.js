@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-11 17:05:26
+* @Last Modified time: 2018-04-19 17:52:18
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -71,6 +71,9 @@ router.get(
 router.post(
   '/benison',
   [
+    check('benisons_txt', '祝福语不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false)),
     check('template_id', '不能为空')
       .exists()
       .custom((value, { req }) => (value ? true : false)),
