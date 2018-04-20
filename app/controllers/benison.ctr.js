@@ -2,13 +2,13 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-20 16:31:12
+* @Last Modified time: 2018-04-20 22:46:53
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
 import Controller from './index.js';
 import model from '../models';
-import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat, filteremoji } from '../lib';
+import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat, filteremoji, txtFormat } from '../lib';
 import validatorForm from '../lib/validator';
 import config from '../config';
 import filter from '../middlewares/word';
@@ -126,9 +126,9 @@ class BenisonCtl extends Controller {
       //   return res.status(200).send(jsonFormatter({ msg: '含有非法字符，请删除后重试' }, true));
       // }
       // if()
-      const benisons_txt = filter.replaceKeywords(data.benisons_txt, '*');
+      const benisons_txt = txtFormat(data.benisons_txt);
       let params = {
-        benisons_txt: base64url.encode(benisons_txt),
+        benisons_txt: benisons_txt,
         is_belong_template: data.is_belong_template,
         password: data.password,
         template_id: data.template_id, //必填
@@ -200,8 +200,9 @@ class BenisonCtl extends Controller {
     try {
       const data = getDataFromReq(req);
       const { id } = req.params;
+
       const params = {
-        benisons_txt: data.benisons_txt,
+        benisons_txt: txtFormat(data.benisons_txt),
         is_belong_template: data.is_belong_template,
         password: data.password,
         liked_total: data.liked_total,

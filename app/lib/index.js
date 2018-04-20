@@ -2,11 +2,14 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-19 17:40:52
+* @Last Modified time: 2018-04-20 22:45:26
 */
 const crypto = require('crypto');
+const base64url = require('base64-url');
 const WXBizDataCrypt = require('./WXBizDataCrypt');
 const _ = require('lodash');
+
+import filter from '../middlewares/word';
 
 exports.jsonFormatter = function(response, err = false, code = 200) {
   return {
@@ -118,4 +121,13 @@ exports.filteremoji = function(val) {
   let emojireg = val;
   emojireg = emojireg.replace(new RegExp(ranges.join('|'), 'g'), '');
   return emojireg;
+};
+
+exports.txtFormat = function(txt) {
+  if (!txt) {
+    return '';
+  } else {
+    const newTxt = base64url.encode(filter.replaceKeywords(txt, '*'));
+    return newTxt;
+  }
 };
