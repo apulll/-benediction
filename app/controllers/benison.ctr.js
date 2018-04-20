@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-19 17:41:46
+* @Last Modified time: 2018-04-20 16:31:12
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -128,7 +128,7 @@ class BenisonCtl extends Controller {
       // if()
       const benisons_txt = filter.replaceKeywords(data.benisons_txt, '*');
       let params = {
-        benisons_txt: filteremoji(benisons_txt),
+        benisons_txt: base64url.encode(benisons_txt),
         is_belong_template: data.is_belong_template,
         password: data.password,
         template_id: data.template_id, //必填

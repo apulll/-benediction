@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-19 17:42:02
+* @Last Modified time: 2018-04-20 16:30:17
 */
 
 import moment from 'moment';
@@ -12,7 +12,11 @@ const base64url = require('base64-url');
 
 const Benison = db.define('benison', {
   benisons_txt: {
-    type: Sequelize.TEXT
+    type: Sequelize.TEXT,
+    get() {
+      return base64url.decode(this.getDataValue('benisons_txt'));
+      // return this.getDataValue('nick_name');
+    }
   },
   liked_total: {
     type: Sequelize.INTEGER,
