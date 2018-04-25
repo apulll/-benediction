@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-20 22:46:53
+* @Last Modified time: 2018-04-20 23:09:48
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -200,7 +200,7 @@ class BenisonCtl extends Controller {
     try {
       const data = getDataFromReq(req);
       const { id } = req.params;
-
+      console.log(data.benisons_txt, txtFormat(data.benisons_txt));
       const params = {
         benisons_txt: txtFormat(data.benisons_txt),
         is_belong_template: data.is_belong_template,
