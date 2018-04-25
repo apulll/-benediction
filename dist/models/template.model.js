@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) {
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-16 14:57:42
+* @Last Modified time: 2018-04-25 22:23:26
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -58,21 +58,15 @@ const Template = db.define(
   {
     getterMethods: {
       bg_img() {
-        const urlOrigin = `https://${_config2.default.QCLOUD_BUCKET}-${_config2.default.QCLOUD_APPID}${
-          _config2.default.QLOUD_CDN_URL_EXTEND
-        }static/images/`;
+        const urlOrigin = `https://ineednutrition.oss-cn-beijing.aliyuncs.com/static/images/`;
         return urlOrigin + this.thumb + '_bg_img.jpg';
       },
       bg_imgsumb() {
-        const urlOrigin = `https://${_config2.default.QCLOUD_BUCKET}-${_config2.default.QCLOUD_APPID}${
-          _config2.default.QLOUD_CDN_URL_EXTEND
-        }static/images/`;
+        const urlOrigin = `https://ineednutrition.oss-cn-beijing.aliyuncs.com/static/images/`;
         return urlOrigin + this.thumb + '.png';
       },
       bg_bension_img() {
-        const urlOrigin = `https://${_config2.default.QCLOUD_BUCKET}-${_config2.default.QCLOUD_APPID}${
-          _config2.default.QLOUD_CDN_URL_EXTEND
-        }static/images/`;
+        const urlOrigin = `https://ineednutrition.oss-cn-beijing.aliyuncs.com/static/images/`;
         return urlOrigin + this.thumb + '_bg_bension_img.jpg';
       }
     }

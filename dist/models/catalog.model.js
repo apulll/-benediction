@@ -20,7 +20,7 @@ function _interopRequireDefault(obj) {
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 23:13:15
+* @Last Modified time: 2018-04-25 22:23:40
 */
 const Sequelize = require('sequelize');
 const db = require('../db/core.js');
@@ -33,9 +33,7 @@ const Catalog = db.define('catalog', {
     type: Sequelize.TEXT,
     get: function(value) {
       const catalog_icon_name = this.getDataValue('catalog_icon');
-      const urlOrigin = `https://${_config2.default.QCLOUD_BUCKET}-${_config2.default.QCLOUD_APPID}${
-        _config2.default.QLOUD_CDN_URL_EXTEND
-      }static/images/`;
+      const urlOrigin = `https://ineednutrition.oss-cn-beijing.aliyuncs.com/static/images/`;
       const url = `${urlOrigin}${catalog_icon_name}.png`;
       return url;
     }

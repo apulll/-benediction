@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 09:57:50
 * @Last Modified by:   perry
-* @Last Modified time: 2018-03-30 23:13:15
+* @Last Modified time: 2018-04-25 22:23:40
 */
 import moment from 'moment';
 import config from '../config';
@@ -17,9 +17,7 @@ const Catalog = db.define('catalog', {
     type: Sequelize.TEXT,
     get: function(value) {
       const catalog_icon_name = this.getDataValue('catalog_icon');
-      const urlOrigin = `https://${config.QCLOUD_BUCKET}-${config.QCLOUD_APPID}${
-        config.QLOUD_CDN_URL_EXTEND
-      }static/images/`;
+      const urlOrigin = `https://ineednutrition.oss-cn-beijing.aliyuncs.com/static/images/`;
       const url = `${urlOrigin}${catalog_icon_name}.png`;
       return url;
     }
