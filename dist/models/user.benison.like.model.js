@@ -1,0 +1,71 @@
+'use strict';
+
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
+var _moment = require('moment');
+
+var _moment2 = _interopRequireDefault(_moment);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+const Sequelize = require('sequelize'); /*
+                                        * @Author: perry
+                                        * @Date:   2018-03-14 09:57:50
+                                        * @Last Modified by:   perry
+                                        * @Last Modified time: 2018-03-30 23:13:36
+                                        */
+
+const db = require('../db/core.js');
+
+const UserBenisonLike = db.define(
+  'user_benison_like',
+  {
+    user_id: {
+      type: Sequelize.UUID(32),
+      allowNull: false
+    },
+    bension_id: {
+      type: Sequelize.INTEGER,
+      allowNull: false
+    },
+    is_liked_bension: {
+      type: Sequelize.INTEGER(2),
+      defaultValue: 0,
+      comment: '是否用户对当前祝福语是喜欢的；喜欢为 1 否则为 0',
+      description: '是否用户对当前祝福语是喜欢的；喜欢为 1 否则为 0'
+    },
+    created_at: {
+      type: Sequelize.DATE,
+      get() {
+        return (0, _moment2.default)(this.getDataValue('created_at')).format('YYYY-MM-DD');
+      }
+    },
+    updated_at: {
+      type: Sequelize.DATE,
+      get() {
+        return (0, _moment2.default)(this.getDataValue('updated_at')).format('YYYY-MM-DD');
+      }
+    }
+  },
+  {
+    comment: '用户-祝福语-喜欢表',
+    indexes: [
+      {
+        name: 'user_benison_like_index_name_1',
+        method: 'BTREE',
+        fields: ['user_id']
+      },
+      {
+        name: 'user_benison_like_index_name_2',
+        method: 'BTREE',
+        fields: ['bension_id']
+      }
+    ]
+  }
+);
+
+exports.default = UserBenisonLike;
