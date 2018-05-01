@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:19:45
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-20 23:09:48
+* @Last Modified time: 2018-05-01 22:22:32
 */
 import axios from 'axios';
 import { cloneDeep, assign, has } from 'lodash';
@@ -10,6 +10,7 @@ import Controller from './index.js';
 import model from '../models';
 import { jsonFormatter, getDataFromReq, formatPage, benisonAllDataFormat, filteremoji, txtFormat } from '../lib';
 import validatorForm from '../lib/validator';
+import { sendMail } from '../lib/mail';
 import config from '../config';
 import filter from '../middlewares/word';
 const Promise = require('bluebird');
@@ -38,6 +39,9 @@ class BenisonCtl extends Controller {
    */
   async getBenisonAll(req, res, next) {
     Logger.debug(config, 'config');
+    const ccc = sendMail();
+    console.log(ccc, 'cccc1111');
+
     try {
       const errors = validatorForm(req);
       if (!errors.isEmpty()) {
