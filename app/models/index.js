@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 15:05:01
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-18 09:57:43
+* @Last Modified time: 2018-04-30 22:04:53
 */
 import config from '../config';
 const Sequelize = require('sequelize');
@@ -18,6 +18,9 @@ import Template from './template.model';
 import User from './user.model';
 import UserBenison from './user.benison.model';
 import UserBenisonLike from './user.benison.like.model';
+
+import UserGongyi from './gongyi.user.model';
+import MoneyGongyi from './gongyi.money.user.model';
 import seeders from '../mocks/db_init';
 
 // UserBenison.sync({force: true})
@@ -35,7 +38,10 @@ const model = {
   UserModel: User,
   UserBenisonModel: UserBenison,
   UserBenisonLikeModel: UserBenisonLike,
-  FileModel: File
+  FileModel: File,
+
+  UserGongyiModel: UserGongyi,
+  MoneyGongyiModel: MoneyGongyi
 };
 db.sync().then(aaa => {
   Logger.info(aaa);
