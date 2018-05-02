@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:57:49
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-20 22:45:26
+* @Last Modified time: 2018-05-02 14:02:59
 */
 const crypto = require('crypto');
 const base64url = require('base64-url');
@@ -130,4 +130,14 @@ exports.txtFormat = function(txt) {
     const newTxt = base64url.encode(filter.replaceKeywords(txt, '*'));
     return newTxt;
   }
+};
+
+exports.getTotalMoney = function(rows) {
+  let total_money = 0;
+  if (rows) {
+    _.map(rows, (item, index) => {
+      total_money += parseFloat(item.money);
+    });
+  }
+  return total_money;
 };

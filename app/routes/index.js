@@ -2,7 +2,7 @@
 * @Author: perry
 * @Date:   2018-03-14 10:27:32
 * @Last Modified by:   perry
-* @Last Modified time: 2018-04-19 17:52:18
+* @Last Modified time: 2018-05-02 14:35:30
 */
 import express from 'express';
 import UserCtl from '../controllers/user.ctr';
@@ -11,6 +11,9 @@ import TemplateCtl from '../controllers/template.ctr';
 import catalogCtl from '../controllers/catalog.ctr';
 import commonCtl from '../controllers/common.ctr';
 import userBenisonCtl from '../controllers/user_benison.ctr';
+
+import UserGongyiCtl from '../controllers/user.gongyi.ctr';
+
 const { check, validationResult } = require('express-validator/check');
 import { upload } from '../lib/upload';
 
@@ -137,5 +140,60 @@ router.post('/catalog', catalogCtl.createCatalog);
 router.post('/upload', upload.array('files'), commonCtl.upload);
 router.post('/text/filter', commonCtl.textFilter);
 router.get('/codeurl', commonCtl.getCodeUrl);
+
+/************************************公益项目
+ *****************************************/
+
+// --- 登录与授权 Demo --- //
+// 登录接口
+router.get(
+  '/getOpenId',
+  [
+    check('code', '不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false))
+  ],
+  UserGongyiCtl.getOpenId
+);
+
+router.post(
+  '/postDonation',
+  [
+    check('money', '不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false))
+  ],
+  UserGongyiCtl.postDonation
+);
+
+router.get(
+  '/getDonationInfo',
+  [
+    check('uuid', '不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false))
+  ],
+  UserGongyiCtl.getDonationInfo
+);
+
+router.get(
+  '/getUserInfoAndDonation',
+  [
+    check('uuid', '不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false))
+  ],
+  UserGongyiCtl.getUserInfoAndDonation
+);
+
+router.post(
+  '/export/info',
+  [
+    check('uuid', '不能为空')
+      .exists()
+      .custom((value, { req }) => (value ? true : false))
+  ],
+  UserGongyiCtl.exportInfo
+);
 
 export default router;
